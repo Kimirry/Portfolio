@@ -1,0 +1,641 @@
+/* CSS Custom Properties (Variables) */
+:root {
+    /* Color Palette */
+    --clr-dark-bg: rgb(41, 40, 40); /* Main dark background */
+    --clr-light-bg: rgb(20, 20, 20); /* Slightly lighter background for sections */
+    --clr-primary: rgb(29, 192, 170); /* Teal/Aqua accent color */
+    --clr-primary-dark: rgb(6, 150, 138); /* Darker shade of primary for links */
+    --clr-primary-light: rgb(196, 233, 228); /* Lighter shade of primary for hover states */
+    --clr-secondary: rgb(32, 119, 107); /* Secondary button/element color */
+    --clr-text: white; /* Main text color */
+    --clr-gold: gold; /* Color for star ratings */
+
+    /* Spacing System */
+    --spacing-xs: 0.5rem; /* Extra small spacing */
+    --spacing-sm: 1rem; /* Small spacing */
+    --spacing-md: 1.5rem; /* Medium spacing */
+    --spacing-lg: 2rem; /* Large spacing */
+    --spacing-xl: 4vw; /* Extra large spacing (viewport-width based) */
+
+    /* Font Sizes (Responsive using clamp for fluid typography) */
+    --fs-nav-link: clamp(13px, 2vw, 15px);
+    --fs-greet: clamp(15px, 2vw, 20px); /* Font size for "Good morning/afternoon/evening" */
+    --fs-heading-main: clamp(25px, 4vw, 38px); /* Main section headings (H1) */
+    --fs-heading-sub: clamp(15px, 2vw, 20px); /* Sub-headings (e.g., service card titles) (H2) */
+    --fs-description: clamp(15px, 4vw, 35px); /* Hero section main text */
+    --fs-work: clamp(15px, 2.5vw, 22px); /* "Front-end Web Developer" text */
+    --fs-about: clamp(11px, 2vw, 15px); /* About paragraph text */
+    --fs-service-text: clamp(10px, 2.3vw, 13px); /* Text within service cards */
+    --fs-skill-text: clamp(12px, 1.8vw, 13px); /* Adjusted: Smaller skill item text */
+    --fs-testimonial-comment: clamp(13px, 2vw, 14px); /* Testimonial comment text */
+    --fs-contact-heading: clamp(20px, 4vw, 40px); /* Contact section heading */
+    --fs-input: 15px; /* Font size for form input fields */
+    --fs-textarea: 20px; /* Font size for form textarea */
+
+    /* Border Radii */
+    --br-sm: 5px; /* Small border radius */
+    --br-md: 7px; /* Medium border radius */
+    --br-lg: 10px; /* Large border radius */
+    --br-circle: 50%; /* Perfect circle border radius */
+}
+
+/* Global Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+}
+
+body {
+    background-color: var(--clr-dark-bg);
+    color: var(--clr-text);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+section {
+    min-height: 100vh; /* Each section takes at least the full viewport height */
+}
+
+/* Accessibility: Visually hide elements but keep them accessible to screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Navigation Bar Styling */
+nav {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly around items */
+    margin: var(--spacing-xl);
+    margin-right: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
+    align-items: center; /* Vertically align items in the middle */
+}
+
+nav p#greet {
+    font-size: var(--fs-greet);
+}
+
+ul {
+    list-style-type: none; /* Remove bullet points from lists */
+    display: flex; /* Display list items in a row */
+}
+
+li {
+    padding-right: 20px;
+    font-size: var(--fs-nav-link);
+}
+
+nav a {
+    text-decoration: none; /* Remove underline from links */
+    color: var(--clr-primary-dark);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    transition: color 0.3s ease; /* Smooth transition for color change on hover */
+}
+
+nav a:hover {
+    color: var(--clr-primary-light);
+}
+
+nav a:active { /* Styles for when the link is clicked/active */
+    color: var(--clr-primary);
+    text-decoration: underline;
+}
+
+/* Hamburger Icon for Mobile Navigation */
+#bars {
+    display: none; /* Hidden by default, shown in media query for small screens */
+    font-size: 1.8rem; /* Larger icon for better touch target */
+    cursor: pointer;
+    color: var(--clr-primary);
+}
+
+/* Class added by JavaScript to show/hide the navigation list */
+#navlist.show {
+    display: flex;
+}
+
+/* Hero Section / Content */
+.content {
+    width: 90%;
+    margin: auto; /* Center the content horizontally */
+    margin-top: 8%;
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-items: center; /* Vertically align items */
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    justify-content: center; /* Center items when they wrap */
+}
+
+.content img {
+    max-height: 300px;
+    max-width: 300px;
+    border-radius: var(--br-circle); /* Makes image perfectly round */
+    margin: 0 50px 50px;
+    flex-shrink: 1; /* Allows image to shrink */
+    box-shadow: 0 0 30px var(--clr-primary-dark), 0 0 30px rgba(58, 83, 80, 0.7);
+    object-fit: cover; /* Ensures image covers its area without distortion */
+}
+
+.description {
+    flex-grow: 1; /* Allows description to take available space */
+    padding-left: var(--spacing-md);
+    max-width: 60%; /* Limits description width on large screens */
+}
+
+.description p:first-child {
+    font-size: var(--fs-description);
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+#name {
+    color: var(--clr-primary);
+    font-weight: bold;
+}
+
+.description p:nth-child(2) {
+    font-size: var(--fs-work);
+    margin-bottom: var(--spacing-sm);
+}
+
+#work {
+    font-weight: bold;
+    color: var(--clr-primary);
+}
+
+#about {
+    font-size: var(--fs-about);
+    font-weight: 500;
+    padding: var(--spacing-md);
+}
+
+.links {
+    display: flex;
+    margin: var(--spacing-md);
+    color: var(--clr-primary);
+    gap: var(--spacing-sm); /* Space between social icons */
+}
+
+.links a {
+    color: var(--clr-primary);
+    border: solid 1px;
+    border-radius: var(--br-circle);
+    padding: 4px;
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow on hover */
+}
+
+.links i {
+    padding: 5px; /* Padding inside the icon's clickable area */
+}
+
+.links a:hover {
+    box-shadow: 0 0 15px var(--clr-primary); /* Glow effect on hover */
+}
+
+.buttons {
+    display: flex;
+    margin: var(--spacing-lg);
+    gap: var(--spacing-sm);
+    float: left; /* Aligns buttons to the left */
+    padding: 5px;
+}
+
+/* Button Base Styles */
+.btn-primary, .btn-secondary {
+    padding: 5px 24px;
+    border-radius: var(--br-md);
+    outline: none;
+    border: none;
+    font-weight: 700;
+    transition: transform 0.3s ease; /* Smooth transition for transform on hover */
+    cursor: pointer; /* Indicates clickable element */
+}
+
+/* Primary Button Specific Styles */
+.btn-primary {
+    background-color: var(--clr-secondary);
+    color: var(--clr-text);
+    box-shadow: 0 0 30px rgba(9, 68, 60, 0.7), 0 0 20px rgba(11, 94, 83, 0.7);
+}
+
+/* Secondary Button Specific Styles */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--clr-primary);
+    border: 1px solid var(--clr-primary); /* Outline button style */
+}
+
+/* Button Hover Effect */
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-3px); /* Lifts button slightly on hover */
+}
+
+/* General Heading Style (for H1 tags in sections) */
+h1 {
+    text-align: center;
+    padding: 5% 0 2%;
+    font-size: var(--fs-heading-main);
+}
+
+/* Services Section Styling */
+#services {
+    background-color: var(--clr-dark-bg); /* Consistent background for the section */
+}
+
+#services .wrapper {
+    width: 80%;
+    margin: auto; /* Center the wrapper */
+    display: flex;
+    flex-wrap: wrap; /* Allow service cards to wrap to the next line */
+    justify-content: center; /* Center cards horizontally within the wrapper */
+    gap: var(--spacing-md); /* Space between service cards */
+}
+
+.service-card {
+    background-color: var(--clr-primary);
+    margin: var(--spacing-xs);
+    max-width: 500px; /* Maximum width for individual cards */
+    padding: 25px;
+    border-radius: var(--br-lg);
+    color: black; /* Text color for service cards */
+    transition: transform 0.3s ease, background-color 0.3s ease, border 0.3s ease; /* Smooth transitions for hover */
+    flex-basis: 300px; /* Minimum width for cards before wrapping */
+    flex-grow: 1; /* Allows cards to grow and fill available space */
+}
+
+.service-card h2 {
+    text-align: center;
+    padding: var(--spacing-md);
+    font-size: var(--fs-heading-sub);
+    font-weight: bold;
+}
+
+.service-card p {
+    font-size: var(--fs-service-text);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.service-card:hover {
+    transform: scale(1.03); /* Slightly enlarge card on hover */
+    background-color: rgba(240, 248, 255, 0.849); /* Change background on hover */
+    border: solid 2px var(--clr-primary-dark);
+}
+
+/* Skills Section Styling */
+#skills {
+    background-color: var(--clr-dark-bg); /* Different background for visual contrast */
+    min-height: auto; /* Allow section height to shrink */
+    padding-bottom: var(--spacing-lg); /* Add some padding at the bottom */
+}
+
+#skills h1 {
+    text-align: center;
+    margin-top: 50px; /* Adjusted: Smaller top margin for heading */
+    padding-bottom: var(--spacing-md); /* Adjusted: Smaller bottom padding for heading */
+}
+
+#skills .languages {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 1px var(--clr-primary);
+    border-radius: 15px;
+    margin: 3%; /* Adjusted: Smaller overall margin for the container */
+    padding: var(--spacing-sm); /* Adjusted: Smaller padding inside the bordered container */
+    max-width: 900px; /* Adjusted: Max width for skills container */
+    margin-left: auto; /* Center the container */
+    margin-right: auto;
+}
+
+.skill-item {
+    margin: var(--spacing-sm); /* Adjusted: Smaller margin for individual skill items */
+    padding: var(--spacing-sm); /* Adjusted: Smaller padding for individual skill items */
+    border-radius: var(--br-lg);
+    background-color: rgb(27, 26, 26); /* Background for individual skill items */
+    font-size: var(--fs-skill-text); /* Adjusted: Using updated font size variable */
+    flex-basis: 250px; /* Adjusted: Smaller minimum width for skill items */
+    flex-grow: 1; /* Allows items to grow */
+    max-width: 350px; /* Adjusted: Smaller maximum width for consistency */
+}
+
+.skill-item h2 {
+    text-align: center;
+    margin-bottom: 8px; /* Adjusted: Smaller bottom margin for skill heading */
+    font-size: clamp(16px, 2.5vw, 18px); /* Adjusted: Slightly smaller font size for skill titles */
+}
+
+.progress {
+    border: none;
+    height: 5px; /* Adjusted: Slightly thinner progress bar */
+    background-color: var(--clr-primary); /* Color of the filled progress bar */
+    border-radius: 4px;
+    transition: width 1s ease-out; /* Smooth animation for progress bar filling */
+}
+
+.outer-progress-bar {
+    border: solid 1px var(--clr-primary);
+    border-radius: 4px;
+    height: 7px; /* Adjusted: Slightly thinner outer progress bar */
+    margin: var(--spacing-sm) 0; /* Adjusted: Smaller vertical margin */
+    overflow: hidden; /* Ensures the inner progress bar stays within bounds */
+    background-color: rgba(255, 255, 255, 0.1); /* Lighter background for the empty part of the bar */
+}
+
+.skill-item p { /* Percentage text */
+    text-align: right;
+    font-size: 13px; /* Adjusted: Smaller font size for percentage text */
+    color: var(--clr-primary);
+    margin-top: 4px; /* Adjusted: Smaller top margin */
+}
+
+/* Testimonials Section Styling */
+#testimonials {
+    text-align: center;
+    background-color: var(--clr-dark-bg);
+    padding-bottom: var(--spacing-lg);
+}
+
+#testimonials h1 {
+    text-align: center;
+}
+
+#testimonials img {
+    height: 100px;
+    width: 100px;
+    border-radius: var(--br-circle);
+    border: solid 3px var(--clr-primary);
+    object-fit: cover; /* Ensures profile images fill their space */
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md); /* Space between testimonial cards */
+    width: 90%;
+    margin: auto; /* Center the cards container */
+}
+
+.card {
+    border: solid 1px var(--clr-primary-dark);
+    border-radius: 15px;
+    margin: var(--spacing-md);
+    padding: 2%;
+    display: flex; /* Use flexbox for content within each card */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally within the card */
+    max-width: 300px;
+    background-color: var(--clr-light-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    flex-basis: 280px; /* Minimum width for cards */
+    flex-grow: 1; /* Allows cards to grow */
+}
+
+.card:hover {
+    box-shadow: 0 0 10px var(--clr-primary-dark), 0 0 10px var(--clr-primary-dark);
+    background-color: rgba(0, 0, 0, 0.568);
+    transform: scale(1.05); /* Enlarge card on hover */
+}
+
+.stars {
+    color: var(--clr-gold);
+    padding: 10px;
+    font-size: 10px;
+}
+
+.testimonial-name {
+    color: teal; /* Specific color for testimonial names */
+    margin-bottom: var(--spacing-xs);
+}
+
+.comment {
+    padding-top: 25px;
+    padding-bottom: 30px;
+    font-size: var(--fs-testimonial-comment);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+/* Contacts Section Styling */
+#contacts {
+    background-color: var(--clr-dark-bg);
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+#contacts .wrap {
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form {
+    width: 90%;
+    max-width: 800px; /* Maximum width for the form itself */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form elements */
+}
+
+#contacts h1 {
+    text-align: center;
+    padding: 50px 0 30px;
+    font-size: var(--fs-contact-heading);
+}
+
+.inputs {
+   display: flex;
+   flex-wrap: wrap; /* Allow input columns to wrap */
+   justify-content: center;
+   width: 100%; /* Take full width of the form container */
+   gap: var(--spacing-md); /* Space between the left input column and textarea */
+}
+
+.left-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md); /* Space between individual input fields */
+    flex-grow: 1; /* Allows this column to grow */
+    min-width: 280px; /* Minimum width for the input column */
+}
+
+/* Styling for all input fields and textarea within the contact form */
+.left-inputs input,
+#message-textarea {
+    outline: none;
+    border: solid 1px var(--clr-primary);
+    border-radius: var(--br-sm);
+    height: 45px; /* Slightly increased height for better usability */
+    background-color: var(--clr-light-bg);
+    padding: 10px;
+    color: var(--clr-primary);
+    font-size: var(--fs-input);
+    width: 100%; /* Ensures inputs fill their container */
+}
+
+#message-textarea {
+    min-height: 200px;
+    margin: 0;
+    font-size: var(--fs-textarea);
+    resize: vertical; /* Allows users to resize the textarea vertically */
+    flex-grow: 1; /* Allows textarea to grow and fill available space */
+}
+
+#contacts #submit {
+    margin-top: var(--spacing-lg); /* Add space above the submit button */
+    min-width: 150px; /* Ensure button has a minimum width */
+}
+
+/* Media Queries for Responsive Design */
+
+/* For screens up to 50rem (approx. 800px) - Common breakpoint for tablets and larger phones */
+@media only screen and (max-width: 50rem) {
+    /* Navigation Adjustments */
+    #bars {
+        display: block; /* Show hamburger icon */
+    }
+    nav {
+        justify-content: space-between; /* Space out hamburger and greeting */
+        margin-bottom: 15%; /* More space below nav */
+    }
+    #navlist {
+        display: none; /* Hide nav list by default (JavaScript toggles 'show' class) */
+        flex-direction: column; /* Stack nav items vertically */
+        padding: 20px;
+        background-color: var(--clr-primary); /* Background for the dropdown menu */
+        width: 50%; /* Make dropdown menu wider */
+        max-width: 250px; /* Max width for the dropdown menu */
+        border-radius: var(--br-lg);
+        position: absolute; /* Position dropdown relative to nearest positioned ancestor (body/html) */
+        right: 20px; /* Align to the right */
+        top: 50px; /* Position below the nav bar */
+        z-index: 1000; /* Ensure it's above other content */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    #navlist li {
+        padding: 0;
+        text-align: center; /* Center text in dropdown list items */
+    }
+    #navlist a {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.267); /* Separator lines in dropdown */
+        padding: 15px 10px;
+        display: block; /* Make links block level to fill space */
+        color: var(--clr-text); /* White text for dropdown links */
+        font-weight: 500;
+    }
+    #navlist li:last-child a {
+        border-bottom: none; /* No border on the last item */
+    }
+    #navlist a:hover {
+        background-color: rgba(0, 0, 0, 0.1); /* Subtle hover effect for dropdown links */
+    }
+
+    /* Hero Section Adjustments */
+    .content {
+        flex-direction: column; /* Stack image and description vertically */
+        text-align: center; /* Center text content */
+        margin-top: var(--spacing-lg);
+    }
+    .content img {
+        width: 170px;
+        height: 170px;
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        margin-left: auto; /* Center image horizontally */
+        margin-right: auto;
+    }
+    .description {
+        width: 90%; /* Occupy more width on smaller screens */
+        padding-left: 0; /* Remove left padding */
+        max-width: 100%; /* Remove max-width constraint */
+    }
+    .links, .buttons {
+        justify-content: center; /* Center social links and buttons */
+        margin-left: auto; /* Center horizontally */
+        margin-right: auto;
+    }
+    .buttons {
+        width: 100%;
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Services Section Adjustments */
+    #services .wrapper {
+        width: 90%;
+    }
+    .service-card {
+        width: 100%; /* Make service cards full width on small screens */
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Skills Section Adjustments */
+    #skills h1 {
+        margin-top: var(--spacing-lg); /* Adjust heading margin for smaller screens */
+    }
+    #skills .languages {
+        margin: var(--spacing-md); /* Adjusted: Smaller margin for the container on small screens */
+        padding: var(--spacing-sm); /* Adjusted: Smaller padding inside the bordered container */
+    }
+    .skill-item {
+        width: 100%; /* Make skill items full width */
+        margin-left: 0;
+        margin-right: 0;
+        padding: var(--spacing-sm); /* Adjusted: Smaller padding for individual skill items */
+    }
+
+    /* Testimonials Section Adjustments */
+    #testimonials {
+        padding-top: 50px;
+    }
+    .card {
+        margin: var(--spacing-sm) auto; /* Center individual cards horizontally */
+        max-width: 90%; /* Allow cards to take up more width */
+    }
+
+    /* Contacts Section Adjustments */
+    .inputs {
+        flex-direction: column; /* Stack input columns vertically */
+        gap: var(--spacing-md);
+    }
+    .left-inputs {
+        width: 100%;
+        margin: 0;
+    }
+    .left-inputs input, #message-textarea {
+        width: 100%; /* Inputs and textarea take full width */
+        max-width: unset; /* Remove any max-width constraints */
+    }
+    #message-textarea {
+        margin: 0; /* Remove extra margin */
+    }
+}
+
+/* Specific adjustment for extra small screens (e.g., very small phones) */
+@media only screen and (max-width: 400px) {
+    #navlist {
+        width: 80%; /* Make dropdown menu even wider */
+        right: 10px;
+    }
+    nav {
+        margin-right: 10px;
+    }
+}
