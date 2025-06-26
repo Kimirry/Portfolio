@@ -117,4 +117,47 @@ function updateProgress() {
         bar.style.width = progress + "%";
     });
 }
-// Removed original window.onload = updateProgress; as it's now managed by loadDynamicContent
+
+// Get a reference to the form and the status div
+const contactForm = document.getElementById('contactForm');
+const formStatusDiv = document.getElementById('form-status');
+
+if (contactForm) { // Ensure the form exists before adding event listener
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent the default form submission (page reload)
+
+        formStatusDiv.textContent = 'Sending message...';
+        formStatusDiv.style.color = 'white'; // Initial status color
+
+        const formData = new FormData(contactForm); // Collects all form data by name attributes
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Crucial for Formspree's AJAX responses
+                }
+            });
+
+            if (response.ok) { // Check if the submission was successful
+                formStatusDiv.textContent = 'Message sent successfully! Thank you.';
+                formStatusDiv.style.color = 'var(--clr-primary)'; // Success color
+                contactForm.reset(); // Clear the form fields
+            } else {
+                // Handle errors from Formspree or network issues
+                const data = await response.json();
+                if (data.errors) {
+                    formStatusDiv.textContent = `Error: ${data.errors.map(err => err.message).join(', ')}`;
+                } else {
+                    formStatusDiv.textContent = 'Oops! There was a problem sending your message.';
+                }
+                formStatusDiv.style.color = 'red'; // Error color
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            formStatusDiv.textContent = 'Network error. Please try again later.';
+            formStatusDiv.style.color = 'red'; // Network error color
+        }
+    });
+}

@@ -12,7 +12,7 @@
 
     /* Spacing System */
     --spacing-xs: 0.5rem; /* Extra small spacing */
-    --spacing-sm: 1rem; /* Small spacing */
+    --spacing-sm: 0.8rem; /* Small spacing */
     --spacing-md: 1.5rem; /* Medium spacing */
     --spacing-lg: 2rem; /* Large spacing */
     --spacing-xl: 4vw; /* Extra large spacing (viewport-width based) */
@@ -54,10 +54,12 @@ body {
 
 html {
     scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    scroll-padding-top: 4rem; /* Ensures sticky nav doesn't obstruct headings */
 }
 
 section {
     min-height: 100vh; /* Each section takes at least the full viewport height */
+    padding-bottom: var(--spacing-lg); /* Ensures content isn't cut off at the bottom */
 }
 
 /* Accessibility: Visually hide elements but keep them accessible to screen readers */
@@ -76,16 +78,19 @@ section {
 /* Navigation Bar Styling */
 nav {
     display: flex;
-    justify-content: space-around; /* Distribute space evenly around items */
-    margin: var(--spacing-xl);
-    margin-right: 20px;
+    justify-content: space-around;
+    padding: 2rem; /* Consistent padding around nav content */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 500;
     align-items: center; /* Vertically align items in the middle */
+    position: sticky;
+    top: 0; /* Ensures the nav sticks to the top */
+    z-index: 999;
+    background-color: var(--clr-dark-bg); /* Ensures nav background covers content when sticky */
 }
 
 nav p#greet {
-    font-size: var(--fs-greet);
+    font-size: var(--fs-greet); /* Correct variable for greeting font size */
 }
 
 ul {
@@ -132,7 +137,8 @@ nav a:active { /* Styles for when the link is clicked/active */
 .content {
     width: 90%;
     margin: auto; /* Center the content horizontally */
-    margin-top: 8%;
+    margin-top: var(--spacing-lg); /* Consistent top spacing below sticky nav */
+    padding-top: var(--spacing-lg); /* Extra top padding for better visual separation */
     display: flex;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     align-items: center; /* Vertically align items */
@@ -212,6 +218,12 @@ nav a:active { /* Styles for when the link is clicked/active */
     gap: var(--spacing-sm);
     float: left; /* Aligns buttons to the left */
     padding: 5px;
+    color: var(--clr-text);
+}
+
+.buttons a {
+    color: var(--clr-text);
+    text-decoration: none;
 }
 
 /* Button Base Styles */
@@ -254,6 +266,7 @@ h1 {
 /* Services Section Styling */
 #services {
     background-color: var(--clr-dark-bg); /* Consistent background for the section */
+    padding-top: var(--spacing-sm); /* Ensures proper spacing from the top of the section */
 }
 
 #services .wrapper {
@@ -297,15 +310,13 @@ h1 {
 
 /* Skills Section Styling */
 #skills {
-    background-color: var(--clr-dark-bg); /* Different background for visual contrast */
+    background-color: var(--clr-dark-bg); /* Consistent background */
     min-height: auto; /* Allow section height to shrink */
-    padding-bottom: var(--spacing-lg); /* Add some padding at the bottom */
 }
 
 #skills h1 {
     text-align: center;
     margin-top: 50px; /* Adjusted: Smaller top margin for heading */
-    padding-bottom: var(--spacing-md); /* Adjusted: Smaller bottom padding for heading */
 }
 
 #skills .languages {
@@ -314,7 +325,7 @@ h1 {
     flex-wrap: wrap;
     border: solid 1px var(--clr-primary);
     border-radius: 15px;
-    margin: 3%; /* Adjusted: Smaller overall margin for the container */
+    margin: 1% 3%; /* Adjusted: Smaller overall margin for the container */
     padding: var(--spacing-sm); /* Adjusted: Smaller padding inside the bordered container */
     max-width: 900px; /* Adjusted: Max width for skills container */
     margin-left: auto; /* Center the container */
@@ -366,7 +377,6 @@ h1 {
 #testimonials {
     text-align: center;
     background-color: var(--clr-dark-bg);
-    padding-bottom: var(--spacing-lg);
 }
 
 #testimonials h1 {
@@ -393,7 +403,7 @@ h1 {
 .card {
     border: solid 1px var(--clr-primary-dark);
     border-radius: 15px;
-    margin: var(--spacing-md);
+    margin: var(--spacing-sm);
     padding: 2%;
     display: flex; /* Use flexbox for content within each card */
     flex-direction: column; /* Stack content vertically */
@@ -433,7 +443,7 @@ h1 {
 /* Contacts Section Styling */
 #contacts {
     background-color: var(--clr-dark-bg);
-    padding-bottom: 50px;
+    padding-bottom: 50px; /* Kept specific padding for contact form */
     padding-top: 50px;
 }
 
@@ -456,7 +466,7 @@ h1 {
 
 #contacts h1 {
     text-align: center;
-    padding: 50px 0 30px;
+    padding: 18px 0 30px;
     font-size: var(--fs-contact-heading);
 }
 
@@ -513,7 +523,6 @@ h1 {
     }
     nav {
         justify-content: space-between; /* Space out hamburger and greeting */
-        margin-bottom: 15%; /* More space below nav */
     }
     #navlist {
         display: none; /* Hide nav list by default (JavaScript toggles 'show' class) */
@@ -551,7 +560,8 @@ h1 {
     .content {
         flex-direction: column; /* Stack image and description vertically */
         text-align: center; /* Center text content */
-        margin-top: var(--spacing-lg);
+        margin-top: var(--spacing-lg); /* Keeps consistent top margin */
+        padding-top: var(--spacing-lg); /* Keeps consistent top padding */
     }
     .content img {
         width: 170px;
@@ -637,5 +647,71 @@ h1 {
     }
     nav {
         margin-right: 10px;
+    }
+}
+/* --- Footer Styling --- */
+#main-footer {
+    background-color: var(--clr-light-bg); /* Use your dark background color */
+    color: var(--clr-text);
+    padding: var(--spacing-lg) 0; /* Generous top and bottom padding */
+    text-align: center; /* Center all content */
+    font-size: var(--fs-about); /* Reusing an existing font size variable for consistency */
+}
+
+#main-footer .footer-content {
+    max-width: 1200px; /* Limit width similar to your other sections */
+    margin: auto; /* Center the content within the footer */
+    display: flex;
+    flex-direction: column; /* Stack copyright and social links vertically */
+    align-items: center; /* Center items horizontally */
+    gap: var(--spacing-md); /* Space between copyright and social links */
+}
+
+#main-footer .footer-content p {
+    margin-bottom: 0; /* Remove default paragraph margin */
+    font-size: var(--fs-about); /* Consistent font size for copyright */
+    color: var(--clr-primary-light); /* Lighter text color for footer for contrast */
+}
+
+/* Specific adjustments for social links in the footer */
+.footer-social-links {
+    margin-top: 0; /* Remove top margin inherited from .links */
+    margin-bottom: 0; /* Remove bottom margin inherited from .links */
+    gap: var(--spacing-md); /* Increase space between social icons slightly for better touch target */
+}
+
+.footer-social-links a {
+    color: var(--clr-primary); /* Ensure social icons maintain primary color */
+}
+
+/* Back to Top Button (Optional) */
+.back-to-top {
+    display: inline-flex; /* Use inline-flex for centering icon and text if any */
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-primary);
+    border: 1px solid var(--clr-primary);
+    border-radius: var(--br-circle);
+    padding: var(--spacing-sm);
+    font-size: var(--spacing-sm);
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: var(--spacing-md); /* Space above the button */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: var(--clr-primary-dark);
+    transform: translateY(-3px); /* Lift button slightly on hover */
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 50rem) {
+    #main-footer .footer-content {
+        padding: 0 var(--spacing-md); /* Add horizontal padding on smaller screens */
+    }
+
+    .footer-social-links {
+        gap: var(--spacing-sm); /* Reduce gap between social icons on smaller screens */
     }
 }

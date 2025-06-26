@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Martin | Front-End Developer</title>
   
-    <meta name="description" content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
+  <meta name="description" content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
   <meta name="keywords" content="Martin, Front-End Developer, Web Design, HTML, CSS, JavaScript, Portfolio, Responsive Web Design" />
    
   <meta property="og:type" content="website" />
@@ -22,8 +22,11 @@
 </head>
 <body>
   <nav>
-    <p id="greet">Good morning</p> <i class="fas fa-bars" id="bars" aria-label="Open navigation menu"></i> <ul id="navlist"> <li><a href="#home">Home</a></li>
+    <p id="greet">Good morning</p>  <i class="fas fa-bars" id="bars" aria-label="Open navigation menu"></i> 
+    <ul id="navlist"> 
+      <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contacts">Contact</a></li>
     </ul>
@@ -39,14 +42,14 @@
           Explore my portfolio to see my projects, learn more about my services, and connect with me for collaboration on exciting web development opportunities.
         </p>
         <div class="links" role="navigation" aria-label="Social media links">
-          <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
-          <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/martin-ndichu-63450a371/" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com/marto_developer" aria-label="Facebook profile"><i class="fab fa-facebook"></i></a>
+          <a href="https://github.com/kimirry" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/marto_developer" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="buttons">
-          <button class="btn-primary">Hire</button>
-          <button class="btn-secondary">Contact</button>
+          <button class="btn-primary"><a href="#hire">Hire</a></button></button>
+          <button class="btn-secondary"><a href="#contacts">Contact</a></button>
         </div>
       </div>
     </section>
@@ -66,21 +69,38 @@
       <div class="cards"></div>
     </section>
 
-    <section id="contacts">
-      <h1>Contact Me</h1>
-      <div class="wrap"> <form class="contact-form">
-          <div class="inputs"> <div class="left-inputs"> <label for="name-input" class="sr-only">Your Name</label> <input type="text" id="name-input" placeholder="Your Name" />
-              <label for="email-input" class="sr-only">Your Email</label>
-              <input type="email" id="email-input" placeholder="Your Email" />
-              <label for="subject-input" class="sr-only">Subject</label>
-              <input type="text" id="subject-input" placeholder="Subject" />
-            </div>
-            <label for="message-textarea" class="sr-only">Your Message</label>
-            <textarea id="message-textarea" placeholder="Your Message"></textarea> </div>
-          <button id="submit" class="btn-primary" type="submit">Send Message</button> </form>
-      </div>
-    </section>
+  <section id="contacts">
+    <h1>Contact Me</h1>
+    <div class="wrap">
+        <form class="contact-form" action="https://formspree.io/f/xvgrvyoq" method="POST" id="contactForm">
+            <div class="inputs">
+                <div class="left-inputs">
+                    <label for="name-input" class="sr-only">Your Name</label>
+                    <input type="text" id="name-input" name="name" placeholder="Your Name" required /> <label for="email-input" class="sr-only">Your Email</label>
+                    <input type="email" id="email-input" name="email" placeholder="Your Email" required /> <label for="subject-input" class="sr-only">Subject</label>
+                    <input type="text" id="subject-input" name="subject" placeholder="Subject" required /> </div>
+                <label for="message-textarea" class="sr-only">Your Message</label>
+                <textarea id="message-textarea" name="message" placeholder="Your Message" required></textarea> </div>
+            <button id="submit" class="btn-primary" type="submit">Send Message</button>
+            <div id="form-status" style="margin-top: 1rem; font-weight: bold;"></div> </form>
+    </div>
+</section>
+
   </main>
+      <footer id="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Martin. All rights reserved.</p>
+            <div class="links footer-social-links" aria-label="Social media links">
+                 <a href="https://www.linkedin.com/in/martin-ndichu-63450a371/" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+                 <a href="https://facebook.com/marto_developer" aria-label="Facebook profile"><i class="fab fa-facebook"></i></a>
+                 <a href="https://github.com/kimirry" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+                 <a href="https://instagram.com/marto_developer" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="#home" class="back-to-top" aria-label="Back to top of the page">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
 
   <script src="script.js"></script>
 </body>
