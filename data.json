@@ -46,25 +46,5 @@
             "name": "SQL",
             "progress": 76
         }
-    ],
-    "testimonials": [
-        {
-            "image": "images/",
-            "stars": 5,
-            "name": "Rebecca",
-            "comment": "Martin consistently demonstrates strong dedication and a keen interest in front-end development. His work is well-structured, and he always seeks to improve his skills. A promising developer in the making."
-        },
-        {
-            "image": "images/",
-            "stars": 4,
-            "name": "Joh Doe",
-            "comment": "Collaborating with Martin was a pleasure. He delivered a responsive and clean website ahead of schedule. Highly recommended for his efficiency and attention to detail."
-        },
-        {
-            "image": "images/",
-            "stars": 4,
-            "name":"Jane Smith",
-            "comment": "Martin transformed my design mockups into a beautiful, functional website. His understanding of modern web standards and commitment to quality made the project a success."
-        }
     ]
 }

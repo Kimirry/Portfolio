@@ -74,26 +74,6 @@ async function loadDynamicContent() {
             // Call updateProgress after skills are rendered to set widths
             updateProgress();
         }
-
-        // Render Testimonials
-        const testimonialsCards = document.querySelector('#testimonials .cards');
-        if (testimonialsCards) { // Check if element exists before manipulating
-            testimonialsCards.innerHTML = ''; // Clear existing dummy content
-            data.testimonials.forEach(testimonial => {
-                const testimonialCard = document.createElement('div');
-                testimonialCard.classList.add('card');
-                // Create star string based on the number of stars
-                const starsHtml = '⭐ '.repeat(testimonial.stars);
-                testimonialCard.innerHTML = `
-                    <img src="${testimonial.image}" alt="${testimonial.name}'s profile picture" />
-                    <div class="stars">${starsHtml}</div>
-                    <h3 class="testimonial-name">${testimonial.name}</h3>
-                    <p class="comment">${testimonial.comment}</p>
-                `;
-                testimonialsCards.appendChild(testimonialCard);
-            });
-        }
-
     } catch (error) {
         console.error('Error loading dynamic content:', error);
         // Optional: Display user-friendly messages on the page if content fails to load
@@ -161,3 +141,8 @@ if (contactForm) { // Ensure the form exists before adding event listener
         }
     });
 }
+
+         AOS.init({
+         duration: 1000,
+         once: false, // allow repeated animation when scrolling up/down
+    });
