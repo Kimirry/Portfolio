@@ -137,8 +137,8 @@ nav a:active { /* Styles for when the link is clicked/active */
 .content {
     width: 90%;
     margin: auto; /* Center the content horizontally */
-    margin-top: var(--spacing-lg); /* Consistent top spacing below sticky nav */
-    padding-top: var(--spacing-lg); /* Extra top padding for better visual separation */
+    margin-top: var(--spacing-sm); /* Consistent top spacing below sticky nav */
+    padding-top: var(--spacing-sm); /* Extra top padding for better visual separation */
     display: flex;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     align-items: center; /* Vertically align items */
