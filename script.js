@@ -75,7 +75,7 @@ async function loadDynamicContent() {
             updateProgress();
         }
     } catch (error) {
-        console.error('Error loading dynamic content:', error);
+        console.error('Error loading content:', error);
         // Optional: Display user-friendly messages on the page if content fails to load
         // if (document.getElementById('services')) document.getElementById('services').innerHTML = '<h1>Services</h1><p style="text-align: center; color: red;">Failed to load services. Please try again later.</p>';
         // if (document.getElementById('skills')) document.getElementById('skills').innerHTML = '<h1>Skills</h1><p style="text-align: center; color: red;">Failed to load skills. Please try again later.</p>';

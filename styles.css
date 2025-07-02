@@ -9,6 +9,7 @@
     --clr-secondary: rgb(32, 119, 107); /* Secondary button/element color */
     --clr-text: white; /* Main text color */
     --clr-gold: gold; /* Color for star ratings */
+    --clr-whitesmoke: rgb(236, 236, 236);
 
     /* Spacing System */
     --spacing-xs: 0.5rem; /* Extra small spacing */
@@ -44,17 +45,32 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
-}
-
-body {
-    background-color: var(--clr-dark-bg);
-    color: var(--clr-text);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+body {
+    text-rendering: optimizeLegibility;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/code.webp') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: brightness(0.2);
+  z-index: -1;
+}
 html {
     scroll-behavior: smooth; /* Smooth scrolling for anchor links */
     scroll-padding-top: 4rem; /* Ensures sticky nav doesn't obstruct headings */
+}
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 section {
@@ -79,18 +95,19 @@ section {
 nav {
     display: flex;
     justify-content: space-around;
-    padding: 2rem; /* Consistent padding around nav content */
+    padding: var(--spacing-md); /* Consistent padding around nav content */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 500;
     align-items: center; /* Vertically align items in the middle */
     position: sticky;
     top: 0; /* Ensures the nav sticks to the top */
     z-index: 999;
-    background-color: var(--clr-dark-bg); /* Ensures nav background covers content when sticky */
+    background-color: black;
 }
 
 nav p#greet {
     font-size: var(--fs-greet); /* Correct variable for greeting font size */
+    color: var(--clr-whitesmoke);
 }
 
 ul {
@@ -144,6 +161,7 @@ nav a:active { /* Styles for when the link is clicked/active */
     align-items: center; /* Vertically align items */
     flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
     justify-content: center; /* Center items when they wrap */
+    font-family: 'Inter', sans-serif;
 }
 
 .content img {
@@ -166,6 +184,7 @@ nav a:active { /* Styles for when the link is clicked/active */
     font-size: var(--fs-description);
     font-weight: 400;
     margin-bottom: 10px;
+    color: var(--clr-whitesmoke)
 }
 
 #name {
@@ -187,11 +206,12 @@ nav a:active { /* Styles for when the link is clicked/active */
     font-size: var(--fs-about);
     font-weight: 500;
     padding: var(--spacing-md);
+    color: var(--clr-whitesmoke);
 }
 
 .links {
     display: flex;
-    margin: var(--spacing-md);
+    margin: var(--spacing-sd);
     color: var(--clr-primary);
     gap: var(--spacing-sm); /* Space between social icons */
 }
@@ -261,11 +281,12 @@ h1 {
     text-align: center;
     padding: 5% 0 2%;
     font-size: var(--fs-heading-main);
+    color: var(--clr-whitesmoke);
+    font-weight: 600
 }
 
 /* Services Section Styling */
 #services {
-    background-color: var(--clr-dark-bg); /* Consistent background for the section */
     padding-top: var(--spacing-sm); /* Ensures proper spacing from the top of the section */
 }
 
@@ -275,42 +296,44 @@ h1 {
     display: flex;
     flex-wrap: wrap; /* Allow service cards to wrap to the next line */
     justify-content: center; /* Center cards horizontally within the wrapper */
-    gap: var(--spacing-md); /* Space between service cards */
+    gap: var(--spacing-sm); /* Space between service cards */
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .service-card {
-    background-color: var(--clr-primary);
+    background-color: transparent;
     margin: var(--spacing-xs);
     max-width: 500px; /* Maximum width for individual cards */
     padding: 25px;
     border-radius: var(--br-lg);
-    color: black; /* Text color for service cards */
+    color: var(--clr-whitesmoke); /* Text color for service cards */
     transition: transform 0.3s ease, background-color 0.3s ease, border 0.3s ease; /* Smooth transitions for hover */
     flex-basis: 300px; /* Minimum width for cards before wrapping */
     flex-grow: 1; /* Allows cards to grow and fill available space */
+    border: solid 1px var(--clr-primary)
 }
 
 .service-card h2 {
     text-align: center;
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
     font-size: var(--fs-heading-sub);
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .service-card p {
     font-size: var(--fs-service-text);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
 }
 
 .service-card:hover {
     transform: scale(1.03); /* Slightly enlarge card on hover */
-    background-color: rgba(240, 248, 255, 0.849); /* Change background on hover */
     border: solid 2px var(--clr-primary-dark);
 }
 
 /* Skills Section Styling */
 #skills {
-    background-color: var(--clr-dark-bg); /* Consistent background */
     min-height: auto; /* Allow section height to shrink */
 }
 
@@ -323,7 +346,6 @@ h1 {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
-    border: solid 1px var(--clr-primary);
     border-radius: 15px;
     margin: 1% 3%; /* Adjusted: Smaller overall margin for the container */
     padding: var(--spacing-sm); /* Adjusted: Smaller padding inside the bordered container */
@@ -335,22 +357,22 @@ h1 {
 .skill-item {
     margin: var(--spacing-sm); /* Adjusted: Smaller margin for individual skill items */
     padding: var(--spacing-sm); /* Adjusted: Smaller padding for individual skill items */
-    border-radius: var(--br-lg);
-    background-color: rgb(27, 26, 26); /* Background for individual skill items */
     font-size: var(--fs-skill-text); /* Adjusted: Using updated font size variable */
     flex-basis: 250px; /* Adjusted: Smaller minimum width for skill items */
     flex-grow: 1; /* Allows items to grow */
     max-width: 350px; /* Adjusted: Smaller maximum width for consistency */
+    border-radius: var(--spacing-sm);
+    border: solid 0.5px var(--clr-primary)
 }
 
 .skill-item h2 {
     text-align: center;
+    color: var(--clr-primary);
     margin-bottom: 8px; /* Adjusted: Smaller bottom margin for skill heading */
     font-size: clamp(16px, 2.5vw, 18px); /* Adjusted: Slightly smaller font size for skill titles */
 }
 
 .progress {
-    border: none;
     height: 5px; /* Adjusted: Slightly thinner progress bar */
     background-color: var(--clr-primary); /* Color of the filled progress bar */
     border-radius: 4px;
@@ -363,7 +385,7 @@ h1 {
     height: 7px; /* Adjusted: Slightly thinner outer progress bar */
     margin: var(--spacing-sm) 0; /* Adjusted: Smaller vertical margin */
     overflow: hidden; /* Ensures the inner progress bar stays within bounds */
-    background-color: rgba(255, 255, 255, 0.1); /* Lighter background for the empty part of the bar */
+    background-color: transparent;
 }
 
 .skill-item p { /* Percentage text */
@@ -442,7 +464,6 @@ h1 {
 
 /* Contacts Section Styling */
 #contacts {
-    background-color: var(--clr-dark-bg);
     padding-bottom: 50px; /* Kept specific padding for contact form */
     padding-top: 50px;
 }
