@@ -10,6 +10,7 @@
     --clr-text: white; /* Main text color */
     --clr-gold: gold; /* Color for star ratings */
     --clr-whitesmoke: rgb(236, 236, 236);
+    --clr-pink : rgb(255, 99, 130);
 
     /* Spacing System */
     --spacing-xs: 0.5rem; /* Extra small spacing */
