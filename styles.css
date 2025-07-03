@@ -453,6 +453,10 @@ h1 {
     padding-bottom: 50px; /* Kept specific padding for contact form */
 }
 
+input {
+    color: var(--clr-whitesmoke)
+}
+
 #contacts .wrap {
     align-items: center;
     width: 100%;
@@ -511,6 +515,8 @@ h1 {
     font-size: var(--fs-textarea);
     resize: vertical; /* Allows users to resize the textarea vertically */
     flex-grow: 1; /* Allows textarea to grow and fill available space */
+    color: var(--clr-whitesmoke);
+    font-weight: 500;
 }
 
 #contacts #submit {
