@@ -356,6 +356,7 @@ h1 {
     max-width: 900px; /* Adjusted: Max width for skills container */
     margin-left: auto; /* Center the container */
     margin-right: auto;
+    gap: 5px;
 }
 
 .skill-item {
