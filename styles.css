@@ -670,11 +670,14 @@ h1 {
 }
 /* --- Footer Styling --- */
 #main-footer {
-    background-color: var(--clr-light-bg); /* Use your dark background color */
+    background-color: transparent; /* Use your dark background color */
+    opacity: 0.9;
     color: var(--clr-text);
     padding: var(--spacing-lg) 0; /* Generous top and bottom padding */
     text-align: center; /* Center all content */
     font-size: var(--fs-about); /* Reusing an existing font size variable for consistency */
+    border-top: 1px solid var(--clr-primary);
+    filter: brightness(0.5)
 }
 
 #main-footer .footer-content {
@@ -717,6 +720,7 @@ h1 {
     text-decoration: none;
     margin-top: var(--spacing-md); /* Space above the button */
     transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 1;
 }
 
 .back-to-top:hover {

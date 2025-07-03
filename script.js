@@ -107,7 +107,7 @@ if (contactForm) { // Ensure the form exists before adding event listener
         event.preventDefault(); // Prevent the default form submission (page reload)
 
         formStatusDiv.textContent = 'Sending message...';
-        formStatusDiv.style.color = 'white'; // Initial status color
+        formStatusDiv.style.color = 'rgb(29, 192, 170)'; // Initial status color
 
         const formData = new FormData(contactForm); // Collects all form data by name attributes
 
