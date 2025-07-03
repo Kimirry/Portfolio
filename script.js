@@ -146,3 +146,10 @@ if (contactForm) { // Ensure the form exists before adding event listener
          duration: 1000,
          once: false, // allow repeated animation when scrolling up/down
     });
+
+    // Google tag (gtag.js)
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E2MHNFZD3C');
