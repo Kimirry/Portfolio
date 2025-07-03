@@ -76,7 +76,6 @@ html, body {
 
 section {
     min-height: 100vh; /* Each section takes at least the full viewport height */
-    padding-bottom: var(--spacing-lg); /* Ensures content isn't cut off at the bottom */
 }
 
 /* Accessibility: Visually hide elements but keep them accessible to screen readers */
@@ -104,6 +103,7 @@ nav {
     top: 0; /* Ensures the nav sticks to the top */
     z-index: 999;
     background: linear-gradient(150deg,  rgba(13, 187, 164),  rgb(19, 221, 194));
+    width: 100%;
 }
 
 nav p#greet {
@@ -285,7 +285,7 @@ h1 {
     padding: 5% 0 2%;
     font-size: var(--fs-heading-main);
     color: var(--clr-whitesmoke);
-    font-weight: 600
+    font-weight: 600;
 }
 
 /* Services Section Styling */
@@ -447,29 +447,9 @@ h1 {
     transform: scale(1.05); /* Enlarge card on hover */
 }
 
-.stars {
-    color: var(--clr-gold);
-    padding: 10px;
-    font-size: 10px;
-}
-
-.testimonial-name {
-    color: teal; /* Specific color for testimonial names */
-    margin-bottom: var(--spacing-xs);
-}
-
-.comment {
-    padding-top: 25px;
-    padding-bottom: 30px;
-    font-size: var(--fs-testimonial-comment);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-}
-
 /* Contacts Section Styling */
 #contacts {
     padding-bottom: 50px; /* Kept specific padding for contact form */
-    padding-top: 50px;
 }
 
 #contacts .wrap {
