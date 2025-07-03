@@ -103,12 +103,12 @@ nav {
     position: sticky;
     top: 0; /* Ensures the nav sticks to the top */
     z-index: 999;
-    background-color: black;
+    background: linear-gradient(150deg,  rgba(13, 187, 164),  rgb(19, 221, 194));
 }
 
 nav p#greet {
     font-size: var(--fs-greet); /* Correct variable for greeting font size */
-    color: var(--clr-whitesmoke);
+
 }
 
 ul {
@@ -123,7 +123,7 @@ li {
 
 nav a {
     text-decoration: none; /* Remove underline from links */
-    color: var(--clr-primary-dark);
+    color: var(--clr-whitesmoke);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 600;
     transition: color 0.3s ease; /* Smooth transition for color change on hover */
@@ -134,16 +134,17 @@ nav a:hover {
 }
 
 nav a:active { /* Styles for when the link is clicked/active */
-    color: var(--clr-primary);
+    color: black;
     text-decoration: underline;
+    font-weight: bold;
 }
 
 /* Hamburger Icon for Mobile Navigation */
 #bars {
     display: none; /* Hidden by default, shown in media query for small screens */
-    font-size: 1.8rem; /* Larger icon for better touch target */
+    font-size: 1rem; /* Larger icon for better touch target */
     cursor: pointer;
-    color: var(--clr-primary);
+    color: var(--clr-whitesmoke);
 }
 
 /* Class added by JavaScript to show/hide the navigation list */
@@ -481,7 +482,7 @@ h1 {
 
 .contact-form {
     width: 90%;
-    max-width: 800px; /* Maximum width for the form itself */
+    max-width: 600px; /* Maximum width for the form itself */
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -490,7 +491,7 @@ h1 {
 
 #contacts h1 {
     text-align: center;
-    padding: 18px 0 30px;
+    padding: 18px 0 20px;
     font-size: var(--fs-contact-heading);
 }
 
@@ -499,13 +500,13 @@ h1 {
    flex-wrap: wrap; /* Allow input columns to wrap */
    justify-content: center;
    width: 100%; /* Take full width of the form container */
-   gap: var(--spacing-md); /* Space between the left input column and textarea */
+   gap: var(--spacing-sm); /* Space between the left input column and textarea */
 }
 
 .left-inputs {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md); /* Space between individual input fields */
+    gap: var(--spacing-sm); /* Space between individual input fields */
     flex-grow: 1; /* Allows this column to grow */
     min-width: 280px; /* Minimum width for the input column */
 }
@@ -517,9 +518,8 @@ h1 {
     border: solid 1px var(--clr-primary);
     border-radius: var(--br-sm);
     height: 45px; /* Slightly increased height for better usability */
-    background-color: var(--clr-light-bg);
+    background-color: transparent;
     padding: 10px;
-    color: var(--clr-primary);
     font-size: var(--fs-input);
     width: 100%; /* Ensures inputs fill their container */
 }
@@ -607,8 +607,8 @@ h1 {
     }
     .buttons {
         width: 100%;
-        margin-top: var(--spacing-lg);
-        margin-bottom: var(--spacing-lg);
+        margin-top: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
     }
 
     /* Services Section Adjustments */
@@ -643,7 +643,7 @@ h1 {
     /* Contacts Section Adjustments */
     .inputs {
         flex-direction: column; /* Stack input columns vertically */
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
     }
     .left-inputs {
         width: 100%;
