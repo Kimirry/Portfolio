@@ -45,6 +45,10 @@
         {
             "name": "SQL",
             "progress": 76
+        },
+        {
+            "name": "Tailwind",
+            "progress": 85
         }
     ]
 }
