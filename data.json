@@ -19,42 +19,42 @@
     ],
     "skills": [
         {
-            "image": "/images/html5.png",
+            "image": "images/html5.png",
             "name": "HTML5",
             "progress": 90
         },
         {
-            "image": "/images/css3.webp",
+            "image": "images/css3.webp",
             "name": "CSS",
             "progress": 89
         },
         {
-            "image": "/images/js.webp",
+            "image": "images/js.webp",
             "name": "JavaScript",
             "progress": 70
         },
         {
-            "image": "/images/github.png",
+            "image": "images/github.png",
             "name": "Git & Github",
             "progress": 72
         },
         {
-            "image": "/images/seo.webp",
+            "image": "images/seo.webp",
             "name": "SEO",
             "progress": 40
         },
         {
-            "image": "/images/access.webp",
+            "image": "images/access.webp",
             "name": "Ms Access",
             "progress": 85
         },
         {
-            "image": "/images/sql.webp",
+            "image": "images/sql.webp",
             "name": "SQL",
             "progress": 76
         },
         {
-            "image": "/images/tailwind.webp",
+            "image": "images/tailwind.webp",
             "name": "Tailwind",
             "progress": 85
         }
