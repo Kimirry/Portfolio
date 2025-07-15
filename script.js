@@ -62,7 +62,7 @@ async function loadDynamicContent() {
                 skillItem.classList.add('skill-item');
                 skillItem.innerHTML = `
                     <div class="flex items-center gap-2 mb-2">
-                        <img src="${skill.image}" alt="${skill.name} logo" class="w-6 h-6">
+                        <img src="${skill.image}" alt="${skill.name} logo" class="w-2 h-2">
                         <h2>${skill.name}</h2>
                     </div>
                     <div class="outer-progress-bar">
