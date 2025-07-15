@@ -622,10 +622,6 @@ input {
         margin-right: 0;
         padding: var(--spacing-sm); /* Adjusted: Smaller padding for individual skill items */
     }
-    .skill-item img {
-        height: 20px;
-        background-color: transparent;
-    }
     .card {
         margin: var(--spacing-sm) auto; /* Center individual cards horizontally */
         max-width: 90%; /* Allow cards to take up more width */
