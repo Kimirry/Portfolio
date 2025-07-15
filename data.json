@@ -29,7 +29,7 @@
             "progress": 89
         },
         {
-            "image": "images/js.webp",
+            "image": "images/js.png",
             "name": "JavaScript",
             "progress": 70
         },
@@ -39,22 +39,22 @@
             "progress": 72
         },
         {
-            "image": "images/seo.webp",
+            "image": "images/seo.png",
             "name": "SEO",
             "progress": 40
         },
         {
-            "image": "images/access.webp",
+            "image": "images/access.png",
             "name": "Ms Access",
             "progress": 85
         },
         {
-            "image": "images/sql.webp",
+            "image": "images/sql.png",
             "name": "SQL",
             "progress": 76
         },
         {
-            "image": "images/tailwind.webp",
+            "image": "images/tailwind.png",
             "name": "Tailwind",
             "progress": 85
         }
