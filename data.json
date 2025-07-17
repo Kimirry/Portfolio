@@ -26,7 +26,7 @@
         {
             "image": "images/css3.webp",
             "name": "CSS",
-            "progress": 89
+            "progress": 92
         },
         {
             "image": "images/js.png",
@@ -36,17 +36,17 @@
         {
             "image": "images/github.png",
             "name": "Git & Github",
-            "progress": 72
+            "progress": 90
         },
         {
             "image": "images/seo.png",
             "name": "SEO",
-            "progress": 40
+            "progress": 80
         },
         {
             "image": "images/access.png",
             "name": "Ms Access",
-            "progress": 85
+            "progress": 90
         },
         {
             "image": "images/sql.png",
