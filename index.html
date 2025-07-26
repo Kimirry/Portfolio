@@ -1,100 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="MK Tech is a front-end, SEO, and web maintenance company offering quality services.">
-    <title>MK Tech | Web Services</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martin | Front-End Developer</title>
 
-    <!-- Preload Critical CSS -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="stylesheet" href="styles.css" />
+  <!-- SEO Meta -->
+  <meta name="description" content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
+  <meta name="keywords" content="Martin, Front-End Developer, Web Design, HTML, CSS, JavaScript, Portfolio, Responsive Web Design" />
 
-    <!-- Google Fonts (with font-display swap) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="YOUR_PORTFOLIO_URL_HERE" />
+  <meta property="og:title" content="Martin | Front-End Developer" />
+  <meta property="og:description" content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
+  <meta property="og:image" content="YOUR_OG_IMAGE_URL_HERE" />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="YOUR_PORTFOLIO_URL_HERE" />
+  <meta property="twitter:title" content="Martin | Front-End Developer" />
+  <meta property="twitter:description" content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
+  <meta property="twitter:image" content="YOUR_PROFILE_IMAGE_URL_HERE" />
 
-    <!-- AOS Animate on Scroll -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  </head>
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="1CeSDAXOfCV5xtniqL4HiH28ZQXwZWAVYXLDwFGGLJY" />
 
-  <body>
-    <!-- Header -->
-    <header class="header" id="home">
-      <div class="container">
-        <h1>MK Tech</h1>
-        <p>Front-End | SEO | Web Maintenance</p>
-        <a href="#contacts" class="btn-primary">Hire</a>
+  <!-- ✅ Tailwind CSS (development) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- ✅ Font Awesome via CDN (pick one method only) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS Animation CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <!-- Your custom styles -->
+  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="styles.css" /></noscript>
+
+  <!-- Your custom JS -->
+  <script src="script.js" defer></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C"></script>
+</head>
+<body>
+  <div class="background"></div>
+
+  <nav>
+    <p id="greet">Good morning</p>
+    <i class="fas fa-bars" id="bars" aria-label="Open navigation menu"></i>
+    <ul id="navlist">
+      <li><a href="#home" class="hover:text-black hover:underline">Home</a></li>
+      <li><a href="#services" class="hover:text-black hover:underline">Services</a></li>
+      <li><a href="#skills" class="hover:text-black hover:underline">Skills</a></li>
+      <li><a href="#contacts" class="hover:text-black hover:underline">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main data-aos="fade-up">
+    <section class="content" id="home">
+      <img src="images/school.webp" alt="Martin's profile picture" />
+      <div class="description">
+        <p>Hi there, I am <span id="name">Martin</span></p>
+        <p>I'm a <span id="work">Front-end Web Developer</span></p>
+        <p id="about">
+          with skills in HTML5, CSS, and JavaScript. I create modern, responsive, and user-friendly websites.
+        </p>
+
+        <div class="links" role="navigation" aria-label="Social media links">
+          <a href="https://www.linkedin.com/in/martin-ndichu-63450a371/" aria-label="LinkedIn" data-aos="slide-left"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com/marto_developer" aria-label="Facebook" data-aos="slide-left"><i class="fab fa-facebook"></i></a>
+          <a href="https://github.com/kimirry" aria-label="GitHub" data-aos="slide-left"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/marto_developer" aria-label="Instagram" data-aos="slide-left"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="buttons" data-aos="fade-up">
+          <a href="#contacts" class="btn-primary">Hire</a>
+          <a href="#contacts" class="btn-secondary">Contact</a>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Services Section -->
     <section id="services" data-aos="fade-up">
       <h1 class="text-4xl">Services</h1>
       <div class="wrapper">
-        <div class="service-card">
-          <i class="fas fa-laptop-code fa-2x"></i>
-          <h2>Web Development</h2>
-          <p>Clean, modern front-end development using the latest technologies.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-search fa-2x"></i>
-          <h2>SEO Optimization</h2>
-          <p>Improve visibility with structured, well-optimized content.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-tools fa-2x"></i>
-          <h2>Website Maintenance</h2>
-          <p>Ongoing support and updates to keep your site running smoothly.</p>
-        </div>
+        <div class="service-card"></div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contacts" data-aos="fade-up">
-      <h1>Contact Us</h1>
-      <form action="submit.php" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
+    <section id="skills" data-aos="fade-up">
+      <h1 class="text-4xl">Skills</h1>
+      <div class="languages"></div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2025 MK Tech. All rights reserved.</p>
-    </footer>
+    <section id="contacts" data-aos="fade-up">
+      <h1>Contact Me</h1>
+      <div class="wrap">
+        <form class="contact-form" action="https://formspree.io/f/xvgrvyoq" method="POST" id="contactForm">
+          <div class="inputs">
+            <div class="left-inputs">
+              <label for="name-input" class="sr-only">Your Name</label>
+              <input type="text" id="name-input" name="name" placeholder="Your Name" required />
 
-    <!-- Scripts -->
-    <script src="script.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+              <label for="email-input" class="sr-only">Your Email</label>
+              <input type="email" id="email-input" name="email" placeholder="Your Email" required />
 
-    <!-- Inline AOS Initialization -->
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        AOS.init();
-      });
-    </script>
+              <label for="subject-input" class="sr-only">Subject</label>
+              <input type="text" id="subject-input" name="subject" placeholder="Subject" required />
+            </div>
 
-    <!-- Google Analytics (Deferred) -->
-    <script>
-      window.addEventListener("load", () => {
-        const gaScript = document.createElement("script");
-        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C";
-        gaScript.async = true;
-        document.head.appendChild(gaScript);
+            <label for="message-textarea" class="sr-only">Your Message</label>
+            <textarea id="message-textarea" name="message" placeholder="Your Message" required></textarea>
+          </div>
+          <button id="submit" class="btn-primary" type="submit">Send Message</button>
+          <div id="form-status" style="margin-top: 1rem; font-weight: bold;"></div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-        gaScript.onload = () => {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag('js', new Date());
-          gtag('config', 'G-E2MHNFZD3C');
-        };
-      });
-    </script>
-  </body>
+  <footer id="main-footer" data-aos="fade-in">
+    <div class="footer-content">
+      <div class="links footer-social-links" aria-label="Social media links">
+        <a href="https://www.linkedin.com/in/martin-ndichu-63450a371/" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://facebook.com/marto_developer" aria-label="Facebook profile"><i class="fab fa-facebook"></i></a>
+        <a href="https://github.com/kimirry" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/marto_developer" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+      </div>
+      <a href="#home" class="back-to-top" aria-label="Back to top of the page">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+      <p>&copy; 2025 Martin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    AOS.init();
+  </script>
+</body>
 </html>
