@@ -1,161 +1,119 @@
 // --- Greeting Logic ---
-const now = new Date();
-const hours = now.getHours();
+(function showGreeting() {
+    const hours = new Date().getHours();
+    const greet = document.getElementById("greet");
+    if (!greet) return;
+    greet.textContent =
+        hours < 12 ? "Good morning" :
+            hours <= 16 ? "Good afternoon" :
+                "Good evening";
+})();
 
-let greetElement = document.getElementById("greet");
-function showGreeting() {
-    if (hours < 12) {
-        greetElement.textContent = "Good morning";
-    } else if (hours >= 12 && hours <= 16) {
-        greetElement.textContent = "Good afternoon";
-    } else {
-        greetElement.textContent = "Good evening";
-    }
-}
-showGreeting();
-
-// --- Navigation Logic ---
-const icon = document.getElementById("bars");
-const navList = document.getElementById("navlist");
-
-icon.addEventListener("click", function () {
-    if (icon.classList.contains("fa-bars")) {
-        icon.classList.remove("fa-bars");
-        icon.classList.add("fa-xmark");
-    } else {
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-    }
-    navList.classList.toggle("show");
+// --- Navigation Toggle ---
+document.getElementById("bars")?.addEventListener("click", () => {
+    const icon = document.getElementById("bars");
+    const navList = document.getElementById("navlist");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+    navList?.classList.toggle("show");
 });
-
-// --- Dynamic Content Loading ---
-async function loadDynamicContent() {
-    try {
-        const response = await fetch('data.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-
-        // Render Services
-        const servicesWrapper = document.querySelector('#services .wrapper');
-        if (servicesWrapper) {
-            servicesWrapper.innerHTML = '';
-            data.services.forEach(service => {
-                const serviceCard = document.createElement('div');
-                serviceCard.classList.add('service-card');
-                serviceCard.innerHTML = `
-                    <h2>${service.title}</h2>
-                    <p>${service.description}</p>
-                `;
-                servicesWrapper.appendChild(serviceCard);
-            });
-        }
-
-        // Render Skills
-        const skillsLanguages = document.querySelector('#skills .languages');
-        if (skillsLanguages) {
-            skillsLanguages.innerHTML = '';
-            data.skills.forEach(skill => {
-                const skillItem = document.createElement('div');
-                skillItem.classList.add('skill-item');
-                skillItem.innerHTML = `
-                    <div class="flex items-center gap-2 mb-2">
-                        <img src="${skill.image}" alt="${skill.name} logo" class="w-10 h-10 object-contain">
-                        <h2>${skill.name}</h2>
-                    </div>
-                    <div class="outer-progress-bar">
-                        <div class="progress" data-progress="${skill.progress}"></div>
-                    </div>
-                    <p>${skill.progress}%</p>
-                `;
-                skillsLanguages.appendChild(skillItem);
-            });
-        }
-
-        updateProgress(); // Call this after content is rendered
-    } catch (error) {
-        console.error('Error loading content:', error);
-
-        // Optional: Show fallback error messages
-        if (document.getElementById('services')) {
-            document.getElementById('services').innerHTML = `
-                <h1>Services</h1>
-                <p style="text-align: center; color: red;">Failed to load services. Please try again later.</p>
-            `;
-        }
-        if (document.getElementById('skills')) {
-            document.getElementById('skills').innerHTML = `
-                <h1>Skills</h1>
-                <p style="text-align: center; color: red;">Failed to load skills. Please try again later.</p>
-            `;
-        }
-    }
-}
-
-// Call when DOM is ready
-window.addEventListener('DOMContentLoaded', loadDynamicContent);
 
 // --- Progress Bar Logic ---
 function updateProgress() {
-    const bars = document.querySelectorAll(".progress");
-    bars.forEach(bar => {
-        const value = parseInt(bar.getAttribute("data-progress"), 10);
-        const progress = Math.max(0, Math.min(100, value));
-        bar.style.width = progress + "%";
+    document.querySelectorAll(".progress").forEach(bar => {
+        const val = parseInt(bar.dataset.progress, 10);
+        bar.style.width = `${Math.min(Math.max(val, 0), 100)}%`;
     });
 }
+
+// --- Dynamic Content Load ---
+async function loadDynamicContent() {
+    try {
+        const res = await fetch('data.json');
+        const data = await res.json();
+
+        // Render Services
+        const services = document.querySelector('#services .wrapper');
+        services.innerHTML = data.services.map(s =>
+            `<div class="service-card"><h2>${s.title}</h2><p>${s.description}</p></div>`
+        ).join('');
+
+        // Render Skills
+        const skills = document.querySelector('#skills .languages');
+        skills.innerHTML = data.skills.map(skill =>
+            `<div class="skill-item">
+        <div class="flex items-center gap-2 mb-2">
+          <img src="${skill.image}" alt="${skill.name}" class="w-10 h-10 object-contain">
+          <h2>${skill.name}</h2>
+        </div>
+        <div class="outer-progress-bar"><div class="progress" data-progress="${skill.progress}"></div></div>
+        <p>${skill.progress}%</p>
+      </div>`
+        ).join('');
+
+        updateProgress();
+    } catch (err) {
+        console.error("Load failed:", err);
+    }
+}
+document.addEventListener('DOMContentLoaded', loadDynamicContent);
 
 // --- Contact Form Submission ---
 const contactForm = document.getElementById('contactForm');
-const formStatusDiv = document.getElementById('form-status');
+contactForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = document.getElementById('form-status');
+    status.textContent = 'Sending message...';
+    status.style.color = 'teal';
 
-if (contactForm) {
-    contactForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
+    try {
+        const res = await fetch(contactForm.action, {
+            method: contactForm.method,
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+        });
 
-        formStatusDiv.textContent = 'Sending message...';
-        formStatusDiv.style.color = 'rgb(29, 192, 170)';
-
-        const formData = new FormData(contactForm);
-
-        try {
-            const response = await fetch(contactForm.action, {
-                method: contactForm.method,
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                formStatusDiv.textContent = 'Message sent successfully! Thank you.';
-                formStatusDiv.style.color = 'var(--clr-primary)';
-                contactForm.reset();
-            } else {
-                const data = await response.json();
-                if (data.errors) {
-                    formStatusDiv.textContent = `Error: ${data.errors.map(err => err.message).join(', ')}`;
-                } else {
-                    formStatusDiv.textContent = 'Oops! There was a problem sending your message.';
-                }
-                formStatusDiv.style.color = 'red';
-            }
-        } catch (error) {
-            console.error('Submission error:', error);
-            formStatusDiv.textContent = 'Network error. Please try again later.';
-            formStatusDiv.style.color = 'red';
-        }
-    });
-}
-
-// --- AOS Init ---
-AOS.init({
-    duration: 1000,
-    once: false,
+        const msg = res.ok
+            ? 'Message sent successfully! Thank you.'
+            : 'Oops! There was a problem.';
+        status.textContent = msg;
+        status.style.color = res.ok ? 'var(--clr-primary)' : 'red';
+        if (res.ok) contactForm.reset();
+    } catch {
+        status.textContent = 'Network error. Try again.';
+        status.style.color = 'red';
+    }
 });
 
-// --- Google Analytics Tag ---
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'G-E2MHNFZD3C');
+// --- AOS Init ---
+import AOS from 'https://cdn.skypack.dev/aos';
+AOS.init({ duration: 1000, once: false });
+
+// --- Google Analytics ---
+window.addEventListener("load", () => {
+    const s = document.createElement("script");
+    s.src = "https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C";
+    s.async = true;
+    document.head.appendChild(s);
+    s.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E2MHNFZD3C');
+    };
+});
+
+// --- Lazy-load Modal ---
+document.getElementById('open-modal')?.addEventListener('click', async () => {
+    const modal = await import('./modal.js');
+    modal.show();
+});
+
+// --- Debounced Scroll Animation ---
+function animateStuff() {
+    // put lightweight scroll logic here (example: AOS refresh or animations)
+}
+function debounce(fn, delay) {
+    let t; return () => { clearTimeout(t); t = setTimeout(fn, delay); };
+}
+window.addEventListener('scroll', debounce(animateStuff, 100));
