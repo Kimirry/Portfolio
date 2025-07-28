@@ -86,7 +86,6 @@ contactForm?.addEventListener('submit', async (e) => {
 });
 
 // --- AOS Init ---
-import AOS from 'https://cdn.skypack.dev/aos';
 AOS.init({ duration: 1000, once: false });
 
 // --- Google Analytics ---
