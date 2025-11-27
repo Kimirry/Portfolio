@@ -65,7 +65,7 @@
 
   <!-- Navbar -->
   <nav class="sticky top-0 z-50 flex justify-between items-center py-4 px-6 bg-gradient-to-br from-[#0DBBA4] to-[#13DDC2] font-medium">
-    <p id="greeting" class="text-lg md:text-xl">Good day!</p>
+    <p id="greeting" class="text-lg md:text-xl"></p>
     <ul class="hidden md:flex space-x-6">
       <li><a href="#services" class="hover:text-[#C4E9E4]">Services</a></li>
       <li><a href="#skills" class="hover:text-[#C4E9E4]">Skills</a></li>
@@ -81,7 +81,7 @@
         Hi, I'm <span class="font-bold text-[#1DC0AA]">Martin</span>
       </p>
       <p class="text-xl text-[#ECECEC] mb-3">
-        I’m a <span class="font-bold text-[#1DC0AA]">Fullstack & Systems Developer</span>, building scalable web apps and managing robust systems.
+        <span class="font-bold text-[#1DC0AA]">Fullstack & Systems Developer</span>, building scalable web apps and managing robust systems.
       </p>
       <p class="text-sm font-medium text-[#ECECEC] p-4">
         From responsive web development to system administration and database management, I craft complete solutions for modern businesses.
@@ -96,10 +96,11 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="py-12 px-6 bg-[#292828]">
-    <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-8">Skills</h1>
-    <div id="skills-container" class="flex flex-wrap justify-center gap-6 min-w-300px mx-auto"></div>
-  </section>
+<section id="skills" class="py-6 px-6 bg-[#292828]">
+  <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-8">Skills</h1>
+  <div id="skills-container" class="flex flex-wrap justify-center gap-6 mx-auto"></div>
+</section>
+
 
   <!-- Contact Section -->
   <section id="contacts" class="py-12 px-6">
@@ -118,7 +119,7 @@
   </section>
 
  <!-- Footer -->
-<footer class="bg-[#292828] text-[#FFFFFF] relative">
+<footer class="bg-[rgba(41,40,40,0.8)] backdrop-brightness-110 text-[#FFFFFF] py-8 px-6 relative">
   <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
     
     <!-- Footer Logo / Info -->
@@ -220,21 +221,27 @@
       servicesContainer.appendChild(div);
     });
 
+
     // Render Skills
-    const skillsContainer = document.getElementById('skills-container');
-    data.skills.forEach(skill => {
-      const div = document.createElement('div');
-      div.className = "flex-1 max-w-[300px] bg-transparent border border-[#1DC0AA] rounded-[40%] p-4";
-      div.innerHTML = `<div class="flex items-center gap-2 mb-2">
-                         <img src="${skill.image}" alt="${skill.name}" class="w-8 h-8 object-contain">
-                         <h2 class="text-[#1DC0AA] font-semibold">${skill.name}</h2>
-                       </div>
-                       <div class="w-full h-2 bg-gray-600 rounded mb-1">
-                         <div class="h-2 bg-[#1DC0AA] rounded" style="width:${skill.progress}%"></div>
-                       </div>
-                       <p class="text-right text-sm text-[#1DC0AA]">${skill.progress}%</p>`;
-      skillsContainer.appendChild(div);
-    });
+const skillsContainer = document.getElementById('skills-container');
+data.skills.forEach(skill => {
+  const div = document.createElement('div');
+  div.className = "flex-1 min-w-[300px] bg-transparent border border-[#1DC0AA] rounded-[10%] p-4 flex flex-col";
+  
+  div.innerHTML = `
+    <div class="flex items-center gap-2 mb-2">
+      <img src="${skill.image}" alt="${skill.name}" class="w-8 h-8 object-contain">
+      <h2 class="text-[#1DC0AA] font-semibold">${skill.name}</h2>
+    </div>
+    <div class="w-full h-2 bg-gray-600 rounded mb-1">
+      <div class="h-2 bg-[#1DC0AA] rounded" style="width:${skill.progress}%"></div>
+    </div>
+    <p class="text-right text-sm text-[#1DC0AA]">${skill.progress}%</p>
+  `;
+  
+  skillsContainer.appendChild(div);
+});
+
   </script>
 
 </body>
