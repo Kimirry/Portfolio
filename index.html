@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+ <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Martin | Front-End Developer</title>
@@ -19,129 +19,165 @@
   <meta property="og:description"
     content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
   <meta property="og:image" content="YOUR_OG_IMAGE_URL_HERE" />
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="YOUR_PORTFOLIO_URL_HERE" />
-  <meta property="twitter:title" content="Martin | Front-End Developer" />
-  <meta property="twitter:description"
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="YOUR_PORTFOLIO_URL_HERE" />
+  <meta name="twitter:title" content="Martin | Front-End Developer" />
+  <meta name="twitter:description"
     content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
-  <meta property="twitter:image" content="YOUR_PROFILE_IMAGE_URL_HERE" />
+  <meta name="twitter:image" content="YOUR_PROFILE_IMAGE_URL_HERE" />
+
+  <!-- Google Site Verification -->
   <meta name="google-site-verification" content="1CeSDAXOfCV5xtniqL4HiH28ZQXwZWAVYXLDwFGGLJY" />
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS (Animate On Scroll) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+
+  <!-- Custom CSS -->
   <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
     <link rel="stylesheet" href="styles.css" />
   </noscript>
+
+  <!-- Custom JS -->
   <script src="script.js" defer></script>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C"></script>
 </head>
 
-<body>
-  <div class="background"></div>
+<body class="relative font-sans antialiased text-white bg-gray-900">
 
-  <nav>
-    <p id="greet">Good morning</p>
-    <i class="fas fa-bars" id="bars" aria-label="Open navigation menu"></i>
-    <ul id="navlist">
-      <li><a href="#home" class="hover:text-black hover:underline">Home</a></li>
-      <li><a href="#services" class="hover:text-black hover:underline">Services</a></li>
-      <li><a href="#skills" class="hover:text-black hover:underline">Skills</a></li>
-      <li><a href="#contacts" class="hover:text-black hover:underline">Contact</a></li>
+  <!-- Background -->
+  <div class="fixed inset-0 bg-center bg-cover bg-[url('images/laptop.webp')] brightness-[0.2] -z-10"></div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 flex justify-between items-center py-4 px-6 bg-gradient-to-br from-[#0DBBA4] to-[#13DDC2] font-medium">
+    <p class="text-lg md:text-xl">Good day!</p>
+    <ul class="hidden md:flex space-x-6">
+      <li><a href="#services" class="hover:text-[#C4E9E4]">Services</a></li>
+      <li><a href="#skills" class="hover:text-[#C4E9E4]">Skills</a></li>
+      <li><a href="#contacts" class="hover:text-[#C4E9E4]">Contact</a></li>
     </ul>
   </nav>
 
-  <main data-aos="fade-up">
-    <section class="content" id="home">
-      <img src="images/school.webp" alt="Martin's profile picture" />
-      <div class="description">
-        <p>Hi there, I am <span id="name">Martin</span></p>
-        <p>I'm a <span id="work">Front-end Web Developer</span></p>
-        <p id="about">
-          I create clean, responsive, and user-focused websites that deliver fast performance and seamless experiences
-          across all devices.
-          My work emphasizes usability, accessibility, and modern design principles.
-        </p>
-
-        <div class="links" role="navigation" aria-label="Social media links">
-          <a href="https://www.linkedin.com/in/martin-ndichu-63450a371/" aria-label="LinkedIn" data-aos="slide-left"><i
-              class="fab fa-linkedin-in"></i></a>
-          <a href="https://facebook.com/marto_developer" aria-label="Facebook" data-aos="slide-left"><i
-              class="fab fa-facebook"></i></a>
-          <a href="https://github.com/kimirry" aria-label="GitHub" data-aos="slide-left"><i
-              class="fab fa-github"></i></a>
-          <a href="https://instagram.com/marto_developer" aria-label="Instagram" data-aos="slide-left"><i
-              class="fab fa-instagram"></i></a>
-        </div>
-
-        <div class="buttons" data-aos="fade-up">
-          <a href="#contacts" class="btn-primary">Hire</a>
-          <a href="#contacts" class="btn-secondary">Contact</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" data-aos="fade-up">
-      <h1 class="text-4xl">Services</h1>
-      <div class="wrapper">
-        <div class="service-card"></div>
-      </div>
-    </section>
-
-    <section id="skills" data-aos="fade-up">
-      <h1 class="text-4xl">Skills</h1>
-      <div class="languages"></div>
-    </section>
-
-    <section id="contacts" data-aos="fade-up">
-      <h1>Contact Me</h1>
-      <div class="wrap">
-        <form class="contact-form" action="https://formspree.io/f/xvgrvyoq" method="POST" id="contactForm">
-          <div class="inputs">
-            <div class="left-inputs">
-              <label for="name-input" class="sr-only">Your Name</label>
-              <input type="text" id="name-input" placeholder="Your Name" required />
-
-              <label for="email-input" class="sr-only">Your Email</label>
-              <input type="email" id="email-input" placeholder="Your Email" required />
-
-              <label for="subject-input" class="sr-only">Subject</label>
-              <input type="text" id="subject-input" placeholder="Subject" required />
-            </div>
-
-            <label for="message-textarea" class="sr-only">Your Message</label>
-            <textarea id="message-textarea" name="message" placeholder="Your Message" required></textarea>
-          </div>
-          <button id="submit" class="btn-primary" type="submit">Send Message</button>
-          <div id="form-status" style="margin-top: 1rem; font-weight: bold;"></div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer id="main-footer" data-aos="fade-in">
-    <div class="footer-content">
-      <div class="links footer-social-links" aria-label="Social media links">
-        <a href="https://www.linkedin.com/in/martin-ndichu-63450a371/" aria-label="LinkedIn profile"><i
-            class="fab fa-linkedin-in"></i></a>
-        <a href="https://facebook.com/marto_developer" aria-label="Facebook profile"><i class="fab fa-facebook"></i></a>
-        <a href="https://github.com/kimirry" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
-        <a href="https://instagram.com/marto_developer" aria-label="Instagram profile"><i
-            class="fab fa-instagram"></i></a>
-      </div>
-      <a href="#home" class="back-to-top" aria-label="Back to top of the page">
-        <i class="fas fa-arrow-up"></i>
-      </a>
-      <p>&copy; 2025 Martin. All rights reserved.</p>
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-12 text-center md:text-left">
+    <img src="images/profile.jpg" alt="Profile" class="w-64 h-64 md:w-72 md:h-72 rounded-full m-4 flex-shrink-0 object-cover shadow-[0_0_30px_rgb(6,150,138),0_0_30px_rgba(58,83,80,0.7)]">
+    <div class="flex-1 max-w-2xl p-4">
+      <p class="text-3xl font-normal text-[#ECECEC]">
+        Hi, I'm <span class="font-bold text-[#1DC0AA]">Martin</span>
+      </p>
+      <p class="text-xl text-[#ECECEC] mb-3">
+        I’m a <span class="font-bold text-[#1DC0AA]">Fullstack & Systems Developer</span>, building scalable web apps and managing robust systems.
+      </p>
+      <p class="text-sm font-medium text-[#ECECEC] p-4">
+        From responsive web development to system administration and database management, I craft complete solutions for modern businesses.
+      </p>
     </div>
-  </footer>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-12 px-6">
+    <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-12">Services I Provide</h1>
+    <div id="services-container" class="flex flex-wrap justify-center gap-8"></div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-12 px-6 bg-[#292828]">
+    <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-8">Skills</h1>
+    <div id="skills-container" class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto"></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contacts" class="py-12 px-6">
+    <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-6">Contact Me</h1>
+    <div class="flex flex-col md:flex-row justify-center items-start gap-6 max-w-3xl mx-auto">
+      <div class="flex-1 flex flex-col gap-4">
+        <input type="text" placeholder="Your Name" class="outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]">
+        <input type="email" placeholder="Your Email" class="outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]">
+        <input type="text" placeholder="Subject" class="outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]">
+      </div>
+      <textarea placeholder="Your Message" class="flex-1 min-h-[200px] resize-y outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]"></textarea>
+    </div>
+    <div class="text-center mt-6">
+      <button class="bg-[#20776B] text-white rounded-md px-6 py-2 font-bold hover:-translate-y-1 transition-transform">Send Message</button>
+    </div>
+  </section>
 
   <script>
-    AOS.init();
-  </script>
-</body>
+    const data = {
+      "services": [
+        {
+          "title": "Fullstack Web Development",
+          "description": "I build robust, responsive web applications using modern frameworks (React, Node.js, Express, Django) and databases (MySQL, MongoDB). From UI/UX to server-side logic, I handle the full stack."
+        },
+        {
+          "title": "System Administration & DevOps",
+          "description": "Managing servers, deployments, and automation. I configure Linux/Windows systems, optimize performance, and implement CI/CD pipelines for smooth development workflows."
+        },
+        {
+          "title": "Database & API Design",
+          "description": "I design and optimize databases and build APIs that power scalable applications. Structured, secure, and fast — ensuring your data works seamlessly with your systems."
+        },
+        {
+          "title": "Cloud & Security",
+          "description": "I deploy applications to cloud platforms, configure firewalls, manage backups, and ensure systems are secure and scalable for production."
+        }
+      ],
+      "skills": [
+        { "image": "images/html5.webp", "name": "HTML5", "progress": 90 },
+        { "image": "images/css3.webp", "name": "CSS", "progress": 92 },
+        { "image": "images/js.webp", "name": "JavaScript", "progress": 85 },
+        { "image": "images/react.webp", "name": "React", "progress": 80 },
+        { "image": "images/nodejs.webp", "name": "Node.js", "progress": 85 },
+        { "image": "images/python.webp", "name": "Python", "progress": 80 },
+        { "image": "images/docker.webp", "name": "Docker", "progress": 75 },
+        { "image": "images/ubuntu.webp", "name": "Ubuntu/Linux", "progress": 85 },
+        { "image": "images/git.webp", "name": "Git & GitHub", "progress": 90 },
+        { "image": "images/sql.webp", "name": "SQL", "progress": 80 },
+        { "image": "images/tailwind.webp", "name": "Tailwind", "progress": 85 }
+      ]
+    };
 
+    // Render Services
+    const servicesContainer = document.getElementById('services-container');
+    data.services.forEach(service => {
+      const div = document.createElement('div');
+      div.className = "bg-transparent border border-[#1DC0AA] rounded-lg p-6 max-w-sm flex-grow transition-transform duration-300 hover:scale-105 hover:border-2 hover:border-[#06968A]";
+      div.innerHTML = `<h2 class="text-center text-xl font-semibold mb-4 text-[#1DC0AA]">${service.title}</h2>
+                       <p class="text-sm text-[#ECECEC] leading-relaxed">${service.description}</p>`;
+      servicesContainer.appendChild(div);
+    });
+
+    // Render Skills
+    const skillsContainer = document.getElementById('skills-container');
+    data.skills.forEach(skill => {
+      const div = document.createElement('div');
+      div.className = "flex-1 max-w-[300px] bg-transparent border border-[#1DC0AA] rounded p-4";
+      div.innerHTML = `<div class="flex items-center gap-2 mb-2">
+                         <img src="${skill.image}" alt="${skill.name}" class="w-8 h-8 object-contain">
+                         <h2 class="text-[#1DC0AA] font-semibold">${skill.name}</h2>
+                       </div>
+                       <div class="w-full h-2 bg-gray-600 rounded mb-1">
+                         <div class="h-2 bg-[#1DC0AA] rounded" style="width:${skill.progress}%"></div>
+                       </div>
+                       <p class="text-right text-sm text-[#1DC0AA]">${skill.progress}%</p>`;
+      skillsContainer.appendChild(div);
+    });
+  </script>
+
+</body>
 </html>
