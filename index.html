@@ -65,7 +65,7 @@
 
   <!-- Navbar -->
   <nav class="sticky top-0 z-50 flex justify-between items-center py-4 px-6 bg-gradient-to-br from-[#0DBBA4] to-[#13DDC2] font-medium">
-    <p class="text-lg md:text-xl">Good day!</p>
+    <p id="greeting" class="text-lg md:text-xl">Good day!</p>
     <ul class="hidden md:flex space-x-6">
       <li><a href="#services" class="hover:text-[#C4E9E4]">Services</a></li>
       <li><a href="#skills" class="hover:text-[#C4E9E4]">Skills</a></li>
@@ -152,6 +152,27 @@
       ]
     };
 
+
+   // Change greetings as per time
+   const greetingEl = document.getElementById('greeting');
+  const now = new Date();
+  const hour = now.getHours();
+
+  let greetingText;
+
+  if(hour >= 6 && hour < 12){
+    greetingText = "Good Morning!";
+  } else if(hour >= 12 && hour < 15){
+    greetingText = "Good Afternoon!";
+  } else if(hour >= 15 && hour < 22){
+    greetingText = "Good Evening!";
+  } else {
+    greetingText = "Good Night!";
+  }
+
+  greetingEl.textContent = greetingText;
+
+   
     // Render Services
     const servicesContainer = document.getElementById('services-container');
     data.services.forEach(service => {
