@@ -75,7 +75,7 @@
 
   <!-- Hero Section -->
   <section class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-12 text-center md:text-left">
-    <img src="images/profile.jpg" alt="Profile" class="w-64 h-64 md:w-72 md:h-72 rounded-full m-4 flex-shrink-0 object-cover shadow-[0_0_30px_rgb(6,150,138),0_0_30px_rgba(58,83,80,0.7)]">
+    <img src="images/school.webp" alt="Profile" class="w-64 h-64 md:w-72 md:h-72 rounded-full m-4 flex-shrink-0 object-cover shadow-[0_0_30px_rgb(6,150,138),0_0_30px_rgba(58,83,80,0.7)]">
     <div class="flex-1 max-w-2xl p-4">
       <p class="text-3xl font-normal text-[#ECECEC]">
         Hi, I'm <span class="font-bold text-[#1DC0AA]">Martin</span>
@@ -98,7 +98,7 @@
   <!-- Skills Section -->
   <section id="skills" class="py-12 px-6 bg-[#292828]">
     <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-8">Skills</h1>
-    <div id="skills-container" class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto"></div>
+    <div id="skills-container" class="flex flex-wrap justify-center gap-6 min-w-300px mx-auto"></div>
   </section>
 
   <!-- Contact Section -->
@@ -116,6 +116,43 @@
       <button class="bg-[#20776B] text-white rounded-md px-6 py-2 font-bold hover:-translate-y-1 transition-transform">Send Message</button>
     </div>
   </section>
+
+ <!-- Footer -->
+<footer class="bg-[#292828] text-[#FFFFFF] relative">
+  <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+    
+    <!-- Footer Logo / Info -->
+    <div class="flex flex-col items-center md:items-start">
+      <h2 class="text-2xl font-bold text-[#13DDC2]">Martin</h2>
+      <p class="text-sm text-[#C4E9E4] mt-2 text-center md:text-left">
+        Fullstack & Systems Developer <br>
+        Building responsive websites and managing systems efficiently
+      </p>
+    </div>
+
+    <!-- Social Links -->
+    <div class="flex gap-4">
+      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="border-t border-[#13DDC2] mx-6"></div>
+
+  <!-- Copyright & Back to Top -->
+  <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-sm text-[#C4E9E4] text-center md:text-left">
+      &copy; 2025 Martin. All rights reserved.
+    </p>
+    <a href="#top" class="text-[#13DDC2] hover:bg-[#0DBBA4] hover:text-white transition-all px-4 py-2 rounded-full text-sm">
+      Back to Top <i class="fas fa-arrow-up ml-2"></i>
+    </a>
+  </div>
+</footer>
+
 
   <script>
     const data = {
@@ -141,13 +178,13 @@
         { "image": "images/html5.webp", "name": "HTML5", "progress": 90 },
         { "image": "images/css3.webp", "name": "CSS", "progress": 92 },
         { "image": "images/js.webp", "name": "JavaScript", "progress": 85 },
-        { "image": "images/react.webp", "name": "React", "progress": 80 },
+        { "image": "images/react.webp", "name": "React", "progress": 75 },
         { "image": "images/nodejs.webp", "name": "Node.js", "progress": 85 },
-        { "image": "images/python.webp", "name": "Python", "progress": 80 },
+        { "image": "images/express.webp", "name": "Express", "progress": 70 },
         { "image": "images/docker.webp", "name": "Docker", "progress": 75 },
         { "image": "images/ubuntu.webp", "name": "Ubuntu/Linux", "progress": 85 },
         { "image": "images/git.webp", "name": "Git & GitHub", "progress": 90 },
-        { "image": "images/sql.webp", "name": "SQL", "progress": 80 },
+        { "image": "images/sql.webp", "name": "MySQL", "progress": 80 },
         { "image": "images/tailwind.webp", "name": "Tailwind", "progress": 85 }
       ]
     };
@@ -187,7 +224,7 @@
     const skillsContainer = document.getElementById('skills-container');
     data.skills.forEach(skill => {
       const div = document.createElement('div');
-      div.className = "flex-1 max-w-[300px] bg-transparent border border-[#1DC0AA] rounded p-4";
+      div.className = "flex-1 max-w-[300px] bg-transparent border border-[#1DC0AA] rounded-[40%] p-4";
       div.innerHTML = `<div class="flex items-center gap-2 mb-2">
                          <img src="${skill.image}" alt="${skill.name}" class="w-8 h-8 object-contain">
                          <h2 class="text-[#1DC0AA] font-semibold">${skill.name}</h2>
