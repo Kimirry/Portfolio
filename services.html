@@ -1,39 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="services.css">
-    <script src="services.css" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Martin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Services</h1>
-        <div class="wrapper">
-            <div>
-                <h2>Web design</h2>
-                <p>I create clean, modern, and responsive websites that work seamlessly on mobile, tablet, and desktop.
-                     I design landing pages, portfolio sites, and other personal or small business websites using HTML, 
-                     CSS, and basic JavaScript.
-                    </p>
-            </div>
-            <div>
-                <h2>Website Maintenance & Updates</h2>
-                <p>I help update existing websites by adjusting text, images, and layout. I can fix broken HTML/CSS code
-                     and improve the structure of a site for better readability and user experience.</p>
-            </div>
-            <div>
-                <h2>SEO-Ready Structure</h2>
-                <p>I build websites with proper use of headings, meta tags, and alt text for images. My code is lightweight
-                     and optimized for faster page loading, supporting better visibility on search engines.</p>
-            </div>
-            <div>
-                <h2> Design to Code Conversion</h2>
-                <p>I convert visual designs (from Figma, Adobe XD, or Canva) into working, responsive web pages that match 
-                    the original design closely.</p>
-            </div>
-        </div>
+<body class="bg-[rgb(20,20,20)] text-white font-['Inter']">
+
+  <!-- Background Image -->
+  <div class="fixed top-0 left-0 w-full h-full bg-center bg-cover bg-no-repeat bg-[url('images/laptop.webp')] brightness-[0.2] -z-10"></div>
+
+  <!-- Header -->
+  <header class="py-8">
+    <h1 class="text-center text-[clamp(25px,4vw,38px)] font-semibold text-white">Services</h1>
+  </header>
+
+  <!-- Services Section -->
+  <main class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-center gap-6">
+
+      <!-- Service Card 1 -->
+      <div class="bg-transparent border border-[rgb(29,192,170)] rounded-lg p-6 max-w-sm flex-grow transition-transform duration-300 hover:scale-105">
+        <h2 class="text-center text-[clamp(15px,2vw,20px)] font-semibold text-[rgb(29,192,170)] mb-4">Web Design</h2>
+        <p class="text-[clamp(10px,2.3vw,13px)] text-white leading-relaxed">
+          I create clean, modern, and responsive websites that work seamlessly on mobile, tablet, and desktop.
+          I design landing pages, portfolio sites, and other personal or small business websites using HTML, 
+          CSS, and basic JavaScript.
+        </p>
+      </div>
+
+      <!-- Service Card 2 -->
+      <div class="bg-transparent border border-[rgb(29,192,170)] rounded-lg p-6 max-w-sm flex-grow transition-transform duration-300 hover:scale-105">
+        <h2 class="text-center text-[clamp(15px,2vw,20px)] font-semibold text-[rgb(29,192,170)] mb-4">Website Maintenance & Updates</h2>
+        <p class="text-[clamp(10px,2.3vw,13px)] text-white leading-relaxed">
+          I help update existing websites by adjusting text, images, and layout. I can fix broken HTML/CSS code
+          and improve the structure of a site for better readability and user experience.
+        </p>
+      </div>
+
+      <!-- Service Card 3 -->
+      <div class="bg-transparent border border-[rgb(29,192,170)] rounded-lg p-6 max-w-sm flex-grow transition-transform duration-300 hover:scale-105">
+        <h2 class="text-center text-[clamp(15px,2vw,20px)] font-semibold text-[rgb(29,192,170)] mb-4">SEO-Ready Structure</h2>
+        <p class="text-[clamp(10px,2.3vw,13px)] text-white leading-relaxed">
+          I build websites with proper use of headings, meta tags, and alt text for images. My code is lightweight
+          and optimized for faster page loading, supporting better visibility on search engines.
+        </p>
+      </div>
+
+      <!-- Service Card 4 -->
+      <div class="bg-transparent border border-[rgb(29,192,170)] rounded-lg p-6 max-w-sm flex-grow transition-transform duration-300 hover:scale-105">
+        <h2 class="text-center text-[clamp(15px,2vw,20px)] font-semibold text-[rgb(29,192,170)] mb-4">Design to Code Conversion</h2>
+        <p class="text-[clamp(10px,2.3vw,13px)] text-white leading-relaxed">
+          I convert visual designs (from Figma, Adobe XD, or Canva) into working, responsive web pages that match 
+          the original design closely.
+        </p>
+      </div>
+
     </div>
+  </main>
+
 </body>
 </html>
