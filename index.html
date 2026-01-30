@@ -102,52 +102,57 @@
 </section>
 
   <!-- Contacts section -->
-  <section id="contacts" class="py-12 px-6 justify-center mx-auto">
-  <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-6">Contact Me</h1>
+<section id="contacts" class="py-12 px-6 mx-auto">
+  <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-8">
+    Contact Me
+  </h1>
 
   <form
-    action="https://formspree.io/f/mldlkbod"
+    action="https://formspree.io/f/mrekyprd"
     method="POST"
-    class="flex flex-col md:flex-row justify-center items-start gap-6 max-w-3xl mx-auto"
+    class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6"
   >
 
-    <div class="flex-1 flex flex-col gap-4 mx-auto">
-      <input
-        type="text"
-        name="name"
-        placeholder="Your Name"
-        required
-        class="outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]"
-      />
+    <!-- Name -->
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+      class="w-full outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-transparent text-[#ECECEC] focus:border-[#13DDC2]"
+    />
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Your Email"
-        required
-        class="outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]"
-      />
+    <!-- Email -->
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+      class="w-full outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-transparent text-[#ECECEC] focus:border-[#13DDC2]"
+    />
 
-      <input
-        type="text"
-        name="subject"
-        placeholder="Subject"
-        required
-        class="outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]"
-      />
-    </div>
+    <!-- Subject (full width) -->
+    <input
+      type="text"
+      name="subject"
+      placeholder="Subject"
+      required
+      class="md:col-span-2 w-full outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-[rgba(29,192,170,0.05)] text-[#ECECEC] focus:border-[#13DDC2]"
+    />
 
+    <!-- Message -->
     <textarea
       name="message"
       placeholder="Your Message"
       required
-      class="flex-1 min-h-[200px] resize-y outline-none border border-[#1DC0AA] rounded px-3 py-2 bg-transparent text-[#ECECEC]"
+      class="md:col-span-2 h-48 md:h-56 outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-transparent text-[#ECECEC] leading-relaxed resize-none overflow-y-auto focus:border-[#13DDC2]"
     ></textarea>
 
-    <div class="w-full text-center mt-6 md:mt-0">
+    <!-- Button -->
+    <div class="md:col-span-2 text-center mt-4">
       <button
         type="submit"
-        class="bg-[#20776B] text-white rounded-md px-6 py-2 font-bold hover:-translate-y-1 transition-transform"
+        class="bg-[#20776B] text-white rounded-md px-8 py-3 font-bold tracking-wide hover:bg-[#1DC0AA] hover:-translate-y-1 transition-all"
       >
         Send Message
       </button>
