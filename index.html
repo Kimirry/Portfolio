@@ -15,7 +15,7 @@
       theme: {
         extend: {
           colors: {
-            tl: { DEFAULT:'#1DC0AA', light:'#13DDC2', dark:'#06968A', deep:'#047A71', dim:'#0DBBA4', glow:'rgba(29,192,170,0.15)', soft:'rgba(29,192,170,0.06)' },
+            tl: { DEFAULT:'#1DC0AA', light:'#13DDC2', dark:'#06968A', deep:'#047A71', dim:'#0DBBA4' },
             sf: { 900:'#080808', 800:'#0E0E0E', 700:'#151515', 600:'#1C1C1C', 500:'#242424', 400:'#2E2E2E' }
           },
           fontFamily: { display:['Sora','sans-serif'], body:['DM Sans','sans-serif'] }
@@ -24,14 +24,16 @@
     }
   </script>
   <style>
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:5rem}
     body{font-family:'DM Sans',sans-serif;background:#080808;color:#E8E8E8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-    .bg-fixed-laptop{position:fixed;inset:0;z-index:0;background:url('images/laptop.webp') center/cover no-repeat fixed;filter:brightness(0.12) saturate(0.6)}
-    .bg-overlay{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(29,192,170,0.04) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(29,192,170,0.02) 0%,transparent 60%),linear-gradient(180deg,rgba(8,8,8,0.3) 0%,rgba(8,8,8,0.6) 100%)}
+    /* Background layers */
+    .bg-laptop{position:fixed;inset:0;z-index:0;background:url('images/laptop.webp') center/cover no-repeat fixed;filter:brightness(0.12) saturate(0.6)}
+    .bg-grad{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(29,192,170,0.04) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(29,192,170,0.02) 0%,transparent 60%),linear-gradient(180deg,rgba(8,8,8,0.3) 0%,rgba(8,8,8,0.6) 100%)}
     .bg-grid{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.025;background-image:linear-gradient(rgba(29,192,170,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(29,192,170,0.5) 1px,transparent 1px);background-size:80px 80px}
 
+    /* Scroll reveal */
     .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
     .rv.v{opacity:1;transform:translateY(0)}
     .rv-l{opacity:0;transform:translateX(-40px);transition:opacity .7s ease-out,transform .7s ease-out}
@@ -41,51 +43,63 @@
     .rv-s{opacity:0;transform:scale(.92);transition:opacity .6s ease-out,transform .6s ease-out}
     .rv-s.v{opacity:1;transform:scale(1)}
 
+    /* Profile float */
     @keyframes pf{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
     .pf{animation:pf 5s ease-in-out infinite}
 
+    /* Skill wave */
     @keyframes wi{from{opacity:0;transform:translateX(-50px) translateY(var(--wo,0px))}to{opacity:1;transform:translateX(0) translateY(0)}}
     .wi{opacity:0}
     .wi.iv{animation:wi .65s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--wd,0s)}
     @keyframes gf{0%,100%{transform:translateY(0)}50%{transform:translateY(var(--fd,6px))}}
     .wi.fl{opacity:1;animation:gf var(--fdur,3s) ease-in-out infinite;animation-delay:var(--fdel,0s)}
 
+    /* Infra flow */
     @keyframes fg{from{height:0}to{height:100%}}
     .fl{width:2px;background:linear-gradient(180deg,#1DC0AA,#06968A);animation:fg .6s ease-out forwards;animation-delay:var(--fld,0s);height:0}
     @keyframes ni{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
     .in{opacity:0}
     .in.iv{animation:ni .5s ease-out forwards;animation-delay:var(--nd,0s)}
 
+    /* Flow arrow pulse */
     @keyframes fp{0%,100%{opacity:.4}50%{opacity:1}}
     .fa{animation:fp 2s ease-in-out infinite}
 
+    /* Project card hover */
     .pc{transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s ease,border-color .4s ease}
     .pc:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(29,192,170,.12);border-color:#13DDC2}
     .pc:hover .pi{transform:scale(1.03)}
     .pi{transition:transform .5s ease}
 
+    /* Service card hover */
     .sc{transition:transform .35s ease,border-color .35s ease,background .35s ease}
     .sc:hover{transform:translateY(-4px);border-color:#13DDC2;background:rgba(29,192,170,.04)}
 
+    /* Nav scrolled state */
     .ns{background:rgba(8,8,8,.92)!important;backdrop-filter:blur(16px);border-bottom:1px solid rgba(29,192,170,.1)}
     .nl{position:relative}
     .nl::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#1DC0AA;transition:width .3s ease}
     .nl:hover::after,.nl.ac::after{width:100%}
 
+    /* Mobile menu */
     .mm{transform:translateX(100%);transition:transform .4s cubic-bezier(.22,1,.36,1)}
     .mm.op{transform:translateX(0)}
 
+    /* Form focus */
     .fi{transition:border-color .3s ease,box-shadow .3s ease}
     .fi:focus{border-color:#13DDC2;box-shadow:0 0 0 3px rgba(29,192,170,.1)}
 
+    /* Desktop/mobile skill toggle */
     .sw-d{display:block}.sw-m{display:none}
     @media(max-width:768px){.sw-d{display:none}.sw-m{display:block}}
 
+    /* Scrollbar */
     ::-webkit-scrollbar{width:8px}
     ::-webkit-scrollbar-track{background:#080808}
     ::-webkit-scrollbar-thumb{background:#1C1C1C;border-radius:4px}
     ::-webkit-scrollbar-thumb:hover{background:#2E2E2E}
 
+    /* Reduced motion */
     @media(prefers-reduced-motion:reduce){
       .rv,.rv-l,.rv-r,.rv-s{opacity:1;transform:none;transition:none}
       .wi{opacity:1;animation:none!important}
@@ -97,673 +111,718 @@
   </style>
 </head>
 <body>
-  <div class="bg-fixed-laptop" aria-hidden="true"></div>
-  <div class="bg-overlay" aria-hidden="true"></div>
+  <!-- Background -->
+  <div class="bg-laptop" aria-hidden="true"></div>
+  <div class="bg-grad" aria-hidden="true"></div>
   <div class="bg-grid" aria-hidden="true"></div>
-  <div id="root" style="position:relative;z-index:2"></div>
 
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/htm@3.1.1/dist/htm.js"></script>
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <a href="#" class="font-display font-extrabold text-xl text-white tracking-tight">Martin</a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#about" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="#expertise" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Expertise</a>
+        <a href="#projects" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Projects</a>
+        <a href="#infrastructure" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Infrastructure</a>
+        <a href="#services" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a>
+        <a href="#contact" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
+        <a href="#contact" class="ml-2 px-5 py-2 bg-tl text-white text-sm font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+      </div>
+      <button id="menu-btn" class="lg:hidden text-white text-xl p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-tl rounded" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mm fixed inset-0 top-0 bg-sf-900/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 lg:hidden">
+      <a href="#about" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">About</a>
+      <a href="#expertise" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Expertise</a>
+      <a href="#projects" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Projects</a>
+      <a href="#infrastructure" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Infrastructure</a>
+      <a href="#services" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Services</a>
+      <a href="#contact" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Contact</a>
+      <a href="#contact" class="mob-link mt-4 px-8 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk</a>
+    </div>
+  </nav>
+
+  <main style="position:relative;z-index:2">
+
+    <!-- ===== HERO ===== -->
+    <section class="min-h-screen flex items-center pt-24 pb-16 px-6" id="hero">
+      <div class="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+        <div class="flex-1 text-center lg:text-left rv" style="transition-delay:0.15s">
+          <p class="text-tl text-xs md:text-sm font-semibold tracking-widest uppercase mb-5">FULL-STACK WEB DEVELOPMENT · LINUX · SERVERS · DEPLOYMENT</p>
+          <h1 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-5">
+            Full-Stack Developer Building Web Systems <span class="text-tl">From Frontend to Server.</span>
+          </h1>
+          <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-3 max-w-xl mx-auto lg:mx-0">Modern web applications, business websites, APIs, databases and Linux-powered deployments — designed, developed and taken to production.</p>
+          <p class="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">From responsive client-facing interfaces to backend systems and production infrastructure, the focus is on building practical software that works beyond the development environment.</p>
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+            <a href="#projects" class="px-7 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 shadow-lg shadow-tl/20">View Projects</a>
+            <a href="#contact" class="px-7 py-3 border border-tl/60 text-tl font-semibold rounded-lg hover:bg-tl/10 hover:border-tl transition-all hover:-translate-y-0.5">Let's Work Together</a>
+            <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer" class="p-3 text-gray-500 hover:text-tl transition-colors" aria-label="GitHub Profile"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+        <div class="flex-shrink-0 rv-s" style="transition-delay:0.4s">
+          <div class="pf w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-tl/30" style="box-shadow:0 0 40px rgba(29,192,170,0.2),0 0 80px rgba(29,192,170,0.08)">
+            <img src="images/school.webp" alt="Martin - Full-Stack Developer" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#06968A,#1DC0AA)'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CREDIBILITY STRIP ===== -->
+    <section class="py-16 px-6 border-y border-white/5" aria-label="Core capabilities">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+          <div class="rv text-center p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0s">
+            <i class="fas fa-layer-group text-tl text-lg mb-2"></i>
+            <p class="text-white font-display font-bold text-sm">FULL-STACK</p>
+            <p class="text-gray-500 text-xs mt-1">Development</p>
+          </div>
+          <div class="rv text-center p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.08s">
+            <i class="fas fa-server text-tl text-lg mb-2"></i>
+            <p class="text-white font-display font-bold text-sm">LINUX</p>
+            <p class="text-gray-500 text-xs mt-1">Server Administration</p>
+          </div>
+          <div class="rv text-center p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.16s">
+            <i class="fas fa-database text-tl text-lg mb-2"></i>
+            <p class="text-white font-display font-bold text-sm">DATABASES</p>
+            <p class="text-gray-500 text-xs mt-1">MySQL / Prisma</p>
+          </div>
+          <div class="rv text-center p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.24s">
+            <i class="fas fa-rocket text-tl text-lg mb-2"></i>
+            <p class="text-white font-display font-bold text-sm">DEPLOYMENT</p>
+            <p class="text-gray-500 text-xs mt-1">Nginx / SSL / DNS</p>
+          </div>
+          <div class="rv text-center p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors col-span-2 md:col-span-1" style="background:rgba(255,255,255,0.02);transition-delay:0.32s">
+            <i class="fas fa-code-branch text-tl text-lg mb-2"></i>
+            <p class="text-white font-display font-bold text-sm">GIT</p>
+            <p class="text-gray-500 text-xs mt-1">GitHub / Version Control</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-2 md:gap-4 flex-wrap">
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider">Frontend</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa" style="animation-delay:0s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider">Backend</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa" style="animation-delay:0.3s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider">Database</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa" style="animation-delay:0.6s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider">Server</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa" style="animation-delay:0.9s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider">Production</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="py-24 px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">About the Developer</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Building Beyond the Browser</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-start rv" style="transition-delay:0.2s">
+          <div>
+            <p class="text-gray-300 leading-relaxed mb-4">Full-stack web development sits at the intersection of application development, databases and infrastructure. The work isn't limited to designing interfaces — it extends through the entire stack to where the application actually runs.</p>
+            <p class="text-gray-400 leading-relaxed">A strong interest in Linux and server infrastructure makes the deployment side of development just as important as the application itself. Every project is approached with the question: <span class="text-tl font-medium">how does this work in production?</span></p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-semibold">Capabilities Across the Stack</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Frontend Architecture</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">React Applications</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">REST APIs</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Node.js / Express</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Database Design</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Authentication</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Linux</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">VPS Administration</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Nginx</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">DNS</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">SSL</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Git / GitHub</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Production Deployment</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Troubleshooting</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5">Maintenance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section id="expertise" class="py-24 px-6" style="background:linear-gradient(to bottom,transparent,rgba(29,192,170,0.03),transparent)">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">Technical Expertise</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">The Complete Stack</h2>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Full-stack development covers considerably more than frontend interfaces. From React components and APIs to databases and Linux servers, the stack covers the complete lifecycle of a web application.</p>
+        </div>
+
+        <!-- Desktop: wave layout -->
+        <div class="sw-d flex gap-12 items-start" id="skill-wave">
+          <div class="w-64 flex-shrink-0 space-y-3" id="skill-list">
+            <!-- Populated by JS -->
+          </div>
+          <div class="flex-1 pt-4" id="skill-cats">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Mobile: pill groups -->
+        <div class="sw-m space-y-6" id="skill-mobile">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">Selected Work</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Real Projects, Real Deployments</h2>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Projects across business websites, full-stack applications, management systems and infrastructure.</p>
+        </div>
+        <div class="space-y-12" id="project-list">
+          <!-- Populated by JS -->
+        </div>
+        <div class="mt-16 text-center"><p class="text-gray-500 text-sm rv">Built locally. Deployed globally. Maintained in production.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== INFRASTRUCTURE ===== -->
+    <section id="infrastructure" class="py-24 px-6" style="background:linear-gradient(to bottom,transparent,rgba(29,192,170,0.03),transparent)">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">Beyond the Application</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">From Code to Production</h2>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Applications need somewhere reliable to run. Production deployment has involved configuring Linux VPS environments, managing applications, setting up Nginx, configuring domains and DNS, implementing SSL certificates, working with Cloudflare, managing firewall rules and troubleshooting live applications.</p>
+        </div>
+        <div class="flex flex-col md:flex-row gap-12 items-start">
+          <!-- Flow diagram -->
+          <div class="w-full md:w-72 flex-shrink-0" id="infra-flow">
+            <!-- Populated by JS -->
+          </div>
+          <!-- Description grid -->
+          <div class="flex-1 pt-2 rv" style="transition-delay:0.3s">
+            <h3 class="font-display font-bold text-lg text-white mb-4">The Deployment Story</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Most developer portfolios stop at "I built this with React." The difference here is that each project includes the full path to production — because an application that only runs locally is incomplete.</p>
+            <div class="grid grid-cols-2 gap-4" id="infra-grid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">What Can Be Built</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Services</h2>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">From a single-page business website to a full-stack application with production deployment, each service covers a specific part of the development lifecycle.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="service-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEVELOPMENT APPROACH ===== -->
+    <section class="py-24 px-6 border-y border-white/5">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">How It Comes to Life</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Development Approach</h2>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">You don't need to figure out how development works. There's a process.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="rv text-center p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0s">
+            <span class="text-tl/30 font-display font-extrabold text-3xl block mb-2">01</span>
+            <h3 class="text-white font-display font-bold text-sm mb-1">Discover</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Requirements and objectives</p>
+          </div>
+          <div class="rv text-center p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.1s">
+            <span class="text-tl/30 font-display font-extrabold text-3xl block mb-2">02</span>
+            <h3 class="text-white font-display font-bold text-sm mb-1">Plan</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Architecture, pages, data and technology</p>
+          </div>
+          <div class="rv text-center p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.2s">
+            <span class="text-tl/30 font-display font-extrabold text-3xl block mb-2">03</span>
+            <h3 class="text-white font-display font-bold text-sm mb-1">Build</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Frontend + backend + database</p>
+          </div>
+          <div class="rv text-center p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.3s">
+            <span class="text-tl/30 font-display font-extrabold text-3xl block mb-2">04</span>
+            <h3 class="text-white font-display font-bold text-sm mb-1">Test</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Responsive behaviour, functionality and integration</p>
+          </div>
+          <div class="rv text-center p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.4s">
+            <span class="text-tl/30 font-display font-extrabold text-3xl block mb-2">05</span>
+            <h3 class="text-white font-display font-bold text-sm mb-1">Deploy</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Linux VPS + Nginx + domain + SSL</p>
+          </div>
+          <div class="rv text-center p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.5s">
+            <span class="text-tl/30 font-display font-extrabold text-3xl block mb-2">06</span>
+            <h3 class="text-white font-display font-bold text-sm mb-1">Maintain</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Updates, fixes and improvements</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY WORK WITH MARTIN ===== -->
+    <section class="py-24 px-6" style="background:linear-gradient(to bottom,transparent,rgba(29,192,170,0.03),transparent)">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">Why Work With Martin</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Not Just Another Developer Portfolio</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rv p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-cubes text-tl"></i></div>
+            <h3 class="text-white font-display font-bold text-sm mb-2">Full-Stack Perspective</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Frontend, backend, database and deployment are considered together rather than as isolated pieces.</p>
+          </div>
+          <div class="rv p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0.08s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-terminal text-tl"></i></div>
+            <h3 class="text-white font-display font-bold text-sm mb-2">Comfortable with Linux</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Server configuration, SSH, Nginx, domains and production troubleshooting are part of the workflow.</p>
+          </div>
+          <div class="rv p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0.16s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-cloud-arrow-up text-tl"></i></div>
+            <h3 class="text-white font-display font-bold text-sm mb-2">Real Deployment Experience</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Multiple websites and applications have been taken from development environments to live production servers.</p>
+          </div>
+          <div class="rv p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0.24s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-magnifying-glass-chart text-tl"></i></div>
+            <h3 class="text-white font-display font-bold text-sm mb-2">Practical Problem Solving</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Bugs are investigated from the browser through the API, database and server rather than treating symptoms alone.</p>
+          </div>
+          <div class="rv p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors md:col-span-2 lg:col-span-2" style="background:rgba(14,14,14,0.3);transition-delay:0.32s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-bullseye text-tl"></i></div>
+            <h3 class="text-white font-display font-bold text-sm mb-2">Built Around the Requirement</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Projects are structured around what the business needs instead of forcing every project into the same template.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="py-24 px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16 rv">
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3">Get in Touch</p>
+          <h2 class="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Have a Project in Mind?</h2>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Whether you need a business website, a full-stack application, a database-backed system or help getting an existing project onto a production server, let's discuss what needs to be built.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2 mb-10 rv">
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">Website</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">Full-Stack Application</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">API / Backend</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">Database System</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">Linux / Server Deployment</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">Maintenance / Troubleshooting</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">Other</span>
+        </div>
+        <form id="contact-form" action="https://formspree.io/f/mrekyprd" method="POST" class="space-y-5 rv" style="transition-delay:0.2s">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <input type="text" name="name" placeholder="Your Name" required class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" style="background:rgba(14,14,14,0.5)">
+            <input type="email" name="email" placeholder="Your Email" required class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" style="background:rgba(14,14,14,0.5)">
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <select name="service_type" class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-gray-400 text-sm outline-none appearance-none cursor-pointer" style="background:rgba(14,14,14,0.5);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 1rem center">
+              <option value="" disabled selected>Service Type</option>
+              <option value="Website" style="background:#1C1C1C">Website</option>
+              <option value="Full-Stack Application" style="background:#1C1C1C">Full-Stack Application</option>
+              <option value="API / Backend" style="background:#1C1C1C">API / Backend</option>
+              <option value="Database System" style="background:#1C1C1C">Database System</option>
+              <option value="Linux / Server Deployment" style="background:#1C1C1C">Linux / Server Deployment</option>
+              <option value="Maintenance / Troubleshooting" style="background:#1C1C1C">Maintenance / Troubleshooting</option>
+              <option value="Other" style="background:#1C1C1C">Other</option>
+            </select>
+            <input type="text" name="subject" placeholder="Subject" required class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" style="background:rgba(14,14,14,0.5)">
+          </div>
+          <textarea name="message" placeholder="Your Message" required rows="6" class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none resize-none" style="background:rgba(14,14,14,0.5)"></textarea>
+          <div class="text-center">
+            <button type="submit" class="px-10 py-3.5 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 shadow-lg shadow-tl/15">Send Message</button>
+          </div>
+          <p id="form-status" class="text-center text-sm"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-white/5" style="background:rgba(8,8,8,0.8);backdrop-filter:blur(8px);position:relative;z-index:2">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-3 gap-12 items-start">
+        <div>
+          <h2 class="font-display font-extrabold text-2xl text-white mb-2">Martin</h2>
+          <p class="text-tl text-xs font-semibold tracking-wider uppercase mb-3">Full-Stack Web Developer · Linux · Servers · Systems</p>
+          <p class="text-gray-500 text-sm leading-relaxed">Building web applications, business websites and production-ready systems from frontend to infrastructure.</p>
+        </div>
+        <div>
+          <h3 class="text-white font-display font-bold text-sm mb-4">Navigation</h3>
+          <nav class="flex flex-col gap-2" aria-label="Footer navigation">
+            <a href="#about" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit">About</a>
+            <a href="#expertise" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit">Expertise</a>
+            <a href="#projects" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit">Projects</a>
+            <a href="#infrastructure" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit">Infrastructure</a>
+            <a href="#services" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit">Services</a>
+            <a href="#contact" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit">Contact</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="text-white font-display font-bold text-sm mb-4">Connect</h3>
+          <div class="flex gap-3">
+            <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-github text-sm"></i></a>
+            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
+            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-facebook-f text-sm"></i></a>
+            <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-twitter text-sm"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/5">
+      <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-gray-600 text-xs">&copy; 2025 Martin. All rights reserved.</p>
+        <a href="#" class="text-tl text-xs font-medium hover:underline flex items-center gap-1">Back to Top <i class="fas fa-arrow-up text-xs"></i></a>
+      </div>
+    </div>
+  </footer>
+
   <script>
-  var html = htm.bind(React.createElement);
-  var useState = React.useState;
-  var useEffect = React.useEffect;
-  var useRef = React.useRef;
-  var useCallback = React.useCallback;
+  (function() {
+    'use strict';
 
-  /* ===== DATA ===== */
-  var NAV = [
-    {l:'About',h:'#about'},{l:'Expertise',h:'#expertise'},{l:'Projects',h:'#projects'},
-    {l:'Infrastructure',h:'#infrastructure'},{l:'Services',h:'#services'},{l:'Contact',h:'#contact'}
-  ];
-  var CREDS = [
-    {t:'FULL-STACK',s:'Development',i:'fa-layer-group'},
-    {t:'LINUX',s:'Server Administration',i:'fa-server'},
-    {t:'DATABASES',s:'MySQL / Prisma',i:'fa-database'},
-    {t:'DEPLOYMENT',s:'Nginx / SSL / DNS',i:'fa-rocket'},
-    {t:'GIT',s:'GitHub / Version Control',i:'fa-code-branch'}
-  ];
-  var FLOW = ['Frontend','Backend','Database','Server','Production'];
-  var CC = ['#1DC0AA','#E8A87C','#7EC8E3','#D4A5E5','#F0C75E'];
-  var CATS = [
-    {n:'Frontend',sk:['HTML5','CSS3','JavaScript','React','Vite','Tailwind CSS','React Router','Responsive Design']},
-    {n:'Backend',sk:['Node.js','Express.js','REST APIs','Authentication','API Integration','Server Architecture']},
-    {n:'Database',sk:['MySQL','Prisma','SQL','Database Design','CRUD','Relational Data']},
-    {n:'Infrastructure',sk:['Linux','Ubuntu','Nginx','VPS Administration','DNS','SSL / HTTPS','Cloudflare','UFW / Firewall','SSH']},
-    {n:'DevOps',sk:['Production Deployment','Reverse Proxy','Domain Configuration','SSL Certificates','Application Builds','Troubleshooting','Docker','PM2','Postman']}
-  ];
-  var CDESC = [
-    'Building responsive, interactive user interfaces with modern component-based architecture and utility-first CSS.',
-    'Server-side logic, API endpoints, authentication flows and integration between systems.',
-    'Relational data modeling, query optimization and application data management with Prisma ORM.',
-    'Linux server setup, Nginx configuration, firewall rules, DNS management and SSL implementation.',
-    'Build processes, process management, containerization and the full path from code to running application.'
-  ];
-  var ALLSK = [];
-  CATS.forEach(function(c){c.sk.forEach(function(s){ALLSK.push(s)})});
-  var PROJS = [
-    {t:'Litch Rentals',c:'Full-Stack Property Management Platform',d:'A full-stack rental management system designed to manage properties, units, tenants, payments, complaints, administrators, caretakers and landlords \u2014 with authentication, role-based dashboards and database-backed operations.',sk:['React','Tailwind CSS','Node.js','Express','MySQL','Prisma','REST API','Authentication','Linux','Nginx','PM2'],u:'https://litchrentals.duckdns.org',inf:'Deployed to a Linux VPS with frontend, backend API and database working together in a production environment.',fe:true,co:'#1DC0AA'},
-    {t:'Philis Hair & Beauty Salon',c:'Business Website \u00b7 React \u00b7 Production Deployment',d:'A polished salon website created for a Doha-based beauty business. Features responsive design, cinematic hero, service presentation, Arabic/English support, and complete deployment from domain configuration to HTTPS.',sk:['React','Vite','Tailwind CSS','React Router','SEO','Cloudflare','Nginx','SSL','Linux'],u:'https://philishairsalon.com',inf:'From interface development to domain configuration and HTTPS deployment, taken through the full journey to production.',fe:false,co:'#E8A87C'},
-    {t:'North Lake Breeze Estates',c:'Real Estate \u00b7 Business Landing Page',d:'A conversion-focused property presentation website designed to communicate a real estate offering clearly across mobile and desktop, with property details, pricing information and inquiry flow.',sk:['Responsive UI','SEO','Domain','DNS','Server Deployment'],u:'',inf:'Deployed with domain configuration, DNS management and server setup.',fe:false,co:'#7EC8E3'},
-    {t:'Delicious Treats',c:'Business Website \u00b7 Deployment & Maintenance',d:'A responsive business website showcasing products and services with a mobile-first experience, ongoing hosting, domain management, server configuration and maintenance.',sk:['Responsive Design','Frontend Development','Hosting','Domain','Server Configuration'],u:'https://delicioustreats.duckdns.org',inf:'Full deployment and ongoing production maintenance.',fe:false,co:'#D4A5E5'},
-    {t:'WiFi Billing & Network Management',c:'Networking \u00b7 Automation \u00b7 Web Application',d:'A web-based WiFi billing system developed around network-user management and router integration, with testing in MikroTik environments. Manages authentication, billing and network users through a web interface.',sk:['Network Management','Router Integration','Authentication','Billing','Database','Web Interface','MikroTik'],u:'',inf:'Private repository. Technical demonstration available on request.',fe:false,co:'#F0C75E',pr:true,nt:'Tested in MikroTik-compatible environment. Functionality has not been validated for Safaricom routers and is not presented as compatible with them.'}
-  ];
-  var INFN = [
-    {l:'Linux VPS',i:'fa-linux',d:'Ubuntu server environment'},
-    {l:'SSH Access',i:'fa-terminal',d:'Secure remote management'},
-    {l:'Application Build',i:'fa-hammer',d:'Frontend + backend compilation'},
-    {l:'Nginx',i:'fa-shield-halved',d:'Web server & reverse proxy'},
-    {l:'Reverse Proxy',i:'fa-arrows-turn-right',d:'Route traffic to applications'},
-    {l:'Domain / DNS',i:'fa-globe',d:'Point domains to server'},
-    {l:'SSL / HTTPS',i:'fa-lock',d:'Encrypt all traffic'},
-    {l:'Production',i:'fa-check-circle',d:'Live and accessible'}
-  ];
-  var IG = [
-    ['fa-linux','Linux VPS','Ubuntu servers configured and secured'],
-    ['fa-terminal','SSH Management','Remote access and server control'],
-    ['fa-shield-halved','Nginx','Reverse proxy and static serving'],
-    ['fa-lock','SSL / HTTPS','Certificates for encrypted traffic'],
-    ['fa-globe','DNS Configuration','Domains pointed and managed'],
-    ['fa-cloud','Cloudflare','CDN, DNS and security proxy'],
-    ['fa-fire','UFW Firewall','Server access rules and security'],
-    ['fa-rotate','PM2','Node.js process management']
-  ];
-  var SVCS = [
-    {t:'Full-Stack Web Development',d:'Frontend interfaces, backend APIs and databases working together as a complete system.',i:'fa-code'},
-    {t:'Business Website Development',d:'Modern websites for businesses, professionals, startups, organizations and personal brands.',i:'fa-building'},
-    {t:'React Application Development',d:'Interactive applications using React, Vite and Tailwind with component-based architecture.',i:'fa-atom'},
-    {t:'Backend & API Development',d:'Node.js, Express, REST APIs, authentication and third-party integrations.',i:'fa-plug'},
-    {t:'Database Development',d:'MySQL, Prisma, SQL, relational data modeling and application data management.',i:'fa-database'},
-    {t:'Linux Server Administration',d:'Linux VPS configuration, SSH, Nginx, firewall management and application hosting.',i:'fa-server'},
-    {t:'Production Deployment',d:'Domain setup, DNS, SSL, reverse proxy configuration and production builds.',i:'fa-rocket'},
-    {t:'Website Maintenance',d:'Updates, troubleshooting, deployments, bug fixes, performance improvements and server-side maintenance.',i:'fa-wrench'}
-  ];
-  var PSTEP = [
-    {n:'01',t:'Discover',d:'Requirements and objectives'},
-    {n:'02',t:'Plan',d:'Architecture, pages, data and technology'},
-    {n:'03',t:'Build',d:'Frontend + backend + database'},
-    {n:'04',t:'Test',d:'Responsive behaviour, functionality and integration'},
-    {n:'05',t:'Deploy',d:'Linux VPS + Nginx + domain + SSL'},
-    {n:'06',t:'Maintain',d:'Updates, fixes and improvements'}
-  ];
-  var WHY = [
-    {t:'Full-Stack Perspective',d:'Frontend, backend, database and deployment are considered together rather than as isolated pieces.',i:'fa-cubes'},
-    {t:'Comfortable with Linux',d:'Server configuration, SSH, Nginx, domains and production troubleshooting are part of the workflow.',i:'fa-terminal'},
-    {t:'Real Deployment Experience',d:'Multiple websites and applications have been taken from development environments to live production servers.',i:'fa-cloud-arrow-up'},
-    {t:'Practical Problem Solving',d:'Bugs are investigated from the browser through the API, database and server rather than treating symptoms alone.',i:'fa-magnifying-glass-chart'},
-    {t:'Built Around the Requirement',d:'Projects are structured around what the business needs instead of forcing every project into the same template.',i:'fa-bullseye'}
-  ];
-  var CAPS = ['Frontend Architecture','React Applications','REST APIs','Node.js / Express','Database Design','Authentication','Linux','VPS Administration','Nginx','DNS','SSL','Git / GitHub','Production Deployment','Troubleshooting','Maintenance'];
-  var STYPES = ['Website','Full-Stack Application','API / Backend','Database System','Linux / Server Deployment','Maintenance / Troubleshooting','Other'];
-
-  /* ===== HOOKS ===== */
-  function useIV(opts){
-    var r=useRef(null),s=useState(false),vis=s[0],setV=s[1];
-    useEffect(function(){
-      var el=r.current; if(!el)return;
-      var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setV(true);o.unobserve(el)}},{threshold:(opts&&opts.th)||0.1,rootMargin:(opts&&opts.rm)||'0px'});
-      o.observe(el); return function(){o.disconnect()};
-    },[]);
-    return [ref,vis];
-  }
-  function useNav(){
-    var a=useState(false),sc=a[0],setSc=a[1];
-    var b=useState(''),ac=b[0],setAc=b[1];
-    useEffect(function(){
-      function fn(){
-        setSc(window.scrollY>60);
-        var cur='';
-        for(var i=0;i<NAV.length;i++){var id=NAV[i].h.slice(1);var el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=120)cur=id;}
-        setAc(cur);
-      }
-      window.addEventListener('scroll',fn,{passive:true});fn();
-      return function(){window.removeEventListener('scroll',fn)};
-    },[]);
-    return {sc:sc,ac:ac};
-  }
-
-  /* ===== SHARED HEADING ===== */
-  function SH(props){
-    var r=useIV(),ref=r[0],vis=r[1];
-    var cls='text-center mb-16 rv '+(vis?'v':'');
-    var inner=[];
-    if(props.ey) inner.push(html`<p className="text-tl text-sm font-semibold tracking-widest uppercase mb-3">${props.ey}</p>`);
-    inner.push(html`<h2 className="font-display font-extrabold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">${props.ti}</h2>`);
-    if(props.su) inner.push(html`<p className="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">${props.su}</p>`);
-    return html`<div ref=${ref} className=${cls}>${inner}</div>`;
-  }
-
-  /* ===== NAVBAR ===== */
-  function Nav(){
-    var nav=useNav();
-    var mo=useState(false),mopen=mo[0],setMo=mo[1];
-    function close(){setMo(false)}
-    useEffect(function(){document.body.style.overflow=mopen?'hidden':'';return function(){document.body.style.overflow=''}},[mopen]);
-
-    var dl=[];
-    for(var i=0;i<NAV.length;i++){
-      var l=NAV[i];
-      var lc='nl text-sm font-medium text-gray-300 hover:text-white transition-colors '+(nav.ac===l.h.slice(1)?'ac text-white':'');
-      dl.push(html`<a key=${l.h} href=${l.h} className=${lc}>${l.l}</a>`);
-    }
-
-    var ml=[];
-    for(var j=0;j<NAV.length;j++){
-      ml.push(html`<a key=${NAV[j].h} href=${NAV[j].h} onClick=${close} className="text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">${NAV[j].l}</a>`);
-    }
-
-    var nc='fixed top-0 left-0 right-0 z-50 transition-all duration-300 '+(nav.sc?'ns py-3':'py-4');
-    var mc='mm fixed inset-0 top-0 bg-sf-900/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 lg:hidden '+(mopen?'op':'');
-
-    return html`
-      <nav className=${nc} role="navigation" aria-label="Main navigation">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="font-display font-extrabold text-xl text-white tracking-tight">Martin</a>
-          <div className="hidden lg:flex items-center gap-8">
-            ${dl}
-            <a href="#contact" className="ml-2 px-5 py-2 bg-tl text-white text-sm font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk <i className="fas fa-arrow-right ml-1 text-xs"></i></a>
-          </div>
-          <button className="lg:hidden text-white text-xl p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-tl rounded" onClick=${function(){setMo(!mopen)}} aria-label="Toggle menu" aria-expanded=${mopen}>
-            <i className=${'fas '+(mopen?'fa-xmark':'fa-bars')}></i>
-          </button>
-        </div>
-        <div className=${mc}>
-          ${ml}
-          <a href="#contact" onClick=${close} className="mt-4 px-8 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk</a>
-        </div>
-      </nav>`;
-  }
-
-  /* ===== HERO ===== */
-  function Hero(){
-    var r=useIV({th:0.2}),ref=r[0],vis=r[1];
-    var tc='flex-1 text-center lg:text-left rv '+(vis?'v':'');
-    var ic='flex-shrink-0 rv-s '+(vis?'v':'');
-    return html`
-      <section className="min-h-screen flex items-center pt-24 pb-16 px-6" id="hero">
-        <div ref=${ref} className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
-          <div className=${tc} style="transition-delay:0.15s">
-            <p className="text-tl text-xs md:text-sm font-semibold tracking-widest uppercase mb-5">FULL-STACK WEB DEVELOPMENT \u00b7 LINUX \u00b7 SERVERS \u00b7 DEPLOYMENT</p>
-            <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-5">
-              Full-Stack Developer Building Web Systems <span className="text-tl">From Frontend to Server.</span>
-            </h1>
-            <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-3 max-w-xl mx-auto lg:mx-0">Modern web applications, business websites, APIs, databases and Linux-powered deployments \u2014 designed, developed and taken to production.</p>
-            <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">From responsive client-facing interfaces to backend systems and production infrastructure, the focus is on building practical software that works beyond the development environment.</p>
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-              <a href="#projects" className="px-7 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 shadow-lg shadow-tl/20">View Projects</a>
-              <a href="#contact" className="px-7 py-3 border border-tl/60 text-tl font-semibold rounded-lg hover:bg-tl/10 hover:border-tl transition-all hover:-translate-y-0.5">Let's Work Together</a>
-              <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-500 hover:text-tl transition-colors" aria-label="GitHub Profile"><i className="fab fa-github text-xl"></i></a>
-            </div>
-          </div>
-          <div className=${ic} style="transition-delay:0.4s">
-            <div className="pf w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-tl/30" style="box-shadow:0 0 40px rgba(29,192,170,0.2),0 0 80px rgba(29,192,170,0.08)">
-              <img src="images/school.webp" alt="Martin - Full-Stack Developer" className="w-full h-full object-cover" onError=${function(e){e.target.style.display='none';e.target.parentElement.style.background='linear-gradient(135deg,#06968A,#1DC0AA)'}}>
-            </div>
-          </div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== CREDIBILITY STRIP ===== */
-  function CredStrip(){
-    var r=useIV(),ref=r[0],vis=r[1];
-    var cards=[];
-    for(var i=0;i<CREDS.length;i++){
-      var it=CREDS[i];
-      var cc='rv text-center p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors '+(vis?'v':'');
-      cards.push(html`<div key=${'c'+i} className=${cc} style=${'transition-delay:'+i*0.08+'s;background:rgba(255,255,255,0.02)'}>
-        <i className=${'fas '+it.i+' text-tl text-lg mb-2'}></i>
-        <p className="text-white font-display font-bold text-sm">${it.t}</p>
-        <p className="text-gray-500 text-xs mt-1">${it.s}</p>
-      </div>`);
-    }
-    var arrows=[];
-    for(var j=0;j<FLOW.length;j++){
-      arrows.push(html`<span key=${'f'+j} className="text-tl text-xs md:text-sm font-semibold tracking-wider">${FLOW[j]}</span>`);
-      if(j<FLOW.length-1) arrows.push(html`<i key=${'a'+j} className="fas fa-chevron-right text-tl/40 text-xs fa" style=${'animation-delay:'+j*0.3+'s'}></i>`);
-    }
-    return html`
-      <section className="py-16 px-6 border-y border-white/5" aria-label="Core capabilities">
-        <div ref=${ref} className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">${cards}</div>
-          <div className="flex items-center justify-center gap-2 md:gap-4 flex-wrap">${arrows}</div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== ABOUT ===== */
-  function About(){
-    var r=useIV(),ref=r[0],vis=r[1];
-    var cls='grid md:grid-cols-2 gap-12 items-start rv '+(vis?'v':'');
-    var caps=[];
-    for(var i=0;i<CAPS.length;i++){
-      caps.push(html`<span key=${'cap'+i} className="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5 hover:bg-tl/10 transition-colors">${CAPS[i]}</span>`);
-    }
-    return html`
-      <section id="about" className="py-24 px-6">
-        <div ref=${ref} className="max-w-5xl mx-auto">
-          <${SH} ey="About the Developer" ti="Building Beyond the Browser" />
-          <div className=${cls} style="transition-delay:0.2s">
-            <div>
-              <p className="text-gray-300 leading-relaxed mb-4">Full-stack web development sits at the intersection of application development, databases and infrastructure. The work isn't limited to designing interfaces \u2014 it extends through the entire stack to where the application actually runs.</p>
-              <p className="text-gray-400 leading-relaxed">A strong interest in Linux and server infrastructure makes the deployment side of development just as important as the application itself. Every project is approached with the question: <span className="text-tl font-medium">how does this work in production?</span></p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 uppercase tracking-widest mb-4 font-semibold">Capabilities Across the Stack</p>
-              <div className="flex flex-wrap gap-2">${caps}</div>
-            </div>
-          </div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== TECH STACK ===== */
-  function TechStack(){
-    var r=useIV(),ref=r[0],vis=r[1];
-
-    /* Desktop wave skills */
-    var dsk=[];
-    for(var i=0;i<ALLSK.length;i++){
-      var sk=ALLSK[i];
-      var ci=-1;
-      for(var c=0;c<CATS.length;c++){if(CATS[c].sk.indexOf(sk)!==-1){ci=c;break;}}
-      var col=CC[ci]||'#1DC0AA';
-      var off=Math.sin(i*0.75)*22;
-      var dur=(2.8+Math.random()*1.5).toFixed(2);
-      var fd=(4+Math.sin(i)*3).toFixed(1);
-      var ac='wi flex items-center gap-3 px-4 py-2.5 rounded-lg border border-white/5 hover:border-tl/30 transition-colors cursor-default '+(vis?'iv fl':'');
-      dsk.push(html`<div key=${'sk'+i} className=${ac} style=${'--wo:'+off+'px;--wd:'+i*0.07+'s;--fd:'+fd+'px;--fdur:'+dur+'s;--fdel:'+i*0.2+'s;background:rgba(255,255,255,0.02)'}>
-        <span className="w-2 h-2 rounded-full flex-shrink-0" style=${'background:'+col}></span>
-        <span className="text-sm text-gray-200 font-medium">${sk}</span>
-      </div>`);
-    }
-
-    /* Desktop category descriptions */
-    var cbs=[];
-    for(var j=0;j<CATS.length;j++){
-      cbs.push(html`<div key=${'cb'+j} className="mb-8">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="w-3 h-3 rounded-full" style=${'background:'+CC[j]}></span>
-          <h3 className="text-white font-display font-bold text-sm uppercase tracking-wider">${CATS[j].n}</h3>
-        </div>
-        <p className="text-gray-500 text-sm leading-relaxed pl-5">${CDESC[j]}</p>
-      </div>`);
-    }
-
-    /* Mobile pills */
-    var mcs=[];
-    for(var k=0;k<CATS.length;k++){
-      var pills=[];
-      for(var p=0;p<CATS[k].sk.length;p++){
-        pills.push(html`<span key=${'mp'+p} className="px-3 py-1.5 text-xs font-medium text-gray-300 border border-white/10 rounded-full" style="background:rgba(255,255,255,0.02)">${CATS[k].sk[p]}</span>`);
-      }
-      mcs.push(html`<div key=${'mc'+k} className="mb-6">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="w-2.5 h-2.5 rounded-full" style=${'background:'+CC[k]}></span>
-          <h3 className="text-white font-display font-bold text-xs uppercase tracking-wider">${CATS[k].n}</h3>
-        </div>
-        <div className="flex flex-wrap gap-2">${pills}</div>
-      </div>`);
-    }
-
-    return html`
-      <section id="expertise" className="py-24 px-6 bg-gradient-to-b from-transparent via-tl-soft to-transparent">
-        <div className="max-w-6xl mx-auto">
-          <${SH} ey="Technical Expertise" ti="The Complete Stack" su="Full-stack development covers considerably more than frontend interfaces. From React components and APIs to databases and Linux servers, the stack covers the complete lifecycle of a web application." />
-          <div ref=${ref}>
-            <div className="sw-d flex gap-12 items-start">
-              <div className="w-64 flex-shrink-0 space-y-3">${dsk}</div>
-              <div className="flex-1 pt-4">${cbs}</div>
-            </div>
-            <div className="sw-m space-y-6">${mcs}</div>
-          </div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== PROJECT CARD ===== */
-  function PC(props){
-    var r=useIV({th:0.15}),ref=r[0],vis=r[1];
-    var p=props.p,idx=props.i;
-    var dir=idx%2===0?'rv-l':'rv-r';
-    var cls=dir+' '+(vis?'v':'');
-
-    var tags=[];
-    for(var i=0;i<p.sk.length;i++){
-      tags.push(html`<span key=${'st'+i} className="px-2.5 py-1 text-xs font-medium text-gray-400 border border-white/8 rounded-md" style="background:rgba(255,255,255,0.02)">${p.sk[i]}</span>`);
-    }
-
-    /* Badges - build array, no Fragment needed */
-    var badges=[];
-    if(p.fe) badges.push(html`<span key="fe" className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold bg-tl/90 text-white rounded-full">Featured</span>`);
-    if(p.pr) badges.push(html`<span key="pr" className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold bg-yellow-500/90 text-black rounded-full">Private Source</span>`);
-
-    /* Button */
-    var btn;
-    if(p.u){
-      btn=html`<a href=${p.u} target="_blank" rel="noopener noreferrer" className="px-5 py-2 bg-tl/10 border border-tl/30 text-tl text-sm font-semibold rounded-lg hover:bg-tl/20 transition-colors">View Live <i className="fas fa-external-link-alt ml-1 text-xs"></i></a>`;
-    } else if(p.pr){
-      btn=html`<span className="px-5 py-2 text-gray-500 text-sm font-medium border border-white/5 rounded-lg">Demo available on request</span>`;
-    } else {
-      btn=html`<span className="px-5 py-2 text-gray-600 text-sm font-medium border border-white/5 rounded-lg">Not publicly accessible</span>`;
-    }
-
-    var noteEl=[];
-    if(p.nt) noteEl.push(html`<p className="text-yellow-500/80 text-xs mb-4 leading-relaxed"><i className="fas fa-info-circle mr-1"></i>${p.nt}</p>`);
-
-    return html`
-      <div ref=${ref} className=${cls} style="transition-delay:0.1s">
-        <article className="pc rounded-2xl border border-white/5 overflow-hidden" style="background:rgba(14,14,14,0.5)">
-          <div className="relative h-48 md:h-56 overflow-hidden bg-sf-700 flex items-center justify-center">
-            <div className="pi absolute inset-0" style=${'background:linear-gradient(135deg,'+p.co+'15,'+p.co+'05)'}></div>
-            <div className="relative text-center">
-              <span className="text-5xl md:text-6xl font-display font-extrabold opacity-10" style=${'color:'+p.co}>${p.t.charAt(0)}</span>
-            </div>
-            ${badges}
-          </div>
-          <div className="p-6 md:p-8">
-            <p className="text-tl text-xs font-semibold tracking-wider uppercase mb-2">${p.c}</p>
-            <h3 className="font-display font-bold text-xl md:text-2xl text-white mb-3">${p.t}</h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">${p.d}</p>
-            ${noteEl}
-            <div className="flex flex-wrap gap-1.5 mb-5">${tags}</div>
-            <p className="text-gray-500 text-xs leading-relaxed mb-5 border-l-2 border-tl/30 pl-3">${p.inf}</p>
-            <div className="flex gap-3">${btn}</div>
-          </div>
-        </article>
-      </div>`;
-  }
-
-  /* ===== PROJECTS ===== */
-  function Projects(){
-    var cards=[];
-    for(var i=0;i<PROJS.length;i++){
-      cards.push(html`<${PC} key=${PROJS[i].t} p=${PROJS[i]} i=${i} />`);
-    }
-    return html`
-      <section id="projects" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <${SH} ey="Selected Work" ti="Real Projects, Real Deployments" su="Projects across business websites, full-stack applications, management systems and infrastructure." />
-          <div className="space-y-12">${cards}</div>
-          <div className="mt-16 text-center"><p className="text-gray-500 text-sm rv">Built locally. Deployed globally. Maintained in production.</p></div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== INFRASTRUCTURE ===== */
-  function Infra(){
-    var r=useIV(),ref=r[0],vis=r[1];
-
-    /* Flow nodes - build flat array, no Fragment */
-    var nodes=[];
-    for(var i=0;i<INFN.length;i++){
-      var nd=INFN[i];
-      var nc='in flex items-center gap-3 w-full px-4 py-3 rounded-xl border border-white/5 hover:border-tl/30 transition-colors '+(vis?'iv':'');
-      nodes.push(html`<div key=${'nd'+i} className=${nc} style=${'--nd:'+i*0.12+'s;background:rgba(14,14,14,0.5)'}>
-        <div className="w-9 h-9 rounded-lg bg-tl/10 flex items-center justify-center flex-shrink-0"><i className=${'fas '+nd.i+' text-tl text-sm'}></i></div>
-        <div><p className="text-white text-sm font-semibold">${nd.l}</p><p className="text-gray-500 text-xs">${nd.d}</p></div>
-      </div>`);
-      if(i<INFN.length-1) nodes.push(html`<div key=${'ln'+i} className="fl my-1" style=${'--fld:'+(i*0.12+0.1)+'s'}></div>`);
-    }
-
-    /* Grid items */
-    var gi=[];
-    for(var j=0;j<IG.length;j++){
-      gi.push(html`<div key=${'ig'+j} className="flex items-start gap-3 p-3 rounded-lg border border-white/5" style="background:rgba(255,255,255,0.01)">
-        <i className=${'fas '+IG[j][0]+' text-tl/60 text-xs mt-1'}></i>
-        <div><p className="text-white text-xs font-semibold">${IG[j][1]}</p><p className="text-gray-500 text-xs">${IG[j][2]}</p></div>
-      </div>`);
-    }
-
-    return html`
-      <section id="infrastructure" className="py-24 px-6 bg-gradient-to-b from-transparent via-tl-soft to-transparent">
-        <div className="max-w-6xl mx-auto">
-          <${SH} ey="Beyond the Application" ti="From Code to Production" su="Applications need somewhere reliable to run. Production deployment has involved configuring Linux VPS environments, managing applications, setting up Nginx, configuring domains and DNS, implementing SSL certificates, working with Cloudflare, managing firewall rules and troubleshooting live applications." />
-          <div ref=${ref} className="flex flex-col md:flex-row gap-12 items-start">
-            <div className="w-full md:w-72 flex-shrink-0">
-              <div className="flex flex-col items-center">${nodes}</div>
-            </div>
-            <div className="flex-1 pt-2">
-              <h3 className="font-display font-bold text-lg text-white mb-4">The Deployment Story</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">Most developer portfolios stop at "I built this with React." The difference here is that each project includes the full path to production \u2014 because an application that only runs locally is incomplete.</p>
-              <div className="grid grid-cols-2 gap-4">${gi}</div>
-            </div>
-          </div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== SERVICES ===== */
-  function Svcs(){
-    var r=useIV(),ref=r[0],vis=r[1];
-    var cards=[];
-    for(var i=0;i<SVCS.length;i++){
-      var s=SVCS[i];
-      var cc='sc p-5 rounded-xl border border-white/5 rv-s '+(vis?'v':'');
-      cards.push(html`<div key=${'sv'+i} className=${cc} style=${'transition-delay:'+i*0.06+'s;background:rgba(14,14,14,0.3)'}>
-        <div className="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i className=${'fas '+s.i+' text-tl'}></i></div>
-        <h3 className="text-white font-display font-bold text-sm mb-2">${s.t}</h3>
-        <p className="text-gray-500 text-xs leading-relaxed">${s.d}</p>
-      </div>`);
-    }
-    return html`
-      <section id="services" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <${SH} ey="What Can Be Built" ti="Services" su="From a single-page business website to a full-stack application with production deployment, each service covers a specific part of the development lifecycle." />
-          <div ref=${ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${cards}</div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== DEV APPROACH ===== */
-  function Approach(){
-    var r=useIV(),ref=r[0],vis=r[1];
-    var steps=[];
-    for(var i=0;i<PSTEP.length;i++){
-      var s=PSTEP[i];
-      var cc='rv text-center p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors '+(vis?'v':'');
-      steps.push(html`<div key=${'ps'+i} className=${cc} style=${'transition-delay:'+i*0.1+'s;background:rgba(255,255,255,0.02)'}>
-        <span className="text-tl/30 font-display font-extrabold text-3xl block mb-2">${s.n}</span>
-        <h3 className="text-white font-display font-bold text-sm mb-1">${s.t}</h3>
-        <p className="text-gray-500 text-xs leading-relaxed">${s.d}</p>
-      </div>`);
-    }
-    return html`
-      <section className="py-24 px-6 border-y border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <${SH} ey="How It Comes to Life" ti="Development Approach" su="You don't need to figure out how development works. There's a process." />
-          <div ref=${ref} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">${steps}</div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== WHY ME ===== */
-  function WhyMe(){
-    var r=useIV(),ref=r[0],vis=r[1];
-    var cards=[];
-    for(var i=0;i<WHY.length;i++){
-      var w=WHY[i];
-      var cc='rv p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors '+(vis?'v':'');
-      cards.push(html`<div key=${'wy'+i} className=${cc} style=${'transition-delay:'+i*0.08+'s;background:rgba(14,14,14,0.3)'}>
-        <div className="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i className=${'fas '+w.i+' text-tl'}></i></div>
-        <h3 className="text-white font-display font-bold text-sm mb-2">${w.t}</h3>
-        <p className="text-gray-400 text-xs leading-relaxed">${w.d}</p>
-      </div>`);
-    }
-    return html`
-      <section className="py-24 px-6 bg-gradient-to-b from-transparent via-tl-soft to-transparent">
-        <div className="max-w-5xl mx-auto">
-          <${SH} ey="Why Work With Martin" ti="Not Just Another Developer Portfolio" />
-          <div ref=${ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">${cards}</div>
-        </div>
-      </section>`;
-  }
-
-  /* ===== CONTACT ===== */
-  function Contact(){
-    var r=useIV(),ref=r[0],vis=r[1];
-    var st=useState(''),status=st[0],setStatus=st[1];
-    var sg=useState(false),sending=sg[0],setSending=sg[1];
-    var formRef=useRef(null);
-
-    function handleSubmit(e){
-      e.preventDefault();
-      setSending(true);
-      setStatus('Sending message...');
-      fetch('https://formspree.io/f/mrekyprd',{
-        method:'POST',
-        body:new FormData(formRef.current),
-        headers:{'Accept':'application/json'}
-      }).then(function(res){
-        if(res.ok){setStatus('Message sent successfully.');formRef.current.reset();}
-        else{setStatus('Something went wrong. Please try again.');}
-        setSending(false);
-      }).catch(function(){setStatus('Network error. Please try again.');setSending(false);});
-    }
-
-    /* Service type pills */
-    var pills=[];
-    for(var i=0;i<STYPES.length;i++){
-      pills.push(html`<span key=${'sp'+i} className="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full" style="background:rgba(255,255,255,0.02)">${STYPES[i]}</span>`);
-    }
-
-    /* Select options */
-    var opts=[];
-    for(var j=0;j<STYPES.length;j++){
-      opts.push(html`<option key=${'so'+j} value=${STYPES[j]} style="background:#1C1C1C">${STYPES[j]}</option>`);
-    }
-
-    var pillCls='flex flex-wrap justify-center gap-2 mb-10 rv '+(vis?'v':'');
-    var statusEl=[];
-    if(status){
-      var sc=status.indexOf('success')!==-1?'text-tl':'text-red-400';
-      statusEl.push(html`<p key="stmsg" className=${'text-center text-sm '+sc}>${status}</p>`);
-    }
-
-    return html`
-      <section id="contact" className="py-24 px-6">
-        <div className="max-w-3xl mx-auto">
-          <${SH} ey="Get in Touch" ti="Have a Project in Mind?" su="Whether you need a business website, a full-stack application, a database-backed system or help getting an existing project onto a production server, let's discuss what needs to be built." />
-          <div ref=${ref} className=${pillCls}>${pills}</div>
-          <form ref=${formRef} onSubmit=${handleSubmit} className="space-y-5 rv" style="transition-delay:0.2s">
-            <div className="grid sm:grid-cols-2 gap-5">
-              <input type="text" name="name" placeholder="Your Name" required className="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" style="background:rgba(14,14,14,0.5)" />
-              <input type="email" name="email" placeholder="Your Email" required className="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" style="background:rgba(14,14,14,0.5)" />
-            </div>
-            <div className="grid sm:grid-cols-2 gap-5">
-              <select name="service_type" className="fi w-full px-4 py-3 border border-white/10 rounded-lg text-gray-400 text-sm outline-none appearance-none cursor-pointer" style="background:rgba(14,14,14,0.5);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 1rem center">
-                <option value="" disabled selected>Service Type</option>
-                ${opts}
-              </select>
-              <input type="text" name="subject" placeholder="Subject" required className="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" style="background:rgba(14,14,14,0.5)" />
-            </div>
-            <textarea name="message" placeholder="Your Message" required rows="6" className="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none resize-none" style="background:rgba(14,14,14,0.5)"></textarea>
-            <div className="text-center">
-              <button type="submit" disabled=${sending} className="px-10 py-3.5 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-tl/15">${sending?'Sending...':'Send Message'}</button>
-            </div>
-            ${statusEl}
-          </form>
-        </div>
-      </section>`;
-  }
-
-  /* ===== FOOTER ===== */
-  function Footer(){
-    function sst(){window.scrollTo({top:0,behavior:'smooth'})}
-    var nl=[];
-    for(var i=0;i<NAV.length;i++){
-      nl.push(html`<a key=${NAV[i].h} href=${NAV[i].h} className="text-gray-500 text-sm hover:text-tl transition-colors w-fit">${NAV[i].l}</a>`);
-    }
-    var soc=[
-      ['fa-github','https://github.com/kimirry','GitHub'],
-      ['fa-linkedin-in','#','LinkedIn'],
-      ['fa-facebook-f','#','Facebook'],
-      ['fa-twitter','#','Twitter']
+    // ── Data ──
+    var CATS = [
+      { n:'Frontend', sk:['HTML5','CSS3','JavaScript','React','Vite','Tailwind CSS','React Router','Responsive Design'], c:'#1DC0AA' },
+      { n:'Backend', sk:['Node.js','Express.js','REST APIs','Authentication','API Integration','Server Architecture'], c:'#E8A87C' },
+      { n:'Database', sk:['MySQL','Prisma','SQL','Database Design','CRUD','Relational Data'], c:'#7EC8E3' },
+      { n:'Infrastructure', sk:['Linux','Ubuntu','Nginx','VPS Administration','DNS','SSL / HTTPS','Cloudflare','UFW / Firewall','SSH'], c:'#D4A5E5' },
+      { n:'DevOps', sk:['Production Deployment','Reverse Proxy','Domain Configuration','SSL Certificates','Application Builds','Troubleshooting','Docker','PM2','Postman'], c:'#F0C75E' }
     ];
-    var sl=[];
-    for(var j=0;j<soc.length;j++){
-      sl.push(html`<a key=${soc[j][2]} href=${soc[j][1]} target="_blank" rel="noopener noreferrer" aria-label=${soc[j][2]} className="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i className=${'fab '+soc[j][0]+' text-sm'}></i></a>`);
-    }
-    return html`
-      <footer className="border-t border-white/5 bg-sf-900/80 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-3 gap-12 items-start">
-            <div>
-              <h2 className="font-display font-extrabold text-2xl text-white mb-2">Martin</h2>
-              <p className="text-tl text-xs font-semibold tracking-wider uppercase mb-3">Full-Stack Web Developer \u00b7 Linux \u00b7 Servers \u00b7 Systems</p>
-              <p className="text-gray-500 text-sm leading-relaxed">Building web applications, business websites and production-ready systems from frontend to infrastructure.</p>
-            </div>
-            <div>
-              <h3 className="text-white font-display font-bold text-sm mb-4">Navigation</h3>
-              <nav className="flex flex-col gap-2" aria-label="Footer navigation">${nl}</nav>
-            </div>
-            <div>
-              <h3 className="text-white font-display font-bold text-sm mb-4">Connect</h3>
-              <div className="flex gap-3">${sl}</div>
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-white/5">
-          <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-gray-600 text-xs">&copy; 2025 Martin. All rights reserved.</p>
-            <button onClick=${sst} className="text-tl text-xs font-medium hover:underline flex items-center gap-1 bg-transparent border-none cursor-pointer">Back to Top <i className="fas fa-arrow-up text-xs"></i></button>
-          </div>
-        </div>
-      </footer>`;
-  }
+    var CDESC = [
+      'Building responsive, interactive user interfaces with modern component-based architecture and utility-first CSS.',
+      'Server-side logic, API endpoints, authentication flows and integration between systems.',
+      'Relational data modeling, query optimization and application data management with Prisma ORM.',
+      'Linux server setup, Nginx configuration, firewall rules, DNS management and SSL implementation.',
+      'Build processes, process management, containerization and the full path from code to running application.'
+    ];
+    var PROJS = [
+      { t:'Litch Rentals', cat:'Full-Stack Property Management Platform', d:'A full-stack rental management system designed to manage properties, units, tenants, payments, complaints, administrators, caretakers and landlords \u2014 with authentication, role-based dashboards and database-backed operations.', sk:['React','Tailwind CSS','Node.js','Express','MySQL','Prisma','REST API','Authentication','Linux','Nginx','PM2'], u:'https://litchrentals.duckdns.org', inf:'Deployed to a Linux VPS with frontend, backend API and database working together in a production environment.', fe:true, co:'#1DC0AA' },
+      { t:'Philis Hair & Beauty Salon', cat:'Business Website \u00b7 React \u00b7 Production Deployment', d:'A polished salon website created for a Doha-based beauty business. Features responsive design, cinematic hero, service presentation, Arabic/English support, and complete deployment from domain configuration to HTTPS.', sk:['React','Vite','Tailwind CSS','React Router','SEO','Cloudflare','Nginx','SSL','Linux'], u:'https://philishairsalon.com', inf:'From interface development to domain configuration and HTTPS deployment, taken through the full journey to production.', fe:false, co:'#E8A87C' },
+      { t:'North Lake Breeze Estates', cat:'Real Estate \u00b7 Business Landing Page', d:'A conversion-focused property presentation website designed to communicate a real estate offering clearly across mobile and desktop, with property details, pricing information and inquiry flow.', sk:['Responsive UI','SEO','Domain','DNS','Server Deployment'], u:'', inf:'Deployed with domain configuration, DNS management and server setup.', fe:false, co:'#7EC8E3' },
+      { t:'Delicious Treats', cat:'Business Website \u00b7 Deployment & Maintenance', d:'A responsive business website showcasing products and services with a mobile-first experience, ongoing hosting, domain management, server configuration and maintenance.', sk:['Responsive Design','Frontend Development','Hosting','Domain','Server Configuration'], u:'https://delicioustreats.duckdns.org', inf:'Full deployment and ongoing production maintenance.', fe:false, co:'#D4A5E5' },
+      { t:'WiFi Billing & Network Management', cat:'Networking \u00b7 Automation \u00b7 Web Application', d:'A web-based WiFi billing system developed around network-user management and router integration, with testing in MikroTik environments. Manages authentication, billing and network users through a web interface.', sk:['Network Management','Router Integration','Authentication','Billing','Database','Web Interface','MikroTik'], u:'', inf:'Private repository. Technical demonstration available on request.', fe:false, co:'#F0C75E', pr:true, nt:'Tested in MikroTik-compatible environment. Functionality has not been validated for Safaricom routers and is not presented as compatible with them.' }
+    ];
+    var INFN = [
+      { l:'Linux VPS', i:'fa-linux', d:'Ubuntu server environment' },
+      { l:'SSH Access', i:'fa-terminal', d:'Secure remote management' },
+      { l:'Application Build', i:'fa-hammer', d:'Frontend + backend compilation' },
+      { l:'Nginx', i:'fa-shield-halved', d:'Web server & reverse proxy' },
+      { l:'Reverse Proxy', i:'fa-arrows-turn-right', d:'Route traffic to applications' },
+      { l:'Domain / DNS', i:'fa-globe', d:'Point domains to server' },
+      { l:'SSL / HTTPS', i:'fa-lock', d:'Encrypt all traffic' },
+      { l:'Production', i:'fa-check-circle', d:'Live and accessible' }
+    ];
+    var IG = [
+      ['fa-linux','Linux VPS','Ubuntu servers configured and secured'],
+      ['fa-terminal','SSH Management','Remote access and server control'],
+      ['fa-shield-halved','Nginx','Reverse proxy and static serving'],
+      ['fa-lock','SSL / HTTPS','Certificates for encrypted traffic'],
+      ['fa-globe','DNS Configuration','Domains pointed and managed'],
+      ['fa-cloud','Cloudflare','CDN, DNS and security proxy'],
+      ['fa-fire','UFW Firewall','Server access rules and security'],
+      ['fa-rotate','PM2','Node.js process management']
+    ];
+    var SVCS = [
+      { t:'Full-Stack Web Development', d:'Frontend interfaces, backend APIs and databases working together as a complete system.', i:'fa-code' },
+      { t:'Business Website Development', d:'Modern websites for businesses, professionals, startups, organizations and personal brands.', i:'fa-building' },
+      { t:'React Application Development', d:'Interactive applications using React, Vite and Tailwind with component-based architecture.', i:'fa-atom' },
+      { t:'Backend & API Development', d:'Node.js, Express, REST APIs, authentication and third-party integrations.', i:'fa-plug' },
+      { t:'Database Development', d:'MySQL, Prisma, SQL, relational data modeling and application data management.', i:'fa-database' },
+      { t:'Linux Server Administration', d:'Linux VPS configuration, SSH, Nginx, firewall management and application hosting.', i:'fa-server' },
+      { t:'Production Deployment', d:'Domain setup, DNS, SSL, reverse proxy configuration and production builds.', i:'fa-rocket' },
+      { t:'Website Maintenance', d:'Updates, troubleshooting, deployments, bug fixes, performance improvements and server-side maintenance.', i:'fa-wrench' }
+    ];
 
-  /* ===== APP ===== */
-  function App(){
-    useEffect(function(){
-      var obs=new IntersectionObserver(function(entries){
-        for(var i=0;i<entries.length;i++){
-          if(entries[i].isIntersecting){
-            entries[i].target.classList.add('v');
-            obs.unobserve(entries[i].target);
-          }
-        }
-      },{threshold:0.08});
-      requestAnimationFrame(function(){
-        var els=document.querySelectorAll('.rv:not(.v),.rv-l:not(.v),.rv-r:not(.v),.rv-s:not(.v)');
-        for(var i=0;i<els.length;i++) obs.observe(els[i]);
+    // ── Build skill wave (desktop) ──
+    var allSkills = [];
+    CATS.forEach(function(cat) {
+      cat.sk.forEach(function(sk) {
+        var ci = CATS.indexOf(cat);
+        allSkills.push({ name: sk, color: cat.c, ci: ci });
       });
-      return function(){obs.disconnect()};
-    },[]);
-    return html`
-      <${Nav} />
-      <main>
-        <${Hero} />
-        <${CredStrip} />
-        <${About} />
-        <${TechStack} />
-        <${Projects} />
-        <${Infra} />
-        <${Svcs} />
-        <${Approach} />
-        <${WhyMe} />
-        <${Contact} />
-      </main>
-      <${Footer} />`;
-  }
+    });
 
-  /* ===== RENDER ===== */
-  ReactDOM.createRoot(document.getElementById('root')).render(html`<${App} />`);
-  </script>
+    var skillList = document.getElementById('skill-list');
+    allSkills.forEach(function(sk, i) {
+      var off = Math.sin(i * 0.75) * 22;
+      var dur = (2.8 + Math.random() * 1.5).toFixed(2);
+      var fd = (4 + Math.sin(i) * 3).toFixed(1);
+      var el = document.createElement('div');
+      el.className = 'wi flex items-center gap-3 px-4 py-2.5 rounded-lg border border-white/5 hover:border-tl/30 transition-colors cursor-default';
+      el.style.cssText = '--wo:' + off + 'px;--wd:' + (i * 0.07) + 's;--fd:' + fd + 'px;--fdur:' + dur + 's;--fdel:' + (i * 0.2) + 's;background:rgba(255,255,255,0.02)';
+      el.innerHTML = '<span class="w-2 h-2 rounded-full flex-shrink-0" style="background:' + sk.color + '"></span><span class="text-sm text-gray-200 font-medium">' + sk.name + '</span>';
+      skillList.appendChild(el);
+    });
 
-  <script>
-    window.addEventListener('load',function(){
-      var s=document.createElement('script');
-      s.src='https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C';
-      s.async=true;
+    // Skill category descriptions (desktop)
+    var skillCats = document.getElementById('skill-cats');
+    CATS.forEach(function(cat, ci) {
+      var div = document.createElement('div');
+      div.className = 'mb-8';
+      div.innerHTML = '<div class="flex items-center gap-2 mb-3"><span class="w-3 h-3 rounded-full" style="background:' + cat.c + '"></span><h3 class="text-white font-display font-bold text-sm uppercase tracking-wider">' + cat.n + '</h3></div><p class="text-gray-500 text-sm leading-relaxed pl-5">' + CDESC[ci] + '</p>';
+      skillCats.appendChild(div);
+    });
+
+    // Skill pills (mobile)
+    var skillMobile = document.getElementById('skill-mobile');
+    CATS.forEach(function(cat) {
+      var wrap = document.createElement('div');
+      wrap.className = 'mb-6';
+      var header = '<div class="flex items-center gap-2 mb-3"><span class="w-2.5 h-2.5 rounded-full" style="background:' + cat.c + '"></span><h3 class="text-white font-display font-bold text-xs uppercase tracking-wider">' + cat.n + '</h3></div>';
+      var pills = cat.sk.map(function(s) {
+        return '<span class="px-3 py-1.5 text-xs font-medium text-gray-300 border border-white/10 rounded-full" style="background:rgba(255,255,255,0.02)">' + s + '</span>';
+      }).join('');
+      wrap.innerHTML = header + '<div class="flex flex-wrap gap-2">' + pills + '</div>';
+      skillMobile.appendChild(wrap);
+    });
+
+    // ── Build projects ──
+    var projectList = document.getElementById('project-list');
+    PROJS.forEach(function(p, idx) {
+      var dir = idx % 2 === 0 ? 'rv-l' : 'rv-r';
+      var tags = p.sk.map(function(t) {
+        return '<span class="px-2.5 py-1 text-xs font-medium text-gray-400 border border-white/8 rounded-md" style="background:rgba(255,255,255,0.02)">' + t + '</span>';
+      }).join('');
+
+      var badge = '';
+      if (p.fe) badge = '<span class="absolute top-4 right-4 px-3 py-1 text-xs font-semibold bg-tl/90 text-white rounded-full">Featured</span>';
+      if (p.pr) badge = '<span class="absolute top-4 right-4 px-3 py-1 text-xs font-semibold bg-yellow-500/90 text-black rounded-full">Private Source</span>';
+
+      var note = p.nt ? '<p class="text-yellow-500/80 text-xs mb-4 leading-relaxed"><i class="fas fa-info-circle mr-1"></i>' + p.nt + '</p>' : '';
+
+      var btn = '';
+      if (p.u) {
+        btn = '<a href="' + p.u + '" target="_blank" rel="noopener noreferrer" class="px-5 py-2 bg-tl/10 border border-tl/30 text-tl text-sm font-semibold rounded-lg hover:bg-tl/20 transition-colors">View Live <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>';
+      } else if (p.pr) {
+        btn = '<span class="px-5 py-2 text-gray-500 text-sm font-medium border border-white/5 rounded-lg">Demo available on request</span>';
+      } else {
+        btn = '<span class="px-5 py-2 text-gray-600 text-sm font-medium border border-white/5 rounded-lg">Not publicly accessible</span>';
+      }
+
+      var card = document.createElement('div');
+      card.className = dir;
+      card.style.transitionDelay = '0.1s';
+      card.innerHTML =
+        '<article class="pc rounded-2xl border border-white/5 overflow-hidden" style="background:rgba(14,14,14,0.5)">' +
+          '<div class="relative h-48 md:h-56 overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,' + p.co + '15,' + p.co + '05)">' +
+            '<div class="pi absolute inset-0" style="background:linear-gradient(135deg,' + p.co + '15,' + p.co + '05)"></div>' +
+            '<div class="relative text-center"><span class="text-5xl md:text-6xl font-display font-extrabold opacity-10" style="color:' + p.co + '">' + p.t.charAt(0) + '</span></div>' +
+            badge +
+          '</div>' +
+          '<div class="p-6 md:p-8">' +
+            '<p class="text-tl text-xs font-semibold tracking-wider uppercase mb-2">' + p.cat + '</p>' +
+            '<h3 class="font-display font-bold text-xl md:text-2xl text-white mb-3">' + p.t + '</h3>' +
+            '<p class="text-gray-400 text-sm leading-relaxed mb-4">' + p.d + '</p>' +
+            note +
+            '<div class="flex flex-wrap gap-1.5 mb-5">' + tags + '</div>' +
+            '<p class="text-gray-500 text-xs leading-relaxed mb-5 border-l-2 border-tl/30 pl-3">' + p.inf + '</p>' +
+            '<div class="flex gap-3">' + btn + '</div>' +
+          '</div>' +
+        '</article>';
+      projectList.appendChild(card);
+    });
+
+    // ── Build infrastructure flow ──
+    var infraFlow = document.getElementById('infra-flow');
+    var flowWrap = document.createElement('div');
+    flowWrap.className = 'flex flex-col items-center';
+    INFN.forEach(function(nd, i) {
+      var node = document.createElement('div');
+      node.className = 'in flex items-center gap-3 w-full px-4 py-3 rounded-xl border border-white/5 hover:border-tl/30 transition-colors';
+      node.style.cssText = '--nd:' + (i * 0.12) + 's;background:rgba(14,14,14,0.5)';
+      node.innerHTML = '<div class="w-9 h-9 rounded-lg bg-tl/10 flex items-center justify-center flex-shrink-0"><i class="fas ' + nd.i + ' text-tl text-sm"></i></div><div><p class="text-white text-sm font-semibold">' + nd.l + '</p><p class="text-gray-500 text-xs">' + nd.d + '</p></div>';
+      flowWrap.appendChild(node);
+      if (i < INFN.length - 1) {
+        var line = document.createElement('div');
+        line.className = 'fl my-1';
+        line.style.cssText = '--fld:' + (i * 0.12 + 0.1) + 's';
+        flowWrap.appendChild(line);
+      }
+    });
+    infraFlow.appendChild(flowWrap);
+
+    // Infra grid
+    var infraGrid = document.getElementById('infra-grid');
+    IG.forEach(function(row) {
+      var el = document.createElement('div');
+      el.className = 'flex items-start gap-3 p-3 rounded-lg border border-white/5';
+      el.style.background = 'rgba(255,255,255,0.01)';
+      el.innerHTML = '<i class="fas ' + row[0] + ' text-tl/60 text-xs mt-1"></i><div><p class="text-white text-xs font-semibold">' + row[1] + '</p><p class="text-gray-500 text-xs">' + row[2] + '</p></div>';
+      infraGrid.appendChild(el);
+    });
+
+    // ── Build services ──
+    var serviceList = document.getElementById('service-list');
+    SVCS.forEach(function(s, i) {
+      var el = document.createElement('div');
+      el.className = 'sc p-5 rounded-xl border border-white/5 rv-s';
+      el.style.cssText = 'transition-delay:' + (i * 0.06) + 's;background:rgba(14,14,14,0.3)';
+      el.innerHTML = '<div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas ' + s.i + ' text-tl"></i></div><h3 class="text-white font-display font-bold text-sm mb-2">' + s.t + '</h3><p class="text-gray-500 text-xs leading-relaxed">' + s.d + '</p>';
+      serviceList.appendChild(el);
+    });
+
+    // ── Scroll reveal observer ──
+    var revealObs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          entries[i].target.classList.add('v');
+          revealObs.unobserve(entries[i].target);
+        }
+      }
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s').forEach(function(el) {
+      revealObs.observe(el);
+    });
+
+    // ── Skill wave observer ──
+    var waveObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        var items = document.querySelectorAll('.wi');
+        for (var i = 0; i < items.length; i++) {
+          items[i].classList.add('iv');
+          // After wave-in animation finishes, switch to floating
+          (function(el, delay) {
+            setTimeout(function() { el.classList.add('fl'); }, delay + 700);
+          })(items[i], parseFloat(items[i].style.getPropertyValue('--wd')) * 1000);
+        }
+        waveObs.unobserve(entries[0].target);
+      }
+    }, { threshold: 0.1 });
+    waveObs.observe(document.getElementById('skill-wave'));
+
+    // ── Infra node observer ──
+    var infraObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        document.querySelectorAll('.in').forEach(function(el) {
+          el.classList.add('iv');
+        });
+        infraObs.unobserve(entries[0].target);
+      }
+    }, { threshold: 0.1 });
+    infraObs.observe(document.getElementById('infra-flow'));
+
+    // ── Navbar scroll ──
+    var navbar = document.getElementById('navbar');
+    var navLinks = navbar.querySelectorAll('.nl');
+    var sections = ['about','expertise','projects','infrastructure','services','contact'];
+
+    function onScroll() {
+      // Scrolled state
+      if (window.scrollY > 60) {
+        navbar.classList.add('ns');
+        navbar.classList.remove('py-4');
+        navbar.classList.add('py-3');
+      } else {
+        navbar.classList.remove('ns');
+        navbar.classList.remove('py-3');
+        navbar.classList.add('py-4');
+      }
+      // Active section
+      var current = '';
+      for (var i = 0; i < sections.length; i++) {
+        var el = document.getElementById(sections[i]);
+        if (el && el.getBoundingClientRect().top <= 120) current = sections[i];
+      }
+      for (var j = 0; j < navLinks.length; j++) {
+        var href = navLinks[j].getAttribute('href').slice(1);
+        if (href === current) {
+          navLinks[j].classList.add('ac', 'text-white');
+          navLinks[j].classList.remove('text-gray-300');
+        } else {
+          navLinks[j].classList.remove('ac', 'text-white');
+          navLinks[j].classList.add('text-gray-300');
+        }
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ── Mobile menu ──
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuOpen = false;
+
+    menuBtn.addEventListener('click', function() {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('op', menuOpen);
+      menuBtn.querySelector('i').className = menuOpen ? 'fas fa-xmark' : 'fas fa-bars';
+      menuBtn.setAttribute('aria-expanded', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.mob-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menuOpen = false;
+        mobileMenu.classList.remove('op');
+        menuBtn.querySelector('i').className = 'fas fa-bars';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── Contact form ──
+    var form = document.getElementById('contact-form');
+    var formStatus = document.getElementById('form-status');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      formStatus.textContent = 'Sending message...';
+      formStatus.style.color = '#1DC0AA';
+
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res) {
+        if (res.ok) {
+          formStatus.textContent = 'Message sent successfully.';
+          formStatus.style.color = '#1DC0AA';
+          form.reset();
+        } else {
+          formStatus.textContent = 'Something went wrong. Please try again.';
+          formStatus.style.color = '#f87171';
+        }
+      }).catch(function() {
+        formStatus.textContent = 'Network error. Please try again.';
+        formStatus.style.color = '#f87171';
+      });
+    });
+
+    // ── Google Analytics ──
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C';
+      s.async = true;
       document.head.appendChild(s);
-      s.onload=function(){
-        window.dataLayer=window.dataLayer||[];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js',new Date());
-        gtag('config','G-E2MHNFZD3C');
+      s.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E2MHNFZD3C');
       };
     });
+
+  })();
   </script>
 </body>
 </html>
