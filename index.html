@@ -1,292 +1,1003 @@
 <!DOCTYPE html>
 <html lang="en">
-
- <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Martin | Full-stack Developer</title>
-
-  <!-- SEO Meta -->
-  <meta name="description"
-    content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
-  <meta name="keywords"
-    content="Full-stack Web Development | Systems and Automation" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="YOUR_PORTFOLIO_URL_HERE" />
-  <meta property="og:title" content="Martin | Front-End Developer" />
-  <meta property="og:description"
-    content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
-  <meta property="og:image" content="YOUR_OG_IMAGE_URL_HERE" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="YOUR_PORTFOLIO_URL_HERE" />
-  <meta name="twitter:title" content="Martin | Front-End Developer" />
-  <meta name="twitter:description"
-    content="Martin's professional portfolio showcasing front-end web development skills in HTML5, CSS, and JavaScript. Explore projects and services." />
-  <meta name="twitter:image" content="YOUR_PROFILE_IMAGE_URL_HERE" />
-
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="1CeSDAXOfCV5xtniqL4HiH28ZQXwZWAVYXLDwFGGLJY" />
-
-  <!-- Tailwind CSS -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Martin | Full-Stack Developer · Linux · Servers · Systems</title>
+  <meta name="description" content="Full-stack web developer building web systems from frontend to server. React, Node.js, MySQL, Linux, Nginx, production deployment.">
+  <meta name="google-site-verification" content="1CeSDAXOfCV5xtniqL4HiH28ZQXwZWAVYXLDwFGGLJY">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- AOS (Animate On Scroll) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
-
-  <!-- Custom CSS -->
-  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript>
-    <link rel="stylesheet" href="styles.css" />
-  </noscript>
-
-  <!-- Custom JS -->
-  <script src="script.js" defer></script>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C"></script>
-</head>
-
-<body class="relative font-sans antialiased text-white bg-gray-900">
-
-  <!-- Background -->
-  <div class="fixed inset-0 bg-center bg-cover bg-[url('images/laptop.webp')] brightness-[0.2] -z-10"></div>
-
-  <!-- Navbar -->
-  <nav class="sticky top-0 z-50 flex justify-between items-center py-4 px-6 bg-gradient-to-br from-[#0DBBA4] to-[#13DDC2] font-medium">
-    <p id="greeting" class="text-lg md:text-xl"></p>
-    <ul class="hidden md:flex space-x-6">
-      <li><a href="#services" class="hover:text-[#C4E9E4]">Services</a></li>
-      <li><a href="#skills" class="hover:text-[#C4E9E4]">Skills</a></li>
-      <li><a href="#contacts" class="hover:text-[#C4E9E4]">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-12 text-center md:text-left">
-    <img src="images/school.webp" alt="Profile" class="w-64 h-64 md:w-72 md:h-72 rounded-full m-4 flex-shrink-0 object-cover shadow-[0_0_30px_rgb(6,150,138),0_0_30px_rgba(58,83,80,0.7)]">
-    <div class="flex-1 max-w-2xl p-4">
-      <p class="text-3xl font-normal text-[#ECECEC]">
-        Hi, I'm <span class="font-bold text-[#1DC0AA]">Martin</span>
-      </p>
-      <p class="text-xl text-[#ECECEC] mb-3">
-        <span class="font-bold text-[#1DC0AA]">Fullstack & Systems Developer</span>, building scalable web apps and managing robust systems.
-      </p>
-      <p class="text-sm font-medium text-[#ECECEC] p-4">
-        From responsive web development to system administration and database management, I craft complete solutions for modern businesses.
-      </p>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="pt-12 pb-6 px-6">
-    <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-12">Services I Provide</h1>
-    <div id="services-container" class="flex flex-wrap justify-center gap-8"></div>
-  </section>
-
-  <!-- Skills Section -->
-<section id="skills" class="py-6 px-6">
-  <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-8">Skills</h1>
-  <div id="skills-container" class="flex flex-wrap justify-center gap-6 mx-auto"></div>
-</section>
-
-  <!-- Contacts section -->
-<section id="contacts" class="py-12 px-6 mx-auto">
-  <h1 class="text-center text-3xl font-semibold text-[#ECECEC] mb-8">
-    Contact Me
-  </h1>
-
-  <form
-    action="https://formspree.io/f/mrekyprd"
-    method="POST"
-    class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6"
-  >
-
-    <!-- Name -->
-    <input
-      type="text"
-      name="name"
-      placeholder="Your Name"
-      required
-      class="w-full outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-transparent text-[#ECECEC] focus:border-[#13DDC2]"
-    />
-
-    <!-- Email -->
-    <input
-      type="email"
-      name="email"
-      placeholder="Your Email"
-      required
-      class="w-full outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-transparent text-[#ECECEC] focus:border-[#13DDC2]"
-    />
-
-    <!-- Subject (full width) -->
-    <input
-      type="text"
-      name="subject"
-      placeholder="Subject"
-      required
-      class="md:col-span-2 w-full outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-[rgba(29,192,170,0.05)] text-[#ECECEC] focus:border-[#13DDC2]"
-    />
-
-    <!-- Message -->
-    <textarea
-      name="message"
-      placeholder="Your Message"
-      required
-      class="md:col-span-2 h-48 md:h-56 outline-none border border-[#1DC0AA] rounded-md px-4 py-3 bg-transparent text-[#ECECEC] leading-relaxed resize-none overflow-y-auto focus:border-[#13DDC2]"
-    ></textarea>
-
-    <!-- Button -->
-    <div class="md:col-span-2 text-center mt-4">
-      <button
-        type="submit"
-        class="bg-[#20776B] text-white rounded-md px-8 py-3 font-bold tracking-wide hover:bg-[#1DC0AA] hover:-translate-y-1 transition-all"
-      >
-        Send Message
-      </button>
-    </div>
-
-  </form>
-</section>
-
- <!-- Footer -->
-<footer class="bg-[rgba(41,40,40,0.4)] backdrop-brightness-90 text-[#FFFFFF] py-8 px-6 relative">
-  <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-    
-    <!-- Footer Logo / Info -->
-    <div class="flex flex-col items-center md:items-start">
-      <h2 class="text-2xl font-bold text-[#13DDC2]">Martin</h2>
-      <p class="text-sm text-[#C4E9E4] mt-2 text-center md:text-left">
-        Fullstack & Systems Developer <br>
-        Building responsive websites and managing systems efficiently
-      </p>
-    </div>
-
-    <!-- Social Links -->
-    <div class="flex gap-4">
-      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" class="text-[#13DDC2] hover:text-[#0DBBA4] transition-colors text-2xl"><i class="fab fa-github"></i></a>
-    </div>
-  </div>
-
-  <!-- Divider -->
-  <div class="border-t border-[#13DDC2] mx-6"></div>
-
-  <!-- Copyright & Back to Top -->
-  <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-    <a href="#top" class="text-[#13DDC2] hover:bg-[#0DBBA4] hover:text-white transition-all px-4 py-2 rounded-full text-sm">
-      Back to Top <i class="fas fa-arrow-up ml-2"></i>
-    </a>
-   <p class="text-sm text-[#C4E9E4]/50 text-center md:text-left">
-      &copy; 2025 Martin. All rights reserved.
-    </p>
-  </div>
-</footer>
-
-
   <script>
-    const data = {
-      "services": [
-        {
-          "title": "Fullstack Web Development",
-          "description": "I build robust, responsive web applications using modern frameworks (React, Node.js, Express, Django) and databases (MySQL, MongoDB). From UI/UX to server-side logic, I handle the full stack."
-        },
-        {
-          "title": "System Administration & DevOps",
-          "description": "Managing servers, deployments, and automation. I configure Linux/Windows systems, optimize performance, and implement CI/CD pipelines for smooth development workflows."
-        },
-        {
-          "title": "Database & API Design",
-          "description": "I design and optimize databases and build APIs that power scalable applications. Structured, secure, and fast — ensuring your data works seamlessly with your systems."
-        },
-        {
-          "title": "Cloud & Security",
-          "description": "I deploy applications to cloud platforms, configure firewalls, manage backups, and ensure systems are secure and scalable for production."
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tl: { DEFAULT:'#1DC0AA', light:'#13DDC2', dark:'#06968A', deep:'#047A71', dim:'#0DBBA4', glow:'rgba(29,192,170,0.15)', soft:'rgba(29,192,170,0.06)' },
+            sf: { 900:'#080808', 800:'#0E0E0E', 700:'#151515', 600:'#1C1C1C', 500:'#242424', 400:'#2E2E2E' }
+          },
+          fontFamily: { display:['Sora','sans-serif'], body:['DM Sans','sans-serif'] }
         }
-      ],
-      "skills": [
-        { "image": "images/html5.webp", "name": "HTML5", "progress": 90 },
-        { "image": "images/css3.webp", "name": "CSS", "progress": 92 },
-        { "image": "images/js.webp", "name": "JavaScript", "progress": 85 },
-        { "image": "images/react.png", "name": "React", "progress": 75 },
-        { "image": "images/node.png", "name": "Node.js", "progress": 85 },
-        { "image": "images/expres.png", "name": "Express", "progress": 70 },
-        { "image": "images/docker.png", "name": "Docker", "progress": 75 },
-        { "image": "images/ubuntu.png", "name": "Ubuntu/Linux", "progress": 85 },
-        { "image": "images/git.png", "name": "Git & GitHub", "progress": 90 },
-        { "image": "images/sql.webp", "name": "MySQL", "progress": 80 },
-        { "image": "images/tailwind.webp", "name": "Tailwind", "progress": 85 }
-      ]
-    };
+      }
+    }
+  </script>
+  <style>
+    /* === 基础重置 === */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:5rem; }
+    body { font-family:'DM Sans',sans-serif; background:#080808; color:#E8E8E8; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
 
+    /* === 背景层 === */
+    .bg-fixed-laptop {
+      position:fixed; inset:0; z-index:0;
+      background:url('images/laptop.webp') center/cover no-repeat fixed;
+      filter:brightness(0.12) saturate(0.6);
+    }
+    .bg-overlay {
+      position:fixed; inset:0; z-index:1; pointer-events:none;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(29,192,170,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(29,192,170,0.02) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.6) 100%);
+    }
+    .bg-grid {
+      position:fixed; inset:0; z-index:1; pointer-events:none; opacity:0.025;
+      background-image:
+        linear-gradient(rgba(29,192,170,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29,192,170,0.5) 1px, transparent 1px);
+      background-size:80px 80px;
+    }
 
-   // Change greetings as per time
-   const greetingEl = document.getElementById('greeting');
-  const now = new Date();
-  const hour = now.getHours();
+    /* === 滚动揭示动画 === */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-left { opacity:0; transform:translateX(-40px); transition:opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-left.visible { opacity:1; transform:translateX(0); }
+    .reveal-right { opacity:0; transform:translateX(40px); transition:opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-right.visible { opacity:1; transform:translateX(0); }
+    .reveal-scale { opacity:0; transform:scale(0.92); transition:opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal-scale.visible { opacity:1; transform:scale(1); }
 
-  let greetingText;
+    /* === 头像浮动 === */
+    @keyframes profileFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    .profile-float { animation:profileFloat 5s ease-in-out infinite; }
 
-  if(hour >= 6 && hour < 12){
-    greetingText = "Good Morning!";
-  } else if(hour >= 12 && hour < 15){
-    greetingText = "Good Afternoon!";
-  } else if(hour >= 15 && hour < 22){
-    greetingText = "Good Evening!";
-  } else {
-    greetingText = "Good Night!";
-  }
+    /* === 技能波浪动画 === */
+    @keyframes waveIn {
+      from { opacity:0; transform:translateX(-50px) translateY(var(--wo,0px)); }
+      to   { opacity:1; transform:translateX(0) translateY(0); }
+    }
+    .wave-item { opacity:0; }
+    .wave-item.in-view { animation:waveIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards; animation-delay:var(--wd,0s); }
+    @keyframes gentleFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(var(--fd,6px))} }
+    .wave-item.floating { opacity:1; animation:gentleFloat var(--fdur,3s) ease-in-out infinite; animation-delay:var(--fdel,0s); }
 
-  greetingEl.textContent = greetingText;
+    /* === 基础设施流程线 === */
+    @keyframes flowGrow { from{height:0} to{height:100%} }
+    .flow-line { width:2px; background:linear-gradient(180deg,#1DC0AA,#06968A); animation:flowGrow 0.6s ease-out forwards; animation-delay:var(--fld,0s); height:0; }
+    @keyframes nodeIn { from{opacity:0;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
+    .infra-node { opacity:0; }
+    .infra-node.in-view { animation:nodeIn 0.5s ease-out forwards; animation-delay:var(--nd,0s); }
 
-   
-    // Render Services
-    const servicesContainer = document.getElementById('services-container');
-    data.services.forEach(service => {
-      const div = document.createElement('div');
-      div.className = "bg-transparent border border-[#1DC0AA] rounded-lg p-6 max-w-sm flex-grow transition-transform duration-300 hover:scale-105 hover:border-2 hover:border-[#06968A]";
-      div.innerHTML = `<h2 class="text-center text-xl font-semibold mb-4 text-[#1DC0AA]">${service.title}</h2>
-                       <p class="text-sm text-[#ECECEC] leading-relaxed">${service.description}</p>`;
-      servicesContainer.appendChild(div);
-    });
+    /* === 流动箭头 === */
+    @keyframes flowPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+    .flow-arrow { animation:flowPulse 2s ease-in-out infinite; }
 
+    /* === 项目卡片悬停 === */
+    .project-card { transition:transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease; }
+    .project-card:hover { transform:translateY(-6px); box-shadow:0 12px 40px rgba(29,192,170,0.12); border-color:#13DDC2; }
+    .project-card:hover .project-img { transform:scale(1.03); }
+    .project-img { transition:transform 0.5s ease; }
 
-    // Render Skills
-const skillsContainer = document.getElementById('skills-container');
-data.skills.forEach(skill => {
-  const div = document.createElement('div');
-  div.className = "min-w-[300px] bg-transparent border border-[#1DC0AA] rounded-lg p-4 flex flex-col flex-grow-0";
-  
-  div.innerHTML = `
-    <div class="flex items-center gap-2 mb-2">
-      <img src="${skill.image}" alt="${skill.name}" class="w-8 h-8 object-contain">
-      <h2 class="text-[#1DC0AA] font-semibold">${skill.name}</h2>
-    </div>
-    <div class="w-full h-2 bg-gray-600 rounded mb-1">
-      <div class="h-2 bg-[#1DC0AA] rounded" style="width:${skill.progress}%"></div>
-    </div>
-    <p class="text-right text-sm text-[#1DC0AA]">${skill.progress}%</p>
-  `;
-  
-  skillsContainer.appendChild(div);
-});
+    /* === 服务卡片 === */
+    .service-card { transition:transform 0.35s ease, border-color 0.35s ease, background 0.35s ease; }
+    .service-card:hover { transform:translateY(-4px); border-color:#13DDC2; background:rgba(29,192,170,0.04); }
 
+    /* === 导航栏 === */
+    .nav-scrolled { background:rgba(8,8,8,0.92)!important; backdrop-filter:blur(16px); border-bottom:1px solid rgba(29,192,170,0.1); }
+    .nav-link { position:relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#1DC0AA; transition:width 0.3s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
 
+    /* === 移动端菜单 === */
+    .mobile-menu { transform:translateX(100%); transition:transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .mobile-menu.open { transform:translateX(0); }
+
+    /* === 进程步骤连线 === */
+    .process-connector { position:relative; }
+    .process-connector::after { content:''; position:absolute; top:50%; right:-1.5rem; width:1.5rem; height:2px; background:linear-gradient(90deg,#1DC0AA,transparent); }
+
+    /* === 表单焦点 === */
+    .form-input { transition:border-color 0.3s ease, box-shadow 0.3s ease; }
+    .form-input:focus { border-color:#13DDC2; box-shadow:0 0 0 3px rgba(29,192,170,0.1); }
+
+    /* === 减弱动效偏好 === */
+    @media (prefers-reduced-motion:reduce) {
+      .reveal,.reveal-left,.reveal-right,.reveal-scale { opacity:1; transform:none; transition:none; }
+      .wave-item { opacity:1; animation:none!important; }
+      .infra-node { opacity:1; animation:none!important; }
+      .profile-float { animation:none; }
+      .flow-arrow { animation:none; }
+      .flow-line { height:100%!important; animation:none!important; }
+    }
+
+    /* === 移动端技能 === */
+    .skill-wave-desktop { display:block; }
+    .skill-pills-mobile { display:none; }
+    @media (max-width:768px) {
+      .skill-wave-desktop { display:none; }
+      .skill-pills-mobile { display:block; }
+    }
+
+    /* === 滚动条 === */
+    ::-webkit-scrollbar { width:8px; }
+    ::-webkit-scrollbar-track { background:#080808; }
+    ::-webkit-scrollbar-thumb { background:#1C1C1C; border-radius:4px; }
+    ::-webkit-scrollbar-thumb:hover { background:#2E2E2E; }
+  </style>
+</head>
+<body>
+  <!-- 背景层 -->
+  <div class="bg-fixed-laptop" aria-hidden="true"></div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div id="root" style="position:relative;z-index:2;"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/htm@3.1.1/dist/htm.js"></script>
+  <script>
+    const html = htm.bind(React.createElement);
+    const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+    // ========================================
+    // 数据定义
+    // ========================================
+    const NAV_LINKS = [
+      { label:'About', href:'#about' },
+      { label:'Expertise', href:'#expertise' },
+      { label:'Projects', href:'#projects' },
+      { label:'Infrastructure', href:'#infrastructure' },
+      { label:'Services', href:'#services' },
+      { label:'Contact', href:'#contact' }
+    ];
+
+    const CRED_ITEMS = [
+      { title:'FULL-STACK', sub:'Development', icon:'fa-layer-group' },
+      { title:'LINUX', sub:'Server Administration', icon:'fa-server' },
+      { title:'DATABASES', sub:'MySQL / Prisma', icon:'fa-database' },
+      { title:'DEPLOYMENT', sub:'Nginx / SSL / DNS', icon:'fa-rocket' },
+      { title:'GIT', sub:'GitHub / Version Control', icon:'fa-code-branch' }
+    ];
+
+    const FLOW_STEPS = ['Frontend','Backend','Database','Server','Production'];
+
+    const SKILL_CATEGORIES = [
+      { name:'Frontend', skills:['HTML5','CSS3','JavaScript','React','Vite','Tailwind CSS','React Router','Responsive Design'] },
+      { name:'Backend', skills:['Node.js','Express.js','REST APIs','Authentication','API Integration','Server Architecture'] },
+      { name:'Database', skills:['MySQL','Prisma','SQL','Database Design','CRUD','Relational Data'] },
+      { name:'Infrastructure', skills:['Linux','Ubuntu','Nginx','VPS Administration','DNS','SSL / HTTPS','Cloudflare','UFW / Firewall','SSH'] },
+      { name:'DevOps', skills:['Production Deployment','Reverse Proxy','Domain Configuration','SSL Certificates','Application Builds','Troubleshooting','Docker','PM2','Postman'] }
+    ];
+
+    // 扁平化技能列表（桌面波浪用）
+    const ALL_SKILLS = SKILL_CATEGORIES.flatMap(c => c.skills);
+
+    const PROJECTS = [
+      {
+        title:'Litch Rentals',
+        category:'Full-Stack Property Management Platform',
+        description:'A full-stack rental management system designed to manage properties, units, tenants, payments, complaints, administrators, caretakers and landlords — with authentication, role-based dashboards and database-backed operations.',
+        stack:['React','Tailwind CSS','Node.js','Express','MySQL','Prisma','REST API','Authentication','Linux','Nginx','PM2'],
+        liveUrl:'https://litchrentals.duckdns.org',
+        infra:'Deployed to a Linux VPS with frontend, backend API and database working together in a production environment.',
+        featured:true, color:'#1DC0AA'
+      },
+      {
+        title:'Philis Hair & Beauty Salon',
+        category:'Business Website · React · Production Deployment',
+        description:'A polished salon website created for a Doha-based beauty business. Features responsive design, cinematic hero, service presentation, Arabic/English support, and complete deployment from domain configuration to HTTPS.',
+        stack:['React','Vite','Tailwind CSS','React Router','SEO','Cloudflare','Nginx','SSL','Linux'],
+        liveUrl:'https://philishairsalon.com',
+        infra:'From interface development to domain configuration and HTTPS deployment, taken through the full journey to production.',
+        featured:false, color:'#E8A87C'
+      },
+      {
+        title:'North Lake Breeze Estates',
+        category:'Real Estate · Business Landing Page',
+        description:'A conversion-focused property presentation website designed to communicate a real estate offering clearly across mobile and desktop, with property details, pricing information and inquiry flow.',
+        stack:['Responsive UI','SEO','Domain','DNS','Server Deployment'],
+        liveUrl:null,
+        infra:'Deployed with domain configuration, DNS management and server setup.',
+        featured:false, color:'#7EC8E3'
+      },
+      {
+        title:'Delicious Treats',
+        category:'Business Website · Deployment & Maintenance',
+        description:'A responsive business website showcasing products and services with a mobile-first experience, ongoing hosting, domain management, server configuration and maintenance.',
+        stack:['Responsive Design','Frontend Development','Hosting','Domain','Server Configuration'],
+        liveUrl:'https://delicioustreats.duckdns.org',
+        infra:'Full deployment and ongoing production maintenance.',
+        featured:false, color:'#D4A5E5'
+      },
+      {
+        title:'WiFi Billing & Network Management',
+        category:'Networking · Automation · Web Application',
+        description:'A web-based WiFi billing system developed around network-user management and router integration, with testing in MikroTik environments. Manages authentication, billing and network users through a web interface.',
+        stack:['Network Management','Router Integration','Authentication','Billing','Database','Web Interface','MikroTik'],
+        liveUrl:null,
+        infra:'Private repository. Technical demonstration available on request.',
+        featured:false, color:'#F0C75E', private:true,
+        note:'Tested in MikroTik-compatible environment. Functionality has not been validated for Safaricom routers and is not presented as compatible with them.'
+      }
+    ];
+
+    const INFRA_NODES = [
+      { label:'Linux VPS', icon:'fa-linux', desc:'Ubuntu server environment' },
+      { label:'SSH Access', icon:'fa-terminal', desc:'Secure remote management' },
+      { label:'Application Build', icon:'fa-hammer', desc:'Frontend + backend compilation' },
+      { label:'Nginx', icon:'fa-shield-halved', desc:'Web server & reverse proxy' },
+      { label:'Reverse Proxy', icon:'fa-arrows-turn-right', desc:'Route traffic to applications' },
+      { label:'Domain / DNS', icon:'fa-globe', desc:'Point domains to server' },
+      { label:'SSL / HTTPS', icon:'fa-lock', desc:'Encrypt all traffic' },
+      { label:'Production', icon:'fa-check-circle', desc:'Live and accessible' }
+    ];
+
+    const SERVICES = [
+      { title:'Full-Stack Web Development', desc:'Frontend interfaces, backend APIs and databases working together as a complete system.', icon:'fa-code' },
+      { title:'Business Website Development', desc:'Modern websites for businesses, professionals, startups, organizations and personal brands.', icon:'fa-building' },
+      { title:'React Application Development', desc:'Interactive applications using React, Vite and Tailwind with component-based architecture.', icon:'fa-atom' },
+      { title:'Backend & API Development', desc:'Node.js, Express, REST APIs, authentication and third-party integrations.', icon:'fa-plug' },
+      { title:'Database Development', desc:'MySQL, Prisma, SQL, relational data modeling and application data management.', icon:'fa-database' },
+      { title:'Linux Server Administration', desc:'Linux VPS configuration, SSH, Nginx, firewall management and application hosting.', icon:'fa-server' },
+      { title:'Production Deployment', desc:'Domain setup, DNS, SSL, reverse proxy configuration and production builds.', icon:'fa-rocket' },
+      { title:'Website Maintenance', desc:'Updates, troubleshooting, deployments, bug fixes, performance improvements and server-side maintenance.', icon:'fa-wrench' }
+    ];
+
+    const PROCESS_STEPS = [
+      { num:'01', title:'Discover', desc:'Requirements and objectives' },
+      { num:'02', title:'Plan', desc:'Architecture, pages, data and technology' },
+      { num:'03', title:'Build', desc:'Frontend + backend + database' },
+      { num:'04', title:'Test', desc:'Responsive behaviour, functionality and integration' },
+      { num:'05', title:'Deploy', desc:'Linux VPS + Nginx + domain + SSL' },
+      { num:'06', title:'Maintain', desc:'Updates, fixes and improvements' }
+    ];
+
+    const WHY_ITEMS = [
+      { title:'Full-Stack Perspective', desc:'Frontend, backend, database and deployment are considered together rather than as isolated pieces.', icon:'fa-cubes' },
+      { title:'Comfortable with Linux', desc:'Server configuration, SSH, Nginx, domains and production troubleshooting are part of the workflow.', icon:'fa-terminal' },
+      { title:'Real Deployment Experience', desc:'Multiple websites and applications have been taken from development environments to live production servers.', icon:'fa-cloud-arrow-up' },
+      { title:'Practical Problem Solving', desc:'Bugs are investigated from the browser through the API, database and server rather than treating symptoms alone.', icon:'fa-magnifying-glass-chart' },
+      { title:'Built Around the Requirement', desc:'Projects are structured around what the business needs instead of forcing every project into the same template.', icon:'fa-bullseye' }
+    ];
+
+    // ========================================
+    // 自定义 Hooks
+    // ========================================
+
+    // 滚动进入视口检测
+    function useInView(opts) {
+      const ref = useRef(null);
+      const [visible, setVisible] = useState(false);
+      useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const obs = new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) { setVisible(true); obs.unobserve(el); }
+        }, { threshold:opts?.threshold || 0.1, rootMargin:opts?.rootMargin || '0px' });
+        obs.observe(el);
+        return () => obs.disconnect();
+      }, []);
+      return [ref, visible];
+    }
+
+    // 导航栏滚动状态 & 活跃区块
+    function useNavScroll() {
+      const [scrolled, setScrolled] = useState(false);
+      const [active, setActive] = useState('');
+      useEffect(() => {
+        const onScroll = () => {
+          setScrolled(window.scrollY > 60);
+          const sections = NAV_LINKS.map(l => l.href.slice(1));
+          let current = '';
+          for (const id of sections) {
+            const el = document.getElementById(id);
+            if (el && el.getBoundingClientRect().top <= 120) current = id;
+          }
+          setActive(current);
+        };
+        window.addEventListener('scroll', onScroll, { passive:true });
+        onScroll();
+        return () => window.removeEventListener('scroll', onScroll);
+      }, []);
+      return { scrolled, active };
+    }
+
+    // ========================================
+    // 通用组件
+    // ========================================
+
+    // 区块标题
+    function SectionHeading({ eyebrow, title, subtitle, light }) {
+      const [ref, vis] = useInView();
+      return html`
+        <div ref=${ref} className=${'text-center mb-16 reveal ' + (vis ? 'visible' : '')}>
+          ${eyebrow && html`<p className="text-tl text-sm font-semibold tracking-[0.2em] uppercase mb-3">${eyebrow}</p>`}
+          <h2 className=${'font-display font-800 leading-tight ' + (light ? 'text-3xl md:text-4xl lg:text-5xl text-white' : 'text-2xl md:text-3xl lg:text-4xl text-white')}>
+            ${title}
+          </h2>
+          ${subtitle && html`<p className="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">${subtitle}</p>`}
+        </div>
+      `;
+    }
+
+    // ========================================
+    // 导航栏
+    // ========================================
+    function Navbar() {
+      const { scrolled, active } = useNavScroll();
+      const [menuOpen, setMenuOpen] = useState(false);
+      const close = useCallback(() => setMenuOpen(false), []);
+
+      useEffect(() => {
+        document.body.style.overflow = menuOpen ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+      }, [menuOpen]);
+
+      return html`
+        <nav className=${'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ' + (scrolled ? 'nav-scrolled py-3' : 'py-4')} role="navigation" aria-label="Main navigation">
+          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <a href="#" className="font-display font-800 text-xl text-white tracking-tight">Martin</a>
+
+            <!-- 桌面导航 -->
+            <div className="hidden lg:flex items-center gap-8">
+              ${NAV_LINKS.map(l => html`
+                <a key=${l.href} href=${l.href}
+                   className=${'nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors ' + (active === l.href.slice(1) ? 'active text-white' : '')}>
+                  ${l.label}
+                </a>
+              `)}
+              <a href="#contact" className="ml-2 px-5 py-2 bg-tl text-white text-sm font-semibold rounded-lg hover:bg-tl-light transition-colors">
+                Let's Talk <i className="fas fa-arrow-right ml-1 text-xs"></i>
+              </a>
+            </div>
+
+            <!-- 移动端汉堡按钮 -->
+            <button className="lg:hidden text-white text-xl p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-tl rounded"
+                    onClick=${() => setMenuOpen(!menuOpen)} aria-label="Toggle menu" aria-expanded=${menuOpen}>
+              <i className=${'fas ' + (menuOpen ? 'fa-xmark' : 'fa-bars')}></i>
+            </button>
+          </div>
+
+          <!-- 移动端全屏菜单 -->
+          <div className=${'mobile-menu fixed inset-0 top-0 bg-sf-900/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 lg:hidden ' + (menuOpen ? 'open' : '')}>
+            ${NAV_LINKS.map(l => html`
+              <a key=${l.href} href=${l.href} onClick=${close}
+                 className="text-2xl font-display font-600 text-gray-200 hover:text-tl transition-colors">
+                ${l.label}
+              </a>
+            `)}
+            <a href="#contact" onClick=${close}
+               className="mt-4 px-8 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-colors">
+              Let's Talk
+            </a>
+          </div>
+        </nav>
+      `;
+    }
+
+    // ========================================
+    // 英雄区
+    // ========================================
+    function Hero() {
+      const [ref, vis] = useInView({ threshold:0.2 });
+      return html`
+        <section className="min-h-screen flex items-center pt-24 pb-16 px-6" id="hero">
+          <div ref=${ref} className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+            <!-- 文字内容 -->
+            <div className=${'flex-1 text-center lg:text-left reveal ' + (vis ? 'visible' : '')} style=${{ transitionDelay:'0.15s' }}>
+              <p className="text-tl text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-5">
+                FULL-STACK WEB DEVELOPMENT · LINUX · SERVERS · DEPLOYMENT
+              </p>
+              <h1 className="font-display font-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] mb-5">
+                Full-Stack Developer Building Web Systems${' '}
+                <span className="text-tl">From Frontend to Server.</span>
+              </h1>
+              <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-3 max-w-xl mx-auto lg:mx-0">
+                Modern web applications, business websites, APIs, databases and Linux-powered deployments — designed, developed and taken to production.
+              </p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+                From responsive client-facing interfaces to backend systems and production infrastructure, the focus is on building practical software that works beyond the development environment.
+              </p>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <a href="#projects" className="px-7 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 shadow-lg shadow-tl/20">
+                  View Projects
+                </a>
+                <a href="#contact" className="px-7 py-3 border border-tl/60 text-tl font-semibold rounded-lg hover:bg-tl/10 hover:border-tl transition-all hover:-translate-y-0.5">
+                  Let's Work Together
+                </a>
+                <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer"
+                   className="p-3 text-gray-500 hover:text-tl transition-colors" aria-label="GitHub Profile">
+                  <i className="fab fa-github text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 头像 -->
+            <div className=${'flex-shrink-0 reveal-scale ' + (vis ? 'visible' : '')} style=${{ transitionDelay:'0.4s' }}>
+              <div className="profile-float w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-tl/30 shadow-[0_0_40px_rgba(29,192,170,0.2),0_0_80px_rgba(29,192,170,0.08)]">
+                <img src="images/school.webp" alt="Martin — Full-Stack Developer" className="w-full h-full object-cover"
+                     onError=${(e) => { e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg,#06968A,#1DC0AA)'; }}>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 可信度条
+    // ========================================
+    function CredibilityStrip() {
+      const [ref, vis] = useInView();
+      return html`
+        <section className="py-16 px-6 border-y border-white/5" aria-label="Core capabilities">
+          <div ref=${ref} className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+              ${CRED_ITEMS.map((item, i) => html`
+                <div key=${i} className=${'reveal text-center p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-tl/30 transition-colors ' + (vis ? 'visible' : '')}
+                     style=${{ transitionDelay: i * 0.08 + 's' }}>
+                  <i className=${'fas ' + item.icon + ' text-tl text-lg mb-2'}></i>
+                  <p className="text-white font-display font-700 text-sm">${item.title}</p>
+                  <p className="text-gray-500 text-xs mt-1">${item.sub}</p>
+                </div>
+              `)}
+            </div>
+            <!-- 流程线 -->
+            <div className="flex items-center justify-center gap-2 md:gap-4 flex-wrap">
+              ${FLOW_STEPS.map((step, i) => html`
+                <${React.Fragment} key=${step}>
+                  <span className="text-tl text-xs md:text-sm font-semibold tracking-wider">${step}</span>
+                  ${i < FLOW_STEPS.length - 1 && html`
+                    <i className="fas fa-chevron-right text-tl/40 text-xs flow-arrow" style=${{ animationDelay: i * 0.3 + 's' }}></i>
+                  `}
+                <//>
+              `)}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 关于
+    // ========================================
+    function About() {
+      const [ref, vis] = useInView();
+      const capabilities = [
+        'Frontend Architecture','React Applications','REST APIs','Node.js / Express',
+        'Database Design','Authentication','Linux','VPS Administration',
+        'Nginx','DNS','SSL','Git / GitHub','Production Deployment','Troubleshooting','Maintenance'
+      ];
+      return html`
+        <section id="about" className="py-24 px-6">
+          <div ref=${ref} className="max-w-5xl mx-auto">
+            <${SectionHeading} eyebrow="About the Developer" title="Building Beyond the Browser" />
+            <div className=${'grid md:grid-cols-2 gap-12 items-start reveal ' + (vis ? 'visible' : '')} style=${{ transitionDelay:'0.2s' }}>
+              <div>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  Full-stack web development sits at the intersection of application development, databases and infrastructure. The work isn't limited to designing interfaces — it extends through the entire stack to where the application actually runs.
+                </p>
+                <p className="text-gray-400 leading-relaxed">
+                  A strong interest in Linux and server infrastructure makes the deployment side of development just as important as the application itself. Every project is approached with the question: <span className="text-tl font-medium">how does this work in production?</span>
+                </p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-widest mb-4 font-semibold">Capabilities Across the Stack</p>
+                <div className="flex flex-wrap gap-2">
+                  ${capabilities.map((c, i) => html`
+                    <span key=${c} className="px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5 hover:bg-tl/10 transition-colors">
+                      ${c}
+                    </span>
+                  `)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 技术栈（桌面波浪 + 移动端药丸）
+    // ========================================
+    function TechStack() {
+      const [ref, vis] = useInView();
+      // 生成波浪偏移：正弦曲线
+      const getOffset = (i) => Math.sin(i * 0.75) * 22;
+      const getDelay = (i) => i * 0.07;
+
+      return html`
+        <section id="expertise" className="py-24 px-6 bg-gradient-to-b from-transparent via-tl-soft to-transparent">
+          <div className="max-w-6xl mx-auto">
+            <${SectionHeading} eyebrow="Technical Expertise" title="The Complete Stack" subtitle="Full-stack development covers considerably more than frontend interfaces. From React components and APIs to databases and Linux servers, the stack covers the complete lifecycle of a web application." />
+
+            <div ref=${ref}>
+              <!-- 桌面端：波浪动画 -->
+              <div className="skill-wave-desktop flex gap-12 items-start">
+                <div className="w-64 flex-shrink-0 space-y-3">
+                  ${ALL_SKILLS.map((skill, i) => {
+                    const catIdx = SKILL_CATEGORIES.findIndex(c => c.skills.includes(skill));
+                    const catColor = ['#1DC0AA','#E8A87C','#7EC8E3','#D4A5E5','#F0C75E'][catIdx] || '#1DC0AA';
+                    return html`
+                      <div key=${skill}
+                           className=${'wave-item flex items-center gap-3 px-4 py-2.5 rounded-lg border border-white/5 bg-white/[0.02] hover:border-tl/30 transition-colors cursor-default ' + (vis ? 'in-view floating' : '')}
+                           style=${{ '--wo': getOffset(i)+'px', '--wd': getDelay(i)+'s', '--fd': (4 + Math.sin(i)*3)+'px', '--fdur': (2.8 + Math.random()*1.5)+'s', '--fdel': (i*0.2)+'s' }}>
+                        <span className="w-2 h-2 rounded-full flex-shrink-0" style=${{ background:catColor }}></span>
+                        <span className="text-sm text-gray-200 font-medium">${skill}</span>
+                      </div>
+                    `;
+                  })}
+                </div>
+                <div className="flex-1 pt-4">
+                  ${SKILL_CATEGORIES.map((cat, ci) => html`
+                    <div key=${cat.name} className="mb-8">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="w-3 h-3 rounded-full" style=${{ background:['#1DC0AA','#E8A87C','#7EC8E3','#D4A5E5','#F0C75E'][ci] }}></span>
+                        <h3 className="text-white font-display font-700 text-sm uppercase tracking-wider">${cat.name}</h3>
+                      </div>
+                      <p className="text-gray-500 text-sm leading-relaxed pl-5">
+                        ${ci === 0 && 'Building responsive, interactive user interfaces with modern component-based architecture and utility-first CSS.'}
+                        ${ci === 1 && 'Server-side logic, API endpoints, authentication flows and integration between systems.'}
+                        ${ci === 2 && 'Relational data modeling, query optimization and application data management with Prisma ORM.'}
+                        ${ci === 3 && 'Linux server setup, Nginx configuration, firewall rules, DNS management and SSL implementation.'}
+                        ${ci === 4 && 'Build processes, process management, containerization and the full path from code to running application.'}
+                      </p>
+                    </div>
+                  `)}
+                </div>
+              </div>
+
+              <!-- 移动端：分类药丸 -->
+              <div className="skill-pills-mobile space-y-6">
+                ${SKILL_CATEGORIES.map((cat, ci) => html`
+                  <div key=${cat.name}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="w-2.5 h-2.5 rounded-full" style=${{ background:['#1DC0AA','#E8A87C','#7EC8E3','#D4A5E5','#F0C75E'][ci] }}></span>
+                      <h3 className="text-white font-display font-700 text-xs uppercase tracking-wider">${cat.name}</h3>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      ${cat.skills.map(s => html`
+                        <span key=${s} className="px-3 py-1.5 text-xs font-medium text-gray-300 border border-white/10 rounded-full bg-white/[0.03]">
+                          ${s}
+                        </span>
+                      `)}
+                    </div>
+                  </div>
+                `)}
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 项目
+    // ========================================
+    function ProjectCard({ project, index }) {
+      const [ref, vis] = useInView({ threshold:0.15 });
+      const dir = index % 2 === 0 ? 'reveal-left' : 'reveal-right';
+      return html`
+        <div ref=${ref} className=${dir + ' ' + (vis ? 'visible' : '')} style=${{ transitionDelay:'0.1s' }}>
+          <article className="project-card rounded-2xl border border-white/5 bg-sf-800/50 overflow-hidden">
+            <!-- 项目图片区 -->
+            <div className="relative h-48 md:h-56 overflow-hidden bg-sf-700 flex items-center justify-center">
+              <div className="project-img absolute inset-0" style=${{ background:'linear-gradient(135deg,' + project.color + '15,' + project.color + '05)' }}></div>
+              <div className="relative text-center">
+                <span className="text-5xl md:text-6xl font-display font-800 opacity-10" style=${{ color:project.color }}>${project.title.charAt(0)}</span>
+              </div>
+              ${project.featured && html`
+                <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold bg-tl/90 text-white rounded-full">Featured</span>
+              `}
+              ${project.private && html`
+                <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold bg-yellow-500/90 text-black rounded-full">Private Source</span>
+              `}
+            </div>
+            <!-- 内容区 -->
+            <div className="p-6 md:p-8">
+              <p className="text-tl text-xs font-semibold tracking-wider uppercase mb-2">${project.category}</p>
+              <h3 className="font-display font-700 text-xl md:text-2xl text-white mb-3">${project.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">${project.description}</p>
+              ${project.note && html`<p className="text-yellow-500/80 text-xs mb-4 leading-relaxed"><i className="fas fa-info-circle mr-1"></i>${project.note}</p>`}
+              <!-- 技术栈标签 -->
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                ${project.stack.map(t => html`<span key=${t} className="px-2.5 py-1 text-[11px] font-medium text-gray-400 border border-white/8 rounded-md bg-white/[0.02]">${t}</span>`)}
+              </div>
+              <!-- 基础设施说明 -->
+              <p className="text-gray-500 text-xs leading-relaxed mb-5 border-l-2 border-tl/30 pl-3">${project.infra}</p>
+              <!-- 操作按钮 -->
+              <div className="flex gap-3">
+                ${project.liveUrl && html`
+                  <a href=${project.liveUrl} target="_blank" rel="noopener noreferrer"
+                     className="px-5 py-2 bg-tl/10 border border-tl/30 text-tl text-sm font-semibold rounded-lg hover:bg-tl/20 transition-colors">
+                    View Live <i className="fas fa-external-link-alt ml-1 text-xs"></i>
+                  </a>
+                `}
+                ${!project.liveUrl && !project.private && html`
+                  <span className="px-5 py-2 text-gray-600 text-sm font-medium border border-white/5 rounded-lg">Not publicly accessible</span>
+                `}
+                ${project.private && html`
+                  <span className="px-5 py-2 text-gray-500 text-sm font-medium border border-white/5 rounded-lg">Demo available on request</span>
+                `}
+              </div>
+            </div>
+          </article>
+        </div>
+      `;
+    }
+
+    function Projects() {
+      return html`
+        <section id="projects" className="py-24 px-6">
+          <div className="max-w-4xl mx-auto">
+            <${SectionHeading} eyebrow="Selected Work" title="Real Projects, Real Deployments" subtitle="Projects across business websites, full-stack applications, management systems and infrastructure." />
+            <div className="space-y-12">
+              ${PROJECTS.map((p, i) => html`<${ProjectCard} key=${p.title} project=${p} index=${i} />`)}
+            </div>
+            <!-- 部署总结 -->
+            <div className="mt-16 text-center reveal" data-reveal>
+              <p className="text-gray-500 text-sm">Built locally. Deployed globally. Maintained in production.</p>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 基础设施
+    // ========================================
+    function Infrastructure() {
+      const [ref, vis] = useInView();
+      return html`
+        <section id="infrastructure" className="py-24 px-6 bg-gradient-to-b from-transparent via-tl-soft to-transparent">
+          <div className="max-w-6xl mx-auto">
+            <${SectionHeading} eyebrow="Beyond the Application" title="From Code to Production" subtitle="Applications need somewhere reliable to run. Production deployment has involved configuring Linux VPS environments, managing applications, setting up Nginx, configuring domains and DNS, implementing SSL certificates, working with Cloudflare, managing firewall rules and troubleshooting live applications." />
+
+            <div ref=${ref} className="flex flex-col md:flex-row gap-12 items-start">
+              <!-- 流程图 -->
+              <div className="w-full md:w-72 flex-shrink-0">
+                <div className="flex flex-col items-center">
+                  ${INFRA_NODES.map((node, i) => html`
+                    <${React.Fragment} key=${node.label}>
+                      <div className=${'infra-node flex items-center gap-3 w-full px-4 py-3 rounded-xl border border-white/5 bg-sf-800/50 hover:border-tl/30 transition-colors ' + (vis ? 'in-view' : '')}
+                           style=${{ '--nd': i * 0.12 + 's' }}>
+                        <div className="w-9 h-9 rounded-lg bg-tl/10 flex items-center justify-center flex-shrink-0">
+                          <i className=${'fas ' + node.icon + ' text-tl text-sm'}></i>
+                        </div>
+                        <div>
+                          <p className="text-white text-sm font-semibold">${node.label}</p>
+                          <p className="text-gray-500 text-xs">${node.desc}</p>
+                        </div>
+                      </div>
+                      ${i < INFRA_NODES.length - 1 && html`
+                        <div className="flow-line my-1" style=${{ '--fld': i * 0.12 + 0.1 + 's' }}></div>
+                      `}
+                    <//>
+                  `)}
+                </div>
+              </div>
+
+              <!-- 描述内容 -->
+              <div className="flex-1 pt-2">
+                <h3 className="font-display font-700 text-lg text-white mb-4">The Deployment Story</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Most developer portfolios stop at "I built this with React." The difference here is that each project includes the full path to production — because an application that only runs locally is incomplete.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  ${[
+                    ['fa-linux','Linux VPS','Ubuntu servers configured and secured'],
+                    ['fa-terminal','SSH Management','Remote access and server control'],
+                    ['fa-shield-halved','Nginx','Reverse proxy and static serving'],
+                    ['fa-lock','SSL / HTTPS','Certificates for encrypted traffic'],
+                    ['fa-globe','DNS Configuration','Domains pointed and managed'],
+                    ['fa-cloud','Cloudflare','CDN, DNS and security proxy'],
+                    ['fa-fire','UFW Firewall','Server access rules and security'],
+                    ['fa-rotate','PM2','Node.js process management']
+                  ].map(([icon, title, desc], i) => html`
+                    <div key=${title} className="flex items-start gap-3 p-3 rounded-lg border border-white/5 bg-white/[0.01]">
+                      <i className=${'fas ' + icon + ' text-tl/60 text-xs mt-1'}></i>
+                      <div>
+                        <p className="text-white text-xs font-semibold">${title}</p>
+                        <p className="text-gray-500 text-[11px]">${desc}</p>
+                      </div>
+                    </div>
+                  `)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 服务
+    // ========================================
+    function Services() {
+      const [ref, vis] = useInView();
+      return html`
+        <section id="services" className="py-24 px-6">
+          <div className="max-w-6xl mx-auto">
+            <${SectionHeading} eyebrow="What Can Be Built" title="Services" subtitle="From a single-page business website to a full-stack application with production deployment, each service covers a specific part of the development lifecycle." />
+            <div ref=${ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              ${SERVICES.map((s, i) => html`
+                <div key=${s.title}
+                     className=${'service-card p-5 rounded-xl border border-white/5 bg-sf-800/30 reveal-scale ' + (vis ? 'visible' : '')}
+                     style=${{ transitionDelay: i * 0.06 + 's' }}>
+                  <div className="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4">
+                    <i className=${'fas ' + s.icon + ' text-tl'}></i>
+                  </div>
+                  <h3 className="text-white font-display font-700 text-sm mb-2">${s.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">${s.desc}</p>
+                </div>
+              `)}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 开发流程
+    // ========================================
+    function DevApproach() {
+      const [ref, vis] = useInView();
+      return html`
+        <section className="py-24 px-6 border-y border-white/5">
+          <div className="max-w-5xl mx-auto">
+            <${SectionHeading} eyebrow="How It Comes to Life" title="Development Approach" subtitle="You don't need to figure out how development works. There's a process." />
+            <div ref=${ref} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              ${PROCESS_STEPS.map((step, i) => html`
+                <div key=${step.num} className=${'reveal text-center p-5 rounded-xl border border-white/5 bg-white/[0.02] hover:border-tl/20 transition-colors ' + (vis ? 'visible' : '')}
+                     style=${{ transitionDelay: i * 0.1 + 's' }}>
+                  <span className="text-tl/30 font-display font-800 text-3xl block mb-2">${step.num}</span>
+                  <h3 className="text-white font-display font-700 text-sm mb-1">${step.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">${step.desc}</p>
+                </div>
+              `)}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 为什么选择 Martin
+    // ========================================
+    function WhyMe() {
+      const [ref, vis] = useInView();
+      return html`
+        <section className="py-24 px-6 bg-gradient-to-b from-transparent via-tl-soft to-transparent">
+          <div className="max-w-5xl mx-auto">
+            <${SectionHeading} eyebrow="Why Work With Martin" title="Not Just Another Developer Portfolio" />
+            <div ref=${ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              ${WHY_ITEMS.map((item, i) => html`
+                <div key=${item.title} className=${'reveal p-6 rounded-xl border border-white/5 bg-sf-800/30 hover:border-tl/20 transition-colors ' + (vis ? 'visible' : '')}
+                     style=${{ transitionDelay: i * 0.08 + 's' }}>
+                  <div className="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4">
+                    <i className=${'fas ' + item.icon + ' text-tl'}></i>
+                  </div>
+                  <h3 className="text-white font-display font-700 text-sm mb-2">${item.title}</h3>
+                  <p className="text-gray-400 text-xs leading-relaxed">${item.desc}</p>
+                </div>
+              `)}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 联系
+    // ========================================
+    function Contact() {
+      const [ref, vis] = useInView();
+      const [status, setStatus] = useState('');
+      const [sending, setSending] = useState(false);
+      const formRef = useRef(null);
+
+      const handleSubmit = useCallback(async (e) => {
+        e.preventDefault();
+        setSending(true);
+        setStatus('Sending message...');
+        try {
+          const res = await fetch('https://formspree.io/f/mrekyprd', {
+            method:'POST',
+            body: new FormData(formRef.current),
+            headers: { 'Accept':'application/json' }
+          });
+          if (res.ok) {
+            setStatus('Message sent successfully.');
+            formRef.current.reset();
+          } else {
+            setStatus('Something went wrong. Please try again.');
+          }
+        } catch {
+          setStatus('Network error. Please try again.');
+        }
+        setSending(false);
+      }, []);
+
+      const serviceTypes = ['Website','Full-Stack Application','API / Backend','Database System','Linux / Server Deployment','Maintenance / Troubleshooting','Other'];
+
+      return html`
+        <section id="contact" className="py-24 px-6">
+          <div className="max-w-3xl mx-auto">
+            <${SectionHeading} eyebrow="Get in Touch" title="Have a Project in Mind?" subtitle="Whether you need a business website, a full-stack application, a database-backed system or help getting an existing project onto a production server, let's discuss what needs to be built." />
+
+            <!-- 服务类型标签 -->
+            <div ref=${ref} className=${'flex flex-wrap justify-center gap-2 mb-10 reveal ' + (vis ? 'visible' : '')}>
+              ${serviceTypes.map(s => html`
+                <span key=${s} className="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full bg-white/[0.02]">${s}</span>
+              `)}
+            </div>
+
+            <form ref=${formRef} onSubmit=${handleSubmit} className="space-y-5 reveal" style=${{ transitionDelay:'0.2s' }}>
+              <div className="grid sm:grid-cols-2 gap-5">
+                <input type="text" name="name" placeholder="Your Name" required
+                       className="form-input w-full px-4 py-3 bg-sf-800/50 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" />
+                <input type="email" name="email" placeholder="Your Email" required
+                       className="form-input w-full px-4 py-3 bg-sf-800/50 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" />
+              </div>
+              <div className="grid sm:grid-cols-2 gap-5">
+                <select name="service_type"
+                        className="form-input w-full px-4 py-3 bg-sf-800/50 border border-white/10 rounded-lg text-gray-400 text-sm outline-none appearance-none cursor-pointer"
+                        style=${{ backgroundImage:"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E\")", backgroundRepeat:'no-repeat', backgroundPosition:'right 1rem center' }}>
+                  <option value="" disabled selected>Service Type</option>
+                  ${serviceTypes.map(s => html`<option key=${s} value=${s} style=${{ background:'#1C1C1C' }}>${s}</option>`)}
+                </select>
+                <input type="text" name="subject" placeholder="Subject" required
+                       className="form-input w-full px-4 py-3 bg-sf-800/50 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none" />
+              </div>
+              <textarea name="message" placeholder="Your Message" required rows="6"
+                        className="form-input w-full px-4 py-3 bg-sf-800/50 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none resize-none"></textarea>
+              <div className="text-center">
+                <button type="submit" disabled=${sending}
+                        className="px-10 py-3.5 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 shadow-lg shadow-tl/15">
+                  ${sending ? 'Sending...' : 'Send Message'}
+                </button>
+              </div>
+              ${status && html`<p className=${'text-center text-sm ' + (status.includes('success') ? 'text-tl' : 'text-red-400')}>${status}</p>`}
+            </form>
+          </div>
+        </section>
+      `;
+    }
+
+    // ========================================
+    // 页脚
+    // ========================================
+    function Footer() {
+      const scrollToTop = useCallback(() => window.scrollTo({ top:0, behavior:'smooth' }), []);
+      return html`
+        <footer className="border-t border-white/5 bg-sf-900/80 backdrop-blur-sm">
+          <div className="max-w-6xl mx-auto px-6 py-16">
+            <div className="grid md:grid-cols-3 gap-12 items-start">
+              <!-- 身份 -->
+              <div>
+                <h2 className="font-display font-800 text-2xl text-white mb-2">Martin</h2>
+                <p className="text-tl text-xs font-semibold tracking-wider uppercase mb-3">Full-Stack Web Developer · Linux · Servers · Systems</p>
+                <p className="text-gray-500 text-sm leading-relaxed">Building web applications, business websites and production-ready systems from frontend to infrastructure.</p>
+              </div>
+              <!-- 导航 -->
+              <div>
+                <h3 className="text-white font-display font-700 text-sm mb-4">Navigation</h3>
+                <nav className="flex flex-col gap-2" aria-label="Footer navigation">
+                  ${NAV_LINKS.map(l => html`
+                    <a key=${l.href} href=${l.href} className="text-gray-500 text-sm hover:text-tl transition-colors w-fit">${l.label}</a>
+                  `)}
+                </nav>
+              </div>
+              <!-- 社交 -->
+              <div>
+                <h3 className="text-white font-display font-700 text-sm mb-4">Connect</h3>
+                <div className="flex gap-3">
+                  ${[
+                    ['fa-github','https://github.com/kimirry','GitHub'],
+                    ['fa-linkedin-in','#','LinkedIn'],
+                    ['fa-facebook-f','#','Facebook'],
+                    ['fa-twitter','#','Twitter']
+                  ].map(([icon, href, label]) => html`
+                    <a key=${label} href=${href} target="_blank" rel="noopener noreferrer" aria-label=${label}
+                       className="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors">
+                      <i className=${'fab ' + icon + ' text-sm'}></i>
+                    </a>
+                  `)}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 底栏 -->
+          <div className="border-t border-white/5">
+            <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <p className="text-gray-600 text-xs">&copy; 2025 Martin. All rights reserved.</p>
+              <button onClick=${scrollToTop} className="text-tl text-xs font-medium hover:underline flex items-center gap-1 bg-transparent border-none cursor-pointer">
+                Back to Top <i className="fas fa-arrow-up text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </footer>
+      `;
+    }
+
+    // ========================================
+    // 主应用
+    // ========================================
+    function App() {
+      // 全局滚动揭示初始化
+      useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              observer.unobserve(e.target);
+            }
+          });
+        }, { threshold:0.08 });
+
+        // 延迟一帧以确保 DOM 已渲染
+        requestAnimationFrame(() => {
+          document.querySelectorAll('.reveal:not(.visible), .reveal-left:not(.visible), .reveal-right:not(.visible), .reveal-scale:not(.visible)').forEach(el => {
+            observer.observe(el);
+          });
+        });
+
+        return () => observer.disconnect();
+      }, []);
+
+      return html`
+        <${Navbar} />
+        <main>
+          <${Hero} />
+          <${CredibilityStrip} />
+          <${About} />
+          <${TechStack} />
+          <${Projects} />
+          <${Infrastructure} />
+          <${Services} />
+          <${DevApproach} />
+          <${WhyMe} />
+          <${Contact} />
+        </main>
+        <${Footer} />
+      `;
+    }
+
+    // ========================================
+    // 渲染
+    // ========================================
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(html`<${App} />`);
   </script>
 
+  <!-- Google Analytics -->
+  <script>
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C';
+      s.async = true;
+      document.head.appendChild(s);
+      s.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E2MHNFZD3C');
+      };
+    });
+  </script>
 </body>
 </html>
