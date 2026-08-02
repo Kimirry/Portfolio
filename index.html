@@ -34,6 +34,10 @@
 
     .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
     .rv.v{opacity:1;transform:translateY(0)}
+    .rv-l{opacity:0;transform:translateX(-40px);transition:opacity .7s ease-out,transform .7s ease-out}
+    .rv-l.v{opacity:1;transform:translateX(0)}
+    .rv-r{opacity:0;transform:translateX(40px);transition:opacity .7s ease-out,transform .7s ease-out}
+    .rv-r.v{opacity:1;transform:translateX(0)}
     .rv-s{opacity:0;transform:scale(.92);transition:opacity .6s ease-out,transform .6s ease-out}
     .rv-s.v{opacity:1;transform:scale(1)}
 
@@ -74,9 +78,11 @@
     .fi{transition:border-color .3s ease,box-shadow .3s ease}
     .fi:focus{border-color:#13DDC2;box-shadow:0 0 0 3px rgba(29,192,170,.1)}
 
+    /* Skill grid: 1 col mobile, 2 col tablet+ */
     .sk-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
     @media(min-width:640px){.sk-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
 
+    /* Project grid: 1 col mobile, 2 col desktop */
     .proj-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
     @media(min-width:1024px){.proj-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
 
@@ -90,10 +96,11 @@
     ::-webkit-scrollbar-thumb:hover{background:#2E2E2E}
 
     @media(prefers-reduced-motion:reduce){
-      .rv,.rv-s{opacity:1;transform:none;transition:none}
+      .rv,.rv-l,.rv-r,.rv-s{opacity:1;transform:none;transition:none}
       .wi{opacity:1;animation:none!important}
       .in{opacity:1;animation:none!important}
-      .pf{animation:none}.fa-pulse{animation:none}
+      .pf{animation:none}
+      .fa-pulse{animation:none}
       .fl{height:100%!important;animation:none!important}
       .wa-float{animation:none}
     }
@@ -115,30 +122,30 @@
         <a href="#infrastructure" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Infrastructure</a>
         <a href="#services" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a>
         <a href="#contact" class="nl text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
-        <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" style="color:#4ade80" class="hover:opacity-80 transition-opacity" aria-label="WhatsApp"><i class="fab fa-whatsapp text-lg"></i></a>
-        <a href="#contact" class="ml-1 px-5 py-2 text-white text-sm font-semibold rounded-lg transition-colors" style="background:#1DC0AA" onmouseover="this.style.background='#13DDC2'" onmouseout="this.style.background='#1DC0AA'">Let's Talk <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+        <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 transition-colors" aria-label="WhatsApp"><i class="fab fa-whatsapp text-lg"></i></a>
+        <a href="#contact" class="ml-1 px-5 py-2 bg-tl text-white text-sm font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
       </div>
       <div class="flex items-center gap-3 lg:hidden">
-        <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" style="color:#4ade80" class="p-1" aria-label="WhatsApp"><i class="fab fa-whatsapp text-xl"></i></a>
-        <button id="menu-btn" class="text-white text-xl p-2 focus:outline-none focus-visible:ring-2 rounded" style="--tw-ring-color:#1DC0AA" aria-label="Toggle menu" aria-expanded="false">
+        <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 transition-colors p-1" aria-label="WhatsApp"><i class="fab fa-whatsapp text-xl"></i></a>
+        <button id="menu-btn" class="text-white text-xl p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-tl rounded" aria-label="Toggle menu" aria-expanded="false">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="mm fixed inset-0 top-0 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 lg:hidden" style="background:rgba(8,8,8,0.98)">
-      <a href="#about" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-white transition-colors" style="color:#e5e7eb">About</a>
-      <a href="#expertise" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-white transition-colors" style="color:#e5e7eb">Expertise</a>
-      <a href="#projects" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-white transition-colors" style="color:#e5e7eb">Projects</a>
-      <a href="#infrastructure" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-white transition-colors" style="color:#e5e7eb">Infrastructure</a>
-      <a href="#services" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-white transition-colors" style="color:#e5e7eb">Services</a>
-      <a href="#contact" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-white transition-colors" style="color:#e5e7eb">Contact</a>
-      <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="mob-link text-2xl font-semibold" style="color:#4ade80"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</a>
-      <a href="#contact" class="mob-link mt-4 px-8 py-3 text-white font-semibold rounded-lg transition-colors" style="background:#1DC0AA">Let's Talk</a>
+    <div id="mobile-menu" class="mm fixed inset-0 top-0 bg-sf-900/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 lg:hidden">
+      <a href="#about" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">About</a>
+      <a href="#expertise" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Expertise</a>
+      <a href="#projects" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Projects</a>
+      <a href="#infrastructure" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Infrastructure</a>
+      <a href="#services" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Services</a>
+      <a href="#contact" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Contact</a>
+      <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="mob-link text-2xl text-green-400 hover:text-green-300 transition-colors font-semibold"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</a>
+      <a href="#contact" class="mob-link mt-4 px-8 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk</a>
     </div>
   </nav>
 
   <!-- ===== FLOATING WHATSAPP ===== -->
-  <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="wa-float flex items-center justify-center text-white text-2xl shadow-lg transition-transform duration-300" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:50;width:3.5rem;height:3.5rem;border-radius:50%;background:#22c55e">
+  <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg transition-transform duration-300" style="position:fixed">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -148,66 +155,66 @@
     <section class="min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6" id="hero">
       <div class="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
         <div class="flex-1 text-center lg:text-left rv" style="transition-delay:0.15s">
-          <p class="text-xs md:text-sm font-semibold tracking-widest uppercase mb-5" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">FULL-STACK WEB DEVELOPMENT · LINUX · SERVERS · DEPLOYMENT</p>
-          <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-5" style="line-height:1.15">
-            Building Full-Stack Web Systems — <span style="color:#1DC0AA">From Interface to Infrastructure.</span>
+          <p class="text-tl text-xs md:text-sm font-semibold tracking-widest uppercase mb-5 font-body">FULL-STACK WEB DEVELOPMENT · LINUX · SERVERS · DEPLOYMENT</p>
+          <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] text-white leading-[1.15] mb-5">
+            Building Full-Stack Web Systems — <span class="text-tl">From Interface to Infrastructure.</span>
           </h1>
-          <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-3 max-w-xl mx-auto lg:mx-0" style="font-family:'DM Sans',sans-serif">Modern web applications, business websites, APIs, databases and Linux-powered deployments — designed, developed and taken to production.</p>
-          <p class="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0" style="font-family:'DM Sans',sans-serif">From responsive client-facing interfaces to backend systems and production infrastructure, the focus is on building practical software that works beyond the development environment.</p>
+          <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-3 max-w-xl mx-auto lg:mx-0 font-body">Modern web applications, business websites, APIs, databases and Linux-powered deployments — designed, developed and taken to production.</p>
+          <p class="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 font-body">From responsive client-facing interfaces to backend systems and production infrastructure, the focus is on building practical software that works beyond the development environment.</p>
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-            <a href="#projects" class="px-7 py-3 text-white font-semibold rounded-lg transition-all hover:-translate-y-0.5" style="background:#1DC0AA;box-shadow:0 10px 30px rgba(29,192,170,0.2);font-family:'DM Sans',sans-serif">View Projects</a>
-            <a href="#contact" class="px-7 py-3 font-semibold rounded-lg transition-all hover:-translate-y-0.5" style="color:#1DC0AA;border:1px solid rgba(29,192,170,0.6);font-family:'DM Sans',sans-serif">Let's Work Together</a>
-            <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer" class="p-3 text-gray-500 hover:text-white transition-colors" aria-label="GitHub Profile"><i class="fab fa-github text-xl"></i></a>
+            <a href="#projects" class="px-7 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 shadow-lg shadow-tl/20 font-body">View Projects</a>
+            <a href="#contact" class="px-7 py-3 border border-tl/60 text-tl font-semibold rounded-lg hover:bg-tl/10 hover:border-tl transition-all hover:-translate-y-0.5 font-body">Let's Work Together</a>
+            <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer" class="p-3 text-gray-500 hover:text-tl transition-colors" aria-label="GitHub Profile"><i class="fab fa-github text-xl"></i></a>
           </div>
         </div>
         <div class="flex-shrink-0 rv-s" style="transition-delay:0.4s">
-          <div class="pf w-52 h-52 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden" style="border:2px solid rgba(29,192,170,0.3);box-shadow:0 0 40px rgba(29,192,170,0.2),0 0 80px rgba(29,192,170,0.08)">
-            <img src="images/school.webp" alt="litchdevOps" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#06968A,#1DC0AA)'">
+          <div class="pf w-52 h-52 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-tl/30" style="box-shadow:0 0 40px rgba(29,192,170,0.2),0 0 80px rgba(29,192,170,0.08)">
+            <img src="images/school.webp" alt="litchdevOps - Full-Stack Developer" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#06968A,#1DC0AA)'">
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===== CREDIBILITY STRIP ===== -->
-    <section class="py-14 sm:py-16 px-4 sm:px-6" style="border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)" aria-label="Core capabilities">
+    <section class="py-14 sm:py-16 px-4 sm:px-6 border-y border-white/5" aria-label="Core capabilities">
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 mb-10">
-          <div class="rv text-center p-3 sm:p-4 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0s">
-            <i class="fas fa-layer-group text-lg mb-2" style="color:#1DC0AA"></i>
+          <div class="rv text-center p-3 sm:p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0s">
+            <i class="fas fa-layer-group text-tl text-lg mb-2"></i>
             <p class="text-white font-display font-bold text-xs sm:text-sm">FULL-STACK</p>
             <p class="text-gray-500 text-[10px] sm:text-xs mt-1">Development</p>
           </div>
-          <div class="rv text-center p-3 sm:p-4 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.08s">
-            <i class="fas fa-server text-lg mb-2" style="color:#1DC0AA"></i>
+          <div class="rv text-center p-3 sm:p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.08s">
+            <i class="fas fa-server text-tl text-lg mb-2"></i>
             <p class="text-white font-display font-bold text-xs sm:text-sm">LINUX</p>
             <p class="text-gray-500 text-[10px] sm:text-xs mt-1">Server Administration</p>
           </div>
-          <div class="rv text-center p-3 sm:p-4 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.16s">
-            <i class="fas fa-database text-lg mb-2" style="color:#1DC0AA"></i>
+          <div class="rv text-center p-3 sm:p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.16s">
+            <i class="fas fa-database text-tl text-lg mb-2"></i>
             <p class="text-white font-display font-bold text-xs sm:text-sm">DATABASES</p>
             <p class="text-gray-500 text-[10px] sm:text-xs mt-1">MySQL / Prisma</p>
           </div>
-          <div class="rv text-center p-3 sm:p-4 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.24s">
-            <i class="fas fa-rocket text-lg mb-2" style="color:#1DC0AA"></i>
+          <div class="rv text-center p-3 sm:p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.24s">
+            <i class="fas fa-rocket text-tl text-lg mb-2"></i>
             <p class="text-white font-display font-bold text-xs sm:text-sm">DEPLOYMENT</p>
             <p class="text-gray-500 text-[10px] sm:text-xs mt-1">Nginx / SSL / DNS</p>
           </div>
-          <div class="rv text-center p-3 sm:p-4 rounded-xl transition-colors col-span-2 md:col-span-1" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.32s">
-            <i class="fas fa-code-branch text-lg mb-2" style="color:#1DC0AA"></i>
+          <div class="rv text-center p-3 sm:p-4 rounded-xl border border-white/5 hover:border-tl/30 transition-colors col-span-2 md:col-span-1" style="background:rgba(255,255,255,0.02);transition-delay:0.32s">
+            <i class="fas fa-code-branch text-tl text-lg mb-2"></i>
             <p class="text-white font-display font-bold text-xs sm:text-sm">GIT</p>
             <p class="text-gray-500 text-[10px] sm:text-xs mt-1">GitHub / Version Control</p>
           </div>
         </div>
         <div class="flex items-center justify-center gap-2 md:gap-4 flex-wrap">
-          <span class="text-xs md:text-sm font-semibold tracking-wider" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Frontend</span>
-          <i class="fas fa-chevron-right text-xs fa-pulse" style="color:rgba(29,192,170,0.4);animation-delay:0s"></i>
-          <span class="text-xs md:text-sm font-semibold tracking-wider" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Backend</span>
-          <i class="fas fa-chevron-right text-xs fa-pulse" style="color:rgba(29,192,170,0.4);animation-delay:0.3s"></i>
-          <span class="text-xs md:text-sm font-semibold tracking-wider" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Database</span>
-          <i class="fas fa-chevron-right text-xs fa-pulse" style="color:rgba(29,192,170,0.4);animation-delay:0.6s"></i>
-          <span class="text-xs md:text-sm font-semibold tracking-wider" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Server</span>
-          <i class="fas fa-chevron-right text-xs fa-pulse" style="color:rgba(29,192,170,0.4);animation-delay:0.9s"></i>
-          <span class="text-xs md:text-sm font-semibold tracking-wider" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Production</span>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider font-body">Frontend</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa-pulse" style="animation-delay:0s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider font-body">Backend</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa-pulse" style="animation-delay:0.3s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider font-body">Database</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa-pulse" style="animation-delay:0.6s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider font-body">Server</span>
+          <i class="fas fa-chevron-right text-tl/40 text-xs fa-pulse" style="animation-delay:0.9s"></i>
+          <span class="text-tl text-xs md:text-sm font-semibold tracking-wider font-body">Production</span>
         </div>
       </div>
     </section>
@@ -216,16 +223,16 @@
     <section id="about" class="py-20 md:py-24 px-4 sm:px-6">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">About the Developer</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">About the Developer</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Building Beyond the Browser</h2>
         </div>
         <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start rv" style="transition-delay:0.2s">
           <div>
-            <p class="text-gray-300 leading-relaxed mb-4" style="font-family:'DM Sans',sans-serif">Full-stack web development sits at the intersection of application development, databases and infrastructure. The work isn't limited to designing interfaces — it extends through the entire stack to where the application actually runs.</p>
-            <p class="text-gray-400 leading-relaxed" style="font-family:'DM Sans',sans-serif">A strong interest in Linux and server infrastructure makes the deployment side of development just as important as the application itself. Every project is approached with the question: <span style="color:#1DC0AA;font-weight:500">how does this work in production?</span></p>
+            <p class="text-gray-300 leading-relaxed mb-4 font-body">Full-stack web development sits at the intersection of application development, databases and infrastructure. The work isn't limited to designing interfaces — it extends through the entire stack to where the application actually runs.</p>
+            <p class="text-gray-400 leading-relaxed font-body">A strong interest in Linux and server infrastructure makes the deployment side of development just as important as the application itself. Every project is approached with the question: <span class="text-tl font-medium">how does this work in production?</span></p>
           </div>
           <div>
-            <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-semibold" style="font-family:'DM Sans',sans-serif">Capabilities Across the Stack</p>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-semibold font-body">Capabilities Across the Stack</p>
             <div class="flex flex-wrap gap-2" id="cap-pills"></div>
           </div>
         </div>
@@ -236,9 +243,9 @@
     <section id="expertise" class="py-20 md:py-24 px-4 sm:px-6" style="background:linear-gradient(to bottom,transparent,rgba(29,192,170,0.03),transparent)">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Technical Expertise</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">Technical Expertise</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">The Complete Stack</h2>
-          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="font-family:'DM Sans',sans-serif">Full-stack development covers considerably more than frontend interfaces. From React components and APIs to databases and Linux servers, the stack covers the complete lifecycle of a web application.</p>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-body">Full-stack development covers considerably more than frontend interfaces. From React components and APIs to databases and Linux servers, the stack covers the complete lifecycle of a web application.</p>
         </div>
         <div id="skill-grid" class="sk-grid"></div>
       </div>
@@ -248,12 +255,12 @@
     <section id="projects" class="py-20 md:py-24 px-4 sm:px-6">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Selected Work</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">Selected Work</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Real Projects, Real Deployments</h2>
-          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="font-family:'DM Sans',sans-serif">Projects across business websites, full-stack applications, management systems and infrastructure.</p>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-body">Projects across business websites, full-stack applications, management systems and infrastructure.</p>
         </div>
         <div class="proj-grid" id="project-list"></div>
-        <div class="mt-14 md:mt-16 text-center"><p class="text-gray-500 text-sm rv" style="font-family:'DM Sans',sans-serif">Built locally. Deployed globally. Maintained in production.</p></div>
+        <div class="mt-14 md:mt-16 text-center"><p class="text-gray-500 text-sm rv font-body">Built locally. Deployed globally. Maintained in production.</p></div>
       </div>
     </section>
 
@@ -261,15 +268,15 @@
     <section id="infrastructure" class="py-20 md:py-24 px-4 sm:px-6" style="background:linear-gradient(to bottom,transparent,rgba(29,192,170,0.03),transparent)">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Beyond the Application</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">Beyond the Application</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">From Code to Production</h2>
-          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="font-family:'DM Sans',sans-serif">Applications need somewhere reliable to run. Production deployment has involved configuring Linux VPS environments, managing applications, setting up Nginx, configuring domains and DNS, implementing SSL certificates, working with Cloudflare, managing firewall rules and troubleshooting live applications.</p>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-body">Applications need somewhere reliable to run. Production deployment has involved configuring Linux VPS environments, managing applications, setting up Nginx, configuring domains and DNS, implementing SSL certificates, working with Cloudflare, managing firewall rules and troubleshooting live applications.</p>
         </div>
         <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
           <div class="w-full md:w-72 flex-shrink-0" id="infra-flow"></div>
           <div class="flex-1 pt-2 rv" style="transition-delay:0.3s">
             <h3 class="font-display font-bold text-lg text-white mb-4">The Deployment Story</h3>
-            <p class="text-gray-400 text-sm leading-relaxed mb-6" style="font-family:'DM Sans',sans-serif">Most developer portfolios stop at "I built this with React." The difference here is that each project includes the full path to production — because an application that only runs locally is incomplete.</p>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6 font-body">Most developer portfolios stop at "I built this with React." The difference here is that each project includes the full path to production — because an application that only runs locally is incomplete.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" id="infra-grid"></div>
           </div>
         </div>
@@ -280,52 +287,52 @@
     <section id="services" class="py-20 md:py-24 px-4 sm:px-6">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">What Can Be Built</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">What Can Be Built</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Services</h2>
-          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="font-family:'DM Sans',sans-serif">From a single-page business website to a full-stack application with production deployment, each service covers a specific part of the development lifecycle.</p>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-body">From a single-page business website to a full-stack application with production deployment, each service covers a specific part of the development lifecycle.</p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" id="service-list"></div>
       </div>
     </section>
 
     <!-- ===== DEVELOPMENT APPROACH ===== -->
-    <section class="py-20 md:py-24 px-4 sm:px-6" style="border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
+    <section class="py-20 md:py-24 px-4 sm:px-6 border-y border-white/5">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">How It Comes to Life</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">How It Comes to Life</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Development Approach</h2>
-          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="font-family:'DM Sans',sans-serif">You don't need to figure out how development works. There's a process.</p>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-body">You don't need to figure out how development works. There's a process.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-          <div class="rv text-center p-4 sm:p-5 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0s">
-            <span class="font-display font-bold text-3xl block mb-2" style="color:rgba(29,192,170,0.3)">01</span>
+          <div class="rv text-center p-4 sm:p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0s">
+            <span class="text-tl/30 font-display font-bold text-3xl block mb-2">01</span>
             <h3 class="text-white font-display font-bold text-sm mb-1">Discover</h3>
-            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Requirements and objectives</p>
+            <p class="text-gray-500 text-xs leading-relaxed font-body">Requirements and objectives</p>
           </div>
-          <div class="rv text-center p-4 sm:p-5 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.1s">
-            <span class="font-display font-bold text-3xl block mb-2" style="color:rgba(29,192,170,0.3)">02</span>
+          <div class="rv text-center p-4 sm:p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.1s">
+            <span class="text-tl/30 font-display font-bold text-3xl block mb-2">02</span>
             <h3 class="text-white font-display font-bold text-sm mb-1">Plan</h3>
-            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Architecture, pages, data and technology</p>
+            <p class="text-gray-500 text-xs leading-relaxed font-body">Architecture, pages, data and technology</p>
           </div>
-          <div class="rv text-center p-4 sm:p-5 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.2s">
-            <span class="font-display font-bold text-3xl block mb-2" style="color:rgba(29,192,170,0.3)">03</span>
+          <div class="rv text-center p-4 sm:p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.2s">
+            <span class="text-tl/30 font-display font-bold text-3xl block mb-2">03</span>
             <h3 class="text-white font-display font-bold text-sm mb-1">Build</h3>
-            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Frontend + backend + database</p>
+            <p class="text-gray-500 text-xs leading-relaxed font-body">Frontend + backend + database</p>
           </div>
-          <div class="rv text-center p-4 sm:p-5 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.3s">
-            <span class="font-display font-bold text-3xl block mb-2" style="color:rgba(29,192,170,0.3)">04</span>
+          <div class="rv text-center p-4 sm:p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.3s">
+            <span class="text-tl/30 font-display font-bold text-3xl block mb-2">04</span>
             <h3 class="text-white font-display font-bold text-sm mb-1">Test</h3>
-            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Responsive behaviour, functionality and integration</p>
+            <p class="text-gray-500 text-xs leading-relaxed font-body">Responsive behaviour, functionality and integration</p>
           </div>
-          <div class="rv text-center p-4 sm:p-5 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.4s">
-            <span class="font-display font-bold text-3xl block mb-2" style="color:rgba(29,192,170,0.3)">05</span>
+          <div class="rv text-center p-4 sm:p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.4s">
+            <span class="text-tl/30 font-display font-bold text-3xl block mb-2">05</span>
             <h3 class="text-white font-display font-bold text-sm mb-1">Deploy</h3>
-            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Linux VPS + Nginx + domain + SSL</p>
+            <p class="text-gray-500 text-xs leading-relaxed font-body">Linux VPS + Nginx + domain + SSL</p>
           </div>
-          <div class="rv text-center p-4 sm:p-5 rounded-xl transition-colors" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);transition-delay:0.5s">
-            <span class="font-display font-bold text-3xl block mb-2" style="color:rgba(29,192,170,0.3)">06</span>
+          <div class="rv text-center p-4 sm:p-5 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(255,255,255,0.02);transition-delay:0.5s">
+            <span class="text-tl/30 font-display font-bold text-3xl block mb-2">06</span>
             <h3 class="text-white font-display font-bold text-sm mb-1">Maintain</h3>
-            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Updates, fixes and improvements</p>
+            <p class="text-gray-500 text-xs leading-relaxed font-body">Updates, fixes and improvements</p>
           </div>
         </div>
       </div>
@@ -335,34 +342,34 @@
     <section class="py-20 md:py-24 px-4 sm:px-6" style="background:linear-gradient(to bottom,transparent,rgba(29,192,170,0.03),transparent)">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Why Work With litchdevOps</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">Why Work With litchdevOps</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Not Just Another Developer Portfolio</h2>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          <div class="rv p-5 sm:p-6 rounded-xl transition-colors" style="background:rgba(14,14,14,0.3);border:1px solid rgba(255,255,255,0.05);transition-delay:0s">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(29,192,170,0.1)"><i class="fas fa-cubes" style="color:#1DC0AA"></i></div>
+          <div class="rv p-5 sm:p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-cubes text-tl"></i></div>
             <h3 class="text-white font-display font-bold text-sm mb-2">Full-Stack Perspective</h3>
-            <p class="text-gray-400 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Frontend, backend, database and deployment are considered together rather than as isolated pieces.</p>
+            <p class="text-gray-400 text-xs leading-relaxed font-body">Frontend, backend, database and deployment are considered together rather than as isolated pieces.</p>
           </div>
-          <div class="rv p-5 sm:p-6 rounded-xl transition-colors" style="background:rgba(14,14,14,0.3);border:1px solid rgba(255,255,255,0.05);transition-delay:0.08s">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(29,192,170,0.1)"><i class="fas fa-terminal" style="color:#1DC0AA"></i></div>
+          <div class="rv p-5 sm:p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0.08s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-terminal text-tl"></i></div>
             <h3 class="text-white font-display font-bold text-sm mb-2">Comfortable with Linux</h3>
-            <p class="text-gray-400 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Server configuration, SSH, Nginx, domains and production troubleshooting are part of the workflow.</p>
+            <p class="text-gray-400 text-xs leading-relaxed font-body">Server configuration, SSH, Nginx, domains and production troubleshooting are part of the workflow.</p>
           </div>
-          <div class="rv p-5 sm:p-6 rounded-xl transition-colors" style="background:rgba(14,14,14,0.3);border:1px solid rgba(255,255,255,0.05);transition-delay:0.16s">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(29,192,170,0.1)"><i class="fas fa-cloud-arrow-up" style="color:#1DC0AA"></i></div>
+          <div class="rv p-5 sm:p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0.16s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-cloud-arrow-up text-tl"></i></div>
             <h3 class="text-white font-display font-bold text-sm mb-2">Real Deployment Experience</h3>
-            <p class="text-gray-400 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Multiple websites and applications have been taken from development environments to live production servers.</p>
+            <p class="text-gray-400 text-xs leading-relaxed font-body">Multiple websites and applications have been taken from development environments to live production servers.</p>
           </div>
-          <div class="rv p-5 sm:p-6 rounded-xl transition-colors" style="background:rgba(14,14,14,0.3);border:1px solid rgba(255,255,255,0.05);transition-delay:0.24s">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(29,192,170,0.1)"><i class="fas fa-magnifying-glass-chart" style="color:#1DC0AA"></i></div>
+          <div class="rv p-5 sm:p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors" style="background:rgba(14,14,14,0.3);transition-delay:0.24s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-magnifying-glass-chart text-tl"></i></div>
             <h3 class="text-white font-display font-bold text-sm mb-2">Practical Problem Solving</h3>
-            <p class="text-gray-400 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Bugs are investigated from the browser through the API, database and server rather than treating symptoms alone.</p>
+            <p class="text-gray-400 text-xs leading-relaxed font-body">Bugs are investigated from the browser through the API, database and server rather than treating symptoms alone.</p>
           </div>
-          <div class="rv p-5 sm:p-6 rounded-xl transition-colors sm:col-span-2 lg:col-span-2" style="background:rgba(14,14,14,0.3);border:1px solid rgba(255,255,255,0.05);transition-delay:0.32s">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(29,192,170,0.1)"><i class="fas fa-bullseye" style="color:#1DC0AA"></i></div>
+          <div class="rv p-5 sm:p-6 rounded-xl border border-white/5 hover:border-tl/20 transition-colors sm:col-span-2 lg:col-span-2" style="background:rgba(14,14,14,0.3);transition-delay:0.32s">
+            <div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas fa-bullseye text-tl"></i></div>
             <h3 class="text-white font-display font-bold text-sm mb-2">Built Around the Requirement</h3>
-            <p class="text-gray-400 text-xs leading-relaxed" style="font-family:'DM Sans',sans-serif">Projects are structured around what the business needs instead of forcing every project into the same template.</p>
+            <p class="text-gray-400 text-xs leading-relaxed font-body">Projects are structured around what the business needs instead of forcing every project into the same template.</p>
           </div>
         </div>
       </div>
@@ -372,26 +379,26 @@
     <section id="contact" class="py-20 md:py-24 px-4 sm:px-6">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12 md:mb-16 rv">
-          <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Get in Touch</p>
+          <p class="text-tl text-sm font-semibold tracking-widest uppercase mb-3 font-body">Get in Touch</p>
           <h2 class="font-display font-bold leading-tight text-2xl md:text-3xl lg:text-4xl text-white">Have a Project in Mind?</h2>
-          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="font-family:'DM Sans',sans-serif">Whether you need a business website, a full-stack application, a database-backed system or help getting an existing project onto a production server, let's discuss what needs to be built.</p>
+          <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-body">Whether you need a business website, a full-stack application, a database-backed system or help getting an existing project onto a production server, let's discuss what needs to be built.</p>
         </div>
         <div class="flex flex-wrap justify-center gap-2 mb-8 md:mb-10 rv">
-          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 rounded-full" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-family:'DM Sans',sans-serif">Website</span>
-          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 rounded-full" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-family:'DM Sans',sans-serif">Full-Stack Application</span>
-          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 rounded-full" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-family:'DM Sans',sans-serif">API / Backend</span>
-          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 rounded-full" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-family:'DM Sans',sans-serif">Database System</span>
-          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 rounded-full" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-family:'DM Sans',sans-serif">Linux / Server Deployment</span>
-          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 rounded-full" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-family:'DM Sans',sans-serif">Maintenance</span>
-          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 rounded-full" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-family:'DM Sans',sans-serif">Other</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full font-body" style="background:rgba(255,255,255,0.02)">Website</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full font-body" style="background:rgba(255,255,255,0.02)">Full-Stack Application</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full font-body" style="background:rgba(255,255,255,0.02)">API / Backend</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full font-body" style="background:rgba(255,255,255,0.02)">Database System</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full font-body" style="background:rgba(255,255,255,0.02)">Linux / Server Deployment</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full font-body" style="background:rgba(255,255,255,0.02)">Maintenance</span>
+          <span class="px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/8 rounded-full font-body" style="background:rgba(255,255,255,0.02)">Other</span>
         </div>
         <form id="contact-form" action="https://formspree.io/f/mrekyprd" method="POST" class="space-y-4 sm:space-y-5 rv" style="transition-delay:0.2s">
           <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
-            <input type="text" name="name" placeholder="Your Name" required class="fi w-full px-4 py-3 text-white text-sm placeholder-gray-600 outline-none" style="font-family:'DM Sans',sans-serif;border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;background:rgba(14,14,14,0.5)">
-            <input type="email" name="email" placeholder="Your Email" required class="fi w-full px-4 py-3 text-white text-sm placeholder-gray-600 outline-none" style="font-family:'DM Sans',sans-serif;border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;background:rgba(14,14,14,0.5)">
+            <input type="text" name="name" placeholder="Your Name" required class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none font-body" style="background:rgba(14,14,14,0.5)">
+            <input type="email" name="email" placeholder="Your Email" required class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none font-body" style="background:rgba(14,14,14,0.5)">
           </div>
           <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
-            <select name="service_type" class="fi w-full px-4 py-3 text-sm outline-none appearance-none cursor-pointer" style="font-family:'DM Sans',sans-serif;color:#9ca3af;border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;background:rgba(14,14,14,0.5);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 1rem center">
+            <select name="service_type" class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-gray-400 text-sm outline-none appearance-none cursor-pointer font-body" style="background:rgba(14,14,14,0.5);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 1rem center">
               <option value="" disabled selected>Service Type</option>
               <option value="Website" style="background:#1C1C1C">Website</option>
               <option value="Full-Stack Application" style="background:#1C1C1C">Full-Stack Application</option>
@@ -401,14 +408,14 @@
               <option value="Maintenance / Troubleshooting" style="background:#1C1C1C">Maintenance / Troubleshooting</option>
               <option value="Other" style="background:#1C1C1C">Other</option>
             </select>
-            <input type="text" name="subject" placeholder="Subject" required class="fi w-full px-4 py-3 text-white text-sm placeholder-gray-600 outline-none" style="font-family:'DM Sans',sans-serif;border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;background:rgba(14,14,14,0.5)">
+            <input type="text" name="subject" placeholder="Subject" required class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none font-body" style="background:rgba(14,14,14,0.5)">
           </div>
-          <textarea name="message" placeholder="Your Message" required rows="6" class="fi w-full px-4 py-3 text-white text-sm placeholder-gray-600 outline-none resize-none" style="font-family:'DM Sans',sans-serif;border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;background:rgba(14,14,14,0.5)"></textarea>
+          <textarea name="message" placeholder="Your Message" required rows="6" class="fi w-full px-4 py-3 border border-white/10 rounded-lg text-white text-sm placeholder-gray-600 outline-none resize-none font-body" style="background:rgba(14,14,14,0.5)"></textarea>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button type="submit" class="w-full sm:w-auto px-10 py-3.5 text-white font-semibold rounded-lg transition-all hover:-translate-y-0.5" style="background:#1DC0AA;box-shadow:0 10px 30px rgba(29,192,170,0.15);font-family:'DM Sans',sans-serif">Send Message</button>
-            <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 text-white font-semibold rounded-lg transition-all hover:-translate-y-0.5 text-center" style="background:rgba(34,197,94,0.9);box-shadow:0 10px 30px rgba(34,197,94,0.15);font-family:'DM Sans',sans-serif"><i class="fab fa-whatsapp mr-2"></i>WhatsApp Instead</a>
+            <button type="submit" class="w-full sm:w-auto px-10 py-3.5 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-all hover:-translate-y-0.5 shadow-lg shadow-tl/15 font-body">Send Message</button>
+            <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 bg-green-500/90 text-white font-semibold rounded-lg hover:bg-green-500 transition-all hover:-translate-y-0.5 shadow-lg shadow-green-500/15 font-body text-center"><i class="fab fa-whatsapp mr-2"></i>WhatsApp Instead</a>
           </div>
-          <p id="form-status" class="text-center text-sm" style="font-family:'DM Sans',sans-serif"></p>
+          <p id="form-status" class="text-center text-sm font-body"></p>
         </form>
       </div>
     </section>
@@ -416,41 +423,41 @@
   </main>
 
   <!-- ===== FOOTER ===== -->
-  <footer style="border-top:1px solid rgba(255,255,255,0.05);background:rgba(8,8,8,0.8);backdrop-filter:blur(8px);position:relative;z-index:2">
+  <footer class="border-t border-white/5" style="background:rgba(8,8,8,0.8);backdrop-filter:blur(8px);position:relative;z-index:2">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12 items-start">
         <div>
           <h2 class="font-display font-bold text-2xl text-white mb-2">litchdevOps</h2>
-          <p class="text-xs font-semibold tracking-wider uppercase mb-3" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Full-Stack Web Developer · Linux · Servers · Systems</p>
-          <p class="text-gray-500 text-sm leading-relaxed" style="font-family:'DM Sans',sans-serif">Building web applications, business websites and production-ready systems from frontend to infrastructure.</p>
+          <p class="text-tl text-xs font-semibold tracking-wider uppercase mb-3 font-body">Full-Stack Web Developer · Linux · Servers · Systems</p>
+          <p class="text-gray-500 text-sm leading-relaxed font-body">Building web applications, business websites and production-ready systems from frontend to infrastructure.</p>
         </div>
         <div>
           <h3 class="text-white font-display font-bold text-sm mb-4">Navigation</h3>
           <nav class="flex flex-col gap-2" aria-label="Footer navigation">
-            <a href="#about" class="text-gray-500 text-sm hover:text-white transition-colors w-fit" style="font-family:'DM Sans',sans-serif">About</a>
-            <a href="#expertise" class="text-gray-500 text-sm hover:text-white transition-colors w-fit" style="font-family:'DM Sans',sans-serif">Expertise</a>
-            <a href="#projects" class="text-gray-500 text-sm hover:text-white transition-colors w-fit" style="font-family:'DM Sans',sans-serif">Projects</a>
-            <a href="#infrastructure" class="text-gray-500 text-sm hover:text-white transition-colors w-fit" style="font-family:'DM Sans',sans-serif">Infrastructure</a>
-            <a href="#services" class="text-gray-500 text-sm hover:text-white transition-colors w-fit" style="font-family:'DM Sans',sans-serif">Services</a>
-            <a href="#contact" class="text-gray-500 text-sm hover:text-white transition-colors w-fit" style="font-family:'DM Sans',sans-serif">Contact</a>
+            <a href="#about" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit font-body">About</a>
+            <a href="#expertise" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit font-body">Expertise</a>
+            <a href="#projects" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit font-body">Projects</a>
+            <a href="#infrastructure" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit font-body">Infrastructure</a>
+            <a href="#services" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit font-body">Services</a>
+            <a href="#contact" class="text-gray-500 text-sm hover:text-tl transition-colors w-fit font-body">Contact</a>
           </nav>
         </div>
         <div>
           <h3 class="text-white font-display font-bold text-sm mb-4">Connect</h3>
           <div class="flex gap-3">
-            <a href="https://wa.me/254798658849" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors" style="border:1px solid rgba(255,255,255,0.1);color:#4ade80"><i class="fab fa-whatsapp text-sm"></i></a>
-            <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-colors" style="border:1px solid rgba(255,255,255,0.1)"><i class="fab fa-github text-sm"></i></a>
-            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-colors" style="border:1px solid rgba(255,255,255,0.1)"><i class="fab fa-linkedin-in text-sm"></i></a>
-            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-colors" style="border:1px solid rgba(255,255,255,0.1)"><i class="fab fa-facebook-f text-sm"></i></a>
-            <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-colors" style="border:1px solid rgba(255,255,255,0.1)"><i class="fab fa-twitter text-sm"></i></a>
+            <a href="https://wa.me/254798658849" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-green-400 hover:text-green-300 hover:border-green-400/30 transition-colors"><i class="fab fa-whatsapp text-sm"></i></a>
+            <a href="https://github.com/kimirry" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-github text-sm"></i></a>
+            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
+            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-facebook-f text-sm"></i></a>
+            <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-gray-500 hover:text-tl hover:border-tl/30 transition-colors"><i class="fab fa-twitter text-sm"></i></a>
           </div>
         </div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.05)">
+    <div class="border-t border-white/5">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-        <p class="text-gray-600 text-xs" style="font-family:'DM Sans',sans-serif">&copy; 2026 litchdevOps. All rights reserved.</p>
-        <a href="#" class="text-xs font-medium hover:underline flex items-center gap-1" style="color:#1DC0AA;font-family:'DM Sans',sans-serif">Back to Top <i class="fas fa-arrow-up text-xs"></i></a>
+        <p class="text-gray-600 text-xs font-body">&copy; 2026 litchdevOps. All rights reserved.</p>
+        <a href="#" class="text-tl text-xs font-medium hover:underline flex items-center gap-1 font-body">Back to Top <i class="fas fa-arrow-up text-xs"></i></a>
       </div>
     </div>
   </footer>
@@ -518,38 +525,50 @@
     ];
 
     // ── Capability pills ──
+    // FIX: explicit inline margin so spacing never depends on Tailwind's
+    // runtime JIT catching a class added after the CDN's initial compile pass.
     var capContainer = document.getElementById('cap-pills');
     CAPS.forEach(function(c) {
       var el = document.createElement('span');
-      el.style.cssText = 'display:inline-block;padding:0.375rem 0.75rem;font-size:0.75rem;font-weight:500;color:#1DC0AA;border:1px solid rgba(29,192,170,0.2);border-radius:9999px;background:rgba(29,192,170,0.05);font-family:"DM Sans",sans-serif';
+      el.className = 'px-3 py-1.5 text-xs font-medium text-tl border border-tl/20 rounded-full bg-tl/5 font-body';
+      el.style.margin = '0 0.35rem 0.5rem 0';
       el.textContent = c;
       capContainer.appendChild(el);
     });
 
-    // ── Skill grid ──
+    // ── Skill grid (1 col mobile, 2 col tablet+, no 3-col squeeze) ──
     var skillGrid = document.getElementById('skill-grid');
     var globalIdx = 0;
     CATS.forEach(function(cat, ci) {
       var block = document.createElement('div');
-      block.className = 'rv rounded-xl p-5 sm:p-6';
-      block.style.cssText = 'background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.05);transition-delay:' + (ci * 0.1) + 's';
+      block.className = 'rv rounded-xl border border-white/5 p-5 sm:p-6';
+      block.style.cssText = 'background:rgba(255,255,255,0.015);transition-delay:' + (ci * 0.1) + 's';
 
       var header = document.createElement('div');
-      header.style.cssText = 'display:flex;align-items:center;gap:0.625rem;margin-bottom:0.375rem';
-      header.innerHTML = '<span style="width:0.75rem;height:0.75rem;border-radius:50%;flex-shrink:0;background:' + cat.c + '"></span><h3 style="color:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.05em">' + cat.n + '</h3>';
+      header.className = 'flex items-center gap-2.5 mb-1.5';
+      header.innerHTML = '<span class="w-3 h-3 rounded-full flex-shrink-0" style="background:' + cat.c + '"></span><h3 class="text-white font-display font-bold text-sm uppercase tracking-wider">' + cat.n + '</h3>';
       block.appendChild(header);
 
       var desc = document.createElement('p');
-      desc.style.cssText = 'color:#6b7280;font-size:0.75rem;line-height:1.625;margin-bottom:1rem;padding-left:1.375rem;font-family:"DM Sans",sans-serif';
+      desc.className = 'text-gray-500 text-xs leading-relaxed mb-4 pl-5.5 font-body';
+      desc.style.paddingLeft = '1.375rem';
       desc.textContent = CDESC[ci];
       block.appendChild(desc);
 
+      // FIX: use inline-style flex + gap on the wrapper instead of the
+      // Tailwind "gap-2.5" utility class, since this element (and its
+      // class list) is created entirely at runtime via JS. Tailwind's
+      // Play CDN can miss dynamically-injected classes depending on
+      // timing, which was causing the pills to render with no gap.
       var pillWrap = document.createElement('div');
-      pillWrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:0.625rem';
+      pillWrap.className = 'flex flex-wrap';
+      pillWrap.style.gap = '0.625rem';
       cat.sk.forEach(function(sk) {
         var pill = document.createElement('span');
-        pill.className = 'wi';
-        pill.style.cssText = 'display:inline-block;padding:0.5rem 1rem;font-size:0.75rem;font-weight:500;color:#d1d5db;border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;background:rgba(255,255,255,0.02);font-family:"DM Sans",sans-serif;--wo:' + (Math.sin(globalIdx * 0.7) * 14) + 'px;--wd:' + (globalIdx * 0.05) + 's;--fd:' + (4 + Math.sin(globalIdx) * 3).toFixed(1) + 'px;--fdur:' + (2.5 + Math.random() * 1.5).toFixed(2) + 's;--fdel:' + (globalIdx * 0.15) + 's';
+        pill.className = 'wi px-4 py-2 text-xs font-medium text-gray-300 border border-white/10 rounded-lg font-body';
+        // FIX: explicit margin as a second safety net, so pills never
+        // touch even if the flex "gap" doesn't apply for any reason.
+        pill.style.cssText = 'background:rgba(255,255,255,0.02);margin:0 0.4rem 0.5rem 0;--wo:' + (Math.sin(globalIdx * 0.7) * 14) + 'px;--wd:' + (globalIdx * 0.05) + 's;--fd:' + (4 + Math.sin(globalIdx) * 3).toFixed(1) + 'px;--fdur:' + (2.5 + Math.random() * 1.5).toFixed(2) + 's;--fdel:' + (globalIdx * 0.15) + 's';
         pill.textContent = sk;
         pillWrap.appendChild(pill);
         globalIdx++;
@@ -558,42 +577,42 @@
       skillGrid.appendChild(block);
     });
 
-    // ── Project grid ──
+    // ── Project grid (1 col mobile, 2 col desktop — cards, not banners) ──
     var projectList = document.getElementById('project-list');
     PROJS.forEach(function(p, idx) {
       var tags = p.sk.map(function(t) {
-        return '<span style="display:inline-block;padding:0.125rem 0.5rem;font-size:0.6875rem;font-weight:500;color:#9ca3af;border:1px solid rgba(255,255,255,0.08);border-radius:0.25rem;background:rgba(255,255,255,0.02);font-family:\'DM Sans\',sans-serif">' + t + '</span>';
+        return '<span class="px-2 py-0.5 text-[11px] font-medium text-gray-400 border border-white/8 rounded font-body" style="background:rgba(255,255,255,0.02);margin:0 0.25rem 0.35rem 0;display:inline-block">' + t + '</span>';
       }).join('');
       var badge = '';
-      if (p.fe) badge = '<span style="position:absolute;top:0.75rem;right:0.75rem;padding:0.25rem 0.625rem;font-size:0.6875rem;font-weight:600;background:rgba(29,192,170,0.9);color:#fff;border-radius:9999px;font-family:\'DM Sans\',sans-serif">Featured</span>';
-      if (p.pr) badge = '<span style="position:absolute;top:0.75rem;right:0.75rem;padding:0.25rem 0.625rem;font-size:0.6875rem;font-weight:600;background:rgba(234,179,94,0.9);color:#000;border-radius:9999px;font-family:\'DM Sans\',sans-serif">Private Source</span>';
-      var note = p.nt ? '<p style="color:rgba(234,179,94,0.8);font-size:0.6875rem;margin-bottom:0.75rem;line-height:1.5;font-family:\'DM Sans\',sans-serif"><i class="fas fa-info-circle" style="margin-right:0.25rem"></i>' + p.nt + '</p>' : '';
+      if (p.fe) badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-tl/90 text-white rounded-full font-body">Featured</span>';
+      if (p.pr) badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-yellow-500/90 text-black rounded-full font-body">Private Source</span>';
+      var note = p.nt ? '<p class="text-yellow-500/80 text-[11px] mb-3 leading-relaxed font-body"><i class="fas fa-info-circle mr-1"></i>' + p.nt + '</p>' : '';
       var btn = '';
       if (p.u) {
-        btn = '<a href="' + p.u + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;padding:0.375rem 1rem;background:rgba(29,192,170,0.1);border:1px solid rgba(29,192,170,0.3);color:#1DC0AA;font-size:0.75rem;font-weight:600;border-radius:0.5rem;font-family:\'DM Sans\',sans-serif">View Live <i class="fas fa-external-link-alt" style="margin-left:0.25rem;font-size:0.625rem"></i></a>';
+        btn = '<a href="' + p.u + '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-1.5 bg-tl/10 border border-tl/30 text-tl text-xs font-semibold rounded-lg hover:bg-tl/20 transition-colors font-body">View Live <i class="fas fa-external-link-alt ml-1 text-[10px]"></i></a>';
       } else if (p.pr) {
-        btn = '<span style="display:inline-block;padding:0.375rem 1rem;color:#6b7280;font-size:0.75rem;font-weight:500;border:1px solid rgba(255,255,255,0.05);border-radius:0.5rem;font-family:\'DM Sans\',sans-serif">Demo on request</span>';
+        btn = '<span class="inline-block px-4 py-1.5 text-gray-500 text-xs font-medium border border-white/5 rounded-lg font-body">Demo on request</span>';
       } else {
-        btn = '<span style="display:inline-block;padding:0.375rem 1rem;color:#4b5563;font-size:0.75rem;font-weight:500;border:1px solid rgba(255,255,255,0.05);border-radius:0.5rem;font-family:\'DM Sans\',sans-serif">Not publicly accessible</span>';
+        btn = '<span class="inline-block px-4 py-1.5 text-gray-600 text-xs font-medium border border-white/5 rounded-lg font-body">Not publicly accessible</span>';
       }
       var card = document.createElement('div');
       card.className = 'rv';
       card.style.transitionDelay = (idx * 0.08) + 's';
       card.innerHTML =
-        '<article class="pc" style="border-radius:0.75rem;border:1px solid rgba(255,255,255,0.05);overflow:hidden;background:rgba(14,14,14,0.5);display:flex;flex-direction:column;height:100%">' +
-          '<div style="position:relative;height:8rem;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,' + p.co + '15,' + p.co + '05)">' +
-            '<div class="pi" style="position:absolute;inset:0;background:linear-gradient(135deg,' + p.co + '15,' + p.co + '05)"></div>' +
-            '<div style="position:relative;text-align:center"><span style="font-size:2.5rem;font-family:\'Space Grotesk\',sans-serif;font-weight:700;opacity:0.1;color:' + p.co + '">' + p.t.charAt(0) + '</span></div>' +
+        '<article class="pc rounded-xl border border-white/5 overflow-hidden h-full flex flex-col" style="background:rgba(14,14,14,0.5)">' +
+          '<div class="relative h-32 sm:h-36 lg:h-40 overflow-hidden flex-shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,' + p.co + '15,' + p.co + '05)">' +
+            '<div class="pi absolute inset-0" style="background:linear-gradient(135deg,' + p.co + '15,' + p.co + '05)"></div>' +
+            '<div class="relative text-center"><span class="text-4xl lg:text-5xl font-display font-bold opacity-10" style="color:' + p.co + '">' + p.t.charAt(0) + '</span></div>' +
             badge +
           '</div>' +
-          '<div style="padding:1rem 1.25rem;display:flex;flex-direction:column;flex:1">' +
-            '<p style="color:#1DC0AA;font-size:0.6875rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.375rem;font-family:\'DM Sans\',sans-serif">' + p.cat + '</p>' +
-            '<h3 style="font-family:\'Space Grotesk\',sans-serif;font-weight:700;font-size:1.125rem;color:#fff;margin-bottom:0.5rem">' + p.t + '</h3>' +
-            '<p style="color:#9ca3af;font-size:0.75rem;line-height:1.625;margin-bottom:0.75rem;font-family:\'DM Sans\',sans-serif">' + p.d + '</p>' +
+          '<div class="p-4 sm:p-5 flex flex-col flex-1">' +
+            '<p class="text-tl text-[11px] font-semibold tracking-wider uppercase mb-1.5 font-body">' + p.cat + '</p>' +
+            '<h3 class="font-display font-bold text-base lg:text-lg text-white mb-2">' + p.t + '</h3>' +
+            '<p class="text-gray-400 text-xs leading-relaxed mb-3 font-body">' + p.d + '</p>' +
             note +
-            '<div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.75rem">' + tags + '</div>' +
-            '<p style="color:#6b7280;font-size:0.6875rem;line-height:1.5;margin-bottom:0.75rem;border-left:2px solid rgba(29,192,170,0.3);padding-left:0.75rem;font-family:\'DM Sans\',sans-serif">' + p.inf + '</p>' +
-            '<div style="margin-top:auto;padding-top:0.5rem">' + btn + '</div>' +
+            '<div class="mb-3">' + tags + '</div>' +
+            '<p class="text-gray-500 text-[11px] leading-relaxed mb-3 border-l-2 border-tl/30 pl-3 font-body">' + p.inf + '</p>' +
+            '<div class="mt-auto pt-2">' + btn + '</div>' +
           '</div>' +
         '</article>';
       projectList.appendChild(card);
@@ -602,17 +621,17 @@
     // ── Infrastructure flow ──
     var infraFlow = document.getElementById('infra-flow');
     var flowWrap = document.createElement('div');
-    flowWrap.style.cssText = 'display:flex;flex-direction:column;align-items:center';
+    flowWrap.className = 'flex flex-col items-center';
     INFN.forEach(function(nd, i) {
       var node = document.createElement('div');
-      node.className = 'in';
-      node.style.cssText = 'display:flex;align-items:center;gap:0.75rem;width:100%;padding:0.75rem 1rem;border-radius:0.75rem;border:1px solid rgba(255,255,255,0.05);background:rgba(14,14,14,0.5);--nd:' + (i * 0.12) + 's';
-      node.innerHTML = '<div style="width:2.25rem;height:2.25rem;border-radius:0.5rem;background:rgba(29,192,170,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas ' + nd.i + '" style="color:#1DC0AA;font-size:0.875rem"></i></div><div><p style="color:#fff;font-size:0.875rem;font-weight:600;font-family:\'DM Sans\',sans-serif">' + nd.l + '</p><p style="color:#6b7280;font-size:0.75rem;font-family:\'DM Sans\',sans-serif">' + nd.d + '</p></div>';
+      node.className = 'in flex items-center gap-3 w-full px-3 sm:px-4 py-3 rounded-xl border border-white/5 hover:border-tl/30 transition-colors';
+      node.style.cssText = '--nd:' + (i * 0.12) + 's;background:rgba(14,14,14,0.5)';
+      node.innerHTML = '<div class="w-9 h-9 rounded-lg bg-tl/10 flex items-center justify-center flex-shrink-0"><i class="fas ' + nd.i + ' text-tl text-sm"></i></div><div><p class="text-white text-sm font-semibold font-body">' + nd.l + '</p><p class="text-gray-500 text-xs font-body">' + nd.d + '</p></div>';
       flowWrap.appendChild(node);
       if (i < INFN.length - 1) {
         var line = document.createElement('div');
-        line.className = 'fl';
-        line.style.cssText = 'margin:0.25rem 0;--fld:' + (i * 0.12 + 0.1) + 's';
+        line.className = 'fl my-1';
+        line.style.cssText = '--fld:' + (i * 0.12 + 0.1) + 's';
         flowWrap.appendChild(line);
       }
     });
@@ -621,8 +640,9 @@
     var infraGrid = document.getElementById('infra-grid');
     IG.forEach(function(row) {
       var el = document.createElement('div');
-      el.style.cssText = 'display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem;border-radius:0.5rem;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.01)';
-      el.innerHTML = '<i class="fas ' + row[0] + '" style="color:rgba(29,192,170,0.6);font-size:0.75rem;margin-top:0.125rem"></i><div><p style="color:#fff;font-size:0.75rem;font-weight:600;font-family:\'DM Sans\',sans-serif">' + row[1] + '</p><p style="color:#6b7280;font-size:0.75rem;font-family:\'DM Sans\',sans-serif">' + row[2] + '</p></div>';
+      el.className = 'flex items-start gap-3 p-3 rounded-lg border border-white/5';
+      el.style.background = 'rgba(255,255,255,0.01)';
+      el.innerHTML = '<i class="fas ' + row[0] + ' text-tl/60 text-xs mt-1"></i><div><p class="text-white text-xs font-semibold font-body">' + row[1] + '</p><p class="text-gray-500 text-xs font-body">' + row[2] + '</p></div>';
       infraGrid.appendChild(el);
     });
 
@@ -630,6 +650,120 @@
     var serviceList = document.getElementById('service-list');
     SVCS.forEach(function(s, i) {
       var el = document.createElement('div');
-      el.className = 'sc rv-s';
-      el.style.cssText = 'padding:1.25rem;border-radius:0.75rem;border:1px solid rgba(255,255,255,0.05);background:rgba(14,14,14,0.3);transition-delay:' + (i * 0.06) + 's';
-      el.innerHTML = '<div style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:rgba(29,192,170,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem"><i class="fas ' + s.i + '" style="color:#1DC0AA"></i></div><h3 style="color:#fff;font-family
+      el.className = 'sc p-4 sm:p-5 rounded-xl border border-white/5 rv-s';
+      el.style.cssText = 'transition-delay:' + (i * 0.06) + 's;background:rgba(14,14,14,0.3)';
+      el.innerHTML = '<div class="w-10 h-10 rounded-lg bg-tl/10 flex items-center justify-center mb-4"><i class="fas ' + s.i + ' text-tl"></i></div><h3 class="text-white font-display font-bold text-sm mb-2">' + s.t + '</h3><p class="text-gray-500 text-xs leading-relaxed font-body">' + s.d + '</p>';
+      serviceList.appendChild(el);
+    });
+
+    // ── Scroll reveal ──
+    var revealObs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          entries[i].target.classList.add('v');
+          revealObs.unobserve(entries[i].target);
+        }
+      }
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s').forEach(function(el) {
+      revealObs.observe(el);
+    });
+
+    // ── Skill wave ──
+    var waveObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        var items = document.querySelectorAll('.wi');
+        for (var i = 0; i < items.length; i++) {
+          (function(el, delay) {
+            setTimeout(function() {
+              el.classList.add('iv');
+              // NOTE: intentionally not adding the 'fl' floating class here.
+              // The continuous translateY bob caused pills in adjacent rows
+              // to drift into each other once the entrance animation settled,
+              // making the grid look "out of flow" after the page finished
+              // loading. Keeping just the one-time fade/slide-in entrance.
+            }, delay);
+          })(items[i], parseFloat(items[i].style.getPropertyValue('--wd')) * 1000);
+        }
+        waveObs.unobserve(entries[0].target);
+      }
+    }, { threshold: 0.05 });
+    waveObs.observe(skillGrid);
+
+    // ── Infra nodes ──
+    var infraObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        document.querySelectorAll('.in').forEach(function(el) { el.classList.add('iv'); });
+        infraObs.unobserve(entries[0].target);
+      }
+    }, { threshold: 0.1 });
+    infraObs.observe(infraFlow);
+
+    // ── Navbar scroll ──
+    var navbar = document.getElementById('navbar');
+    var navLinks = navbar.querySelectorAll('.nl');
+    var sections = ['about','expertise','projects','infrastructure','services','contact'];
+
+    function onScroll() {
+      if (window.scrollY > 60) {
+        navbar.classList.add('ns');navbar.classList.remove('py-4');navbar.classList.add('py-3');
+      } else {
+        navbar.classList.remove('ns');navbar.classList.remove('py-3');navbar.classList.add('py-4');
+      }
+      var current = '';
+      for (var i = 0; i < sections.length; i++) {
+        var el = document.getElementById(sections[i]);
+        if (el && el.getBoundingClientRect().top <= 120) current = sections[i];
+      }
+      for (var j = 0; j < navLinks.length; j++) {
+        var href = navLinks[j].getAttribute('href').slice(1);
+        if (href === current) { navLinks[j].classList.add('ac','text-white');navLinks[j].classList.remove('text-gray-300'); }
+        else { navLinks[j].classList.remove('ac','text-white');navLinks[j].classList.add('text-gray-300'); }
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ── Mobile menu ──
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuOpen = false;
+    menuBtn.addEventListener('click', function() {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('op', menuOpen);
+      menuBtn.querySelector('i').className = menuOpen ? 'fas fa-xmark' : 'fas fa-bars';
+      menuBtn.setAttribute('aria-expanded', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mob-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menuOpen = false;mobileMenu.classList.remove('op');
+        menuBtn.querySelector('i').className = 'fas fa-bars';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── Contact form ──
+    var form = document.getElementById('contact-form');
+    var formStatus = document.getElementById('form-status');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      formStatus.textContent = 'Sending message...';formStatus.style.color = '#1DC0AA';
+      fetch(form.action, { method:form.method, body:new FormData(form), headers:{'Accept':'application/json'} })
+      .then(function(res) {
+        if (res.ok) { formStatus.textContent = 'Message sent successfully.';formStatus.style.color = '#1DC0AA';form.reset(); }
+        else { formStatus.textContent = 'Something went wrong. Please try again.';formStatus.style.color = '#f87171'; }
+      }).catch(function() { formStatus.textContent = 'Network error. Please try again.';formStatus.style.color = '#f87171'; });
+    });
+
+    // ── Analytics ──
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E2MHNFZD3C';s.async = true;
+      document.head.appendChild(s);
+      s.onload = function() { window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-E2MHNFZD3C'); };
+    });
+  })();
+  </script>
+</body>
+</html>
