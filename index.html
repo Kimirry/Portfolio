@@ -90,6 +90,10 @@
     .wa-float{animation:wspulse 2.5s infinite}
     .wa-float:hover{animation:none;transform:scale(1.1);box-shadow:0 4px 20px rgba(37,211,102,0.4)}
 
+    /* Under development badge pulse */
+    @keyframes udsignal{0%,100%{opacity:.5}50%{opacity:1}}
+    .ud-signal{animation:udsignal 2.5s ease-in-out infinite}
+
     ::-webkit-scrollbar{width:8px}
     ::-webkit-scrollbar-track{background:#080808}
     ::-webkit-scrollbar-thumb{background:#1C1C1C;border-radius:4px}
@@ -103,6 +107,7 @@
       .fa-pulse{animation:none}
       .fl{height:100%!important;animation:none!important}
       .wa-float{animation:none}
+      .ud-signal{animation:none}
     }
   </style>
 </head>
@@ -485,9 +490,9 @@
 
     var PROJS = [
       { t:'Litch Rentals', cat:'Full-Stack Property Management', d:'A rental management system for properties, units, tenants, payments and complaints — with authentication, role-based dashboards and database-backed operations.', sk:['React','Node.js','Express','MySQL','Prisma','Nginx','PM2'], u:'https://litchrentals.duckdns.org', inf:'Deployed to a Linux VPS with frontend, backend API and database in production.', fe:true, co:'#1DC0AA' },
-      { t:'Philis Hair & Beauty Salon', cat:'Business Website · React · Deployment', d:'A polished salon website for a Doha-based beauty business. Responsive design, cinematic hero, Arabic/English support, full deployment from domain to HTTPS.', sk:['React','Vite','Tailwind CSS','Cloudflare','Nginx','SSL'], u:'https://philishairsalon.com', inf:'Full journey from interface development to domain configuration and HTTPS deployment.', fe:false, co:'#E8A87C' },
+      { t:'Philis Hair & Beauty Salon', cat:'Business Website · React · Under Development', d:'A polished salon website for a Doha-based beauty business. Responsive design, cinematic hero, Arabic/English support, with deployment and production configuration currently in progress.', sk:['React','Vite','Tailwind CSS','Cloudflare','Nginx','SSL'], u:'https://philishairsalon.com', inf:'Currently under development. Domain, server and production configuration are being prepared for launch.', fe:false, co:'#E8A87C', status:'under-development' },
       { t:'North Lake Breeze Estates', cat:'Real Estate · Landing Page', d:'A conversion-focused property presentation website communicating a real estate offering clearly across mobile and desktop.', sk:['Responsive UI','SEO','Domain','DNS','Deployment'], u:'https://www.northlakebreezeestates.com/', inf:'Deployed with domain configuration, DNS management and server setup.', fe:false, co:'#7EC8E3' },
-      { t:'Delicious Treats', cat:'Business Website · Maintenance', d:'A responsive business website showcasing products and services with mobile-first experience, hosting, domain management and maintenance.', sk:['Responsive Design','Frontend','Hosting','Domain','Server Config'], u:'https://delicioustreats.duckdns.org', inf:'Full deployment and ongoing production maintenance.', fe:false, co:'#D4A5E5' },
+      { t:'Delicious Treats', cat:'Business Website · Under Development', d:'A responsive business website showcasing products and services with mobile-first experience. Hosting, domain management and production deployment currently in progress.', sk:['Responsive Design','Frontend','Hosting','Domain','Server Config'], u:'https://delicioustreats.duckdns.org', inf:'Currently under development. Server configuration and production deployment are being prepared.', fe:false, co:'#D4A5E5', status:'under-development' },
       { t:'WiFi Billing System', cat:'Networking · Automation', d:'A web-based WiFi billing system for network-user management and router integration, tested in MikroTik environments.', sk:['Network Mgmt','Router Integration','Authentication','Billing','Database','MikroTik'], u:'', inf:'Private repository. Technical demonstration available on request.', fe:false, co:'#F0C75E', pr:true, nt:'Tested in MikroTik-compatible environment. Not validated for Safaricom routers.' }
     ];
 
@@ -525,8 +530,6 @@
     ];
 
     // ── Capability pills ──
-    // FIX: explicit inline margin so spacing never depends on Tailwind's
-    // runtime JIT catching a class added after the CDN's initial compile pass.
     var capContainer = document.getElementById('cap-pills');
     CAPS.forEach(function(c) {
       var el = document.createElement('span');
@@ -536,7 +539,7 @@
       capContainer.appendChild(el);
     });
 
-    // ── Skill grid (1 col mobile, 2 col tablet+, no 3-col squeeze) ──
+    // ── Skill grid ──
     var skillGrid = document.getElementById('skill-grid');
     var globalIdx = 0;
     CATS.forEach(function(cat, ci) {
@@ -555,19 +558,12 @@
       desc.textContent = CDESC[ci];
       block.appendChild(desc);
 
-      // FIX: use inline-style flex + gap on the wrapper instead of the
-      // Tailwind "gap-2.5" utility class, since this element (and its
-      // class list) is created entirely at runtime via JS. Tailwind's
-      // Play CDN can miss dynamically-injected classes depending on
-      // timing, which was causing the pills to render with no gap.
       var pillWrap = document.createElement('div');
       pillWrap.className = 'flex flex-wrap';
       pillWrap.style.gap = '0.625rem';
       cat.sk.forEach(function(sk) {
         var pill = document.createElement('span');
         pill.className = 'wi px-4 py-2 text-xs font-medium text-gray-300 border border-white/10 rounded-lg font-body';
-        // FIX: explicit margin as a second safety net, so pills never
-        // touch even if the flex "gap" doesn't apply for any reason.
         pill.style.cssText = 'background:rgba(255,255,255,0.02);margin:0 0.4rem 0.5rem 0;--wo:' + (Math.sin(globalIdx * 0.7) * 14) + 'px;--wd:' + (globalIdx * 0.05) + 's;--fd:' + (4 + Math.sin(globalIdx) * 3).toFixed(1) + 'px;--fdur:' + (2.5 + Math.random() * 1.5).toFixed(2) + 's;--fdel:' + (globalIdx * 0.15) + 's';
         pill.textContent = sk;
         pillWrap.appendChild(pill);
@@ -577,24 +573,37 @@
       skillGrid.appendChild(block);
     });
 
-    // ── Project grid (1 col mobile, 2 col desktop — cards, not banners) ──
+    // ── Project grid ──
     var projectList = document.getElementById('project-list');
     PROJS.forEach(function(p, idx) {
       var tags = p.sk.map(function(t) {
         return '<span class="px-2 py-0.5 text-[11px] font-medium text-gray-400 border border-white/8 rounded font-body" style="background:rgba(255,255,255,0.02);margin:0 0.25rem 0.35rem 0;display:inline-block">' + t + '</span>';
       }).join('');
+
+      // Badge logic: under-development takes priority, then featured, then private
       var badge = '';
-      if (p.fe) badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-tl/90 text-white rounded-full font-body">Featured</span>';
-      if (p.pr) badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-yellow-500/90 text-black rounded-full font-body">Private Source</span>';
+      if (p.status === 'under-development') {
+        badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-amber-500/90 text-black rounded-full font-body ud-signal"><i class="fas fa-hammer mr-1 text-[9px]"></i>Under Development</span>';
+      } else if (p.fe) {
+        badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-tl/90 text-white rounded-full font-body">Featured</span>';
+      } else if (p.pr) {
+        badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-yellow-500/90 text-black rounded-full font-body">Private Source</span>';
+      }
+
       var note = p.nt ? '<p class="text-yellow-500/80 text-[11px] mb-3 leading-relaxed font-body"><i class="fas fa-info-circle mr-1"></i>' + p.nt + '</p>' : '';
+
+      // Button logic: under-development shows non-clickable badge, not a link
       var btn = '';
-      if (p.u) {
+      if (p.status === 'under-development') {
+        btn = '<span class="inline-flex items-center px-4 py-1.5 text-amber-400/80 text-xs font-semibold border border-amber-400/20 rounded-lg font-body ud-signal"><i class="fas fa-hammer mr-1.5 text-[10px]"></i>Under Development</span>';
+      } else if (p.u) {
         btn = '<a href="' + p.u + '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-1.5 bg-tl/10 border border-tl/30 text-tl text-xs font-semibold rounded-lg hover:bg-tl/20 transition-colors font-body">View Live <i class="fas fa-external-link-alt ml-1 text-[10px]"></i></a>';
       } else if (p.pr) {
         btn = '<span class="inline-block px-4 py-1.5 text-gray-500 text-xs font-medium border border-white/5 rounded-lg font-body">Demo on request</span>';
       } else {
         btn = '<span class="inline-block px-4 py-1.5 text-gray-600 text-xs font-medium border border-white/5 rounded-lg font-body">Not publicly accessible</span>';
       }
+
       var card = document.createElement('div');
       card.className = 'rv';
       card.style.transitionDelay = (idx * 0.08) + 's';
@@ -677,11 +686,6 @@
           (function(el, delay) {
             setTimeout(function() {
               el.classList.add('iv');
-              // NOTE: intentionally not adding the 'fl' floating class here.
-              // The continuous translateY bob caused pills in adjacent rows
-              // to drift into each other once the entrance animation settled,
-              // making the grid look "out of flow" after the page finished
-              // loading. Keeping just the one-time fade/slide-in entrance.
             }, delay);
           })(items[i], parseFloat(items[i].style.getPropertyValue('--wd')) * 1000);
         }
