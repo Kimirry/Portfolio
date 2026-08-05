@@ -78,11 +78,9 @@
     .fi{transition:border-color .3s ease,box-shadow .3s ease}
     .fi:focus{border-color:#13DDC2;box-shadow:0 0 0 3px rgba(29,192,170,.1)}
 
-    /* Skill grid: 1 col mobile, 2 col tablet+ */
     .sk-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
     @media(min-width:640px){.sk-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
 
-    /* Project grid: 1 col mobile, 2 col desktop */
     .proj-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
     @media(min-width:1024px){.proj-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
 
@@ -90,7 +88,6 @@
     .wa-float{animation:wspulse 2.5s infinite}
     .wa-float:hover{animation:none;transform:scale(1.1);box-shadow:0 4px 20px rgba(37,211,102,0.4)}
 
-    /* Under development badge pulse */
     @keyframes udsignal{0%,100%{opacity:.5}50%{opacity:1}}
     .ud-signal{animation:udsignal 2.5s ease-in-out infinite}
 
@@ -137,17 +134,19 @@
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="mm fixed inset-0 top-0 bg-sf-900/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 lg:hidden">
-      <a href="#about" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">About</a>
-      <a href="#expertise" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Expertise</a>
-      <a href="#projects" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Projects</a>
-      <a href="#infrastructure" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Infrastructure</a>
-      <a href="#services" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Services</a>
-      <a href="#contact" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Contact</a>
-      <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="mob-link text-2xl text-green-400 hover:text-green-300 transition-colors font-semibold"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</a>
-      <a href="#contact" class="mob-link mt-4 px-8 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk</a>
-    </div>
   </nav>
+
+  <!-- ===== MOBILE MENU — outside <nav> to avoid fixed-inside-fixed stacking conflicts ===== -->
+  <div id="mobile-menu" class="mm fixed inset-0 top-0 bg-sf-900/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 lg:hidden" style="z-index:45" aria-hidden="true">
+    <a href="#about" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">About</a>
+    <a href="#expertise" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Expertise</a>
+    <a href="#projects" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Projects</a>
+    <a href="#infrastructure" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Infrastructure</a>
+    <a href="#services" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Services</a>
+    <a href="#contact" class="mob-link text-2xl font-display font-semibold text-gray-200 hover:text-tl transition-colors">Contact</a>
+    <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="mob-link text-2xl text-green-400 hover:text-green-300 transition-colors font-semibold"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</a>
+    <a href="#contact" class="mob-link mt-4 px-8 py-3 bg-tl text-white font-semibold rounded-lg hover:bg-tl-light transition-colors">Let's Talk</a>
+  </div>
 
   <!-- ===== FLOATING WHATSAPP ===== -->
   <a href="https://wa.me/254798658849?text=Hello%20litchdevOps%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg transition-transform duration-300" style="position:fixed">
@@ -580,7 +579,6 @@
         return '<span class="px-2 py-0.5 text-[11px] font-medium text-gray-400 border border-white/8 rounded font-body" style="background:rgba(255,255,255,0.02);margin:0 0.25rem 0.35rem 0;display:inline-block">' + t + '</span>';
       }).join('');
 
-      // Badge logic: under-development takes priority, then featured, then private
       var badge = '';
       if (p.status === 'under-development') {
         badge = '<span class="absolute top-3 right-3 px-2.5 py-0.5 text-[11px] font-semibold bg-amber-500/90 text-black rounded-full font-body ud-signal"><i class="fas fa-hammer mr-1 text-[9px]"></i>Under Development</span>';
@@ -592,7 +590,6 @@
 
       var note = p.nt ? '<p class="text-yellow-500/80 text-[11px] mb-3 leading-relaxed font-body"><i class="fas fa-info-circle mr-1"></i>' + p.nt + '</p>' : '';
 
-      // Button logic: under-development shows non-clickable badge, not a link
       var btn = '';
       if (p.status === 'under-development') {
         btn = '<span class="inline-flex items-center px-4 py-1.5 text-amber-400/80 text-xs font-semibold border border-amber-400/20 rounded-lg font-body ud-signal"><i class="fas fa-hammer mr-1.5 text-[10px]"></i>Under Development</span>';
@@ -735,13 +732,16 @@
     menuBtn.addEventListener('click', function() {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('op', menuOpen);
+      mobileMenu.setAttribute('aria-hidden', !menuOpen);
       menuBtn.querySelector('i').className = menuOpen ? 'fas fa-xmark' : 'fas fa-bars';
       menuBtn.setAttribute('aria-expanded', menuOpen);
       document.body.style.overflow = menuOpen ? 'hidden' : '';
     });
     document.querySelectorAll('.mob-link').forEach(function(link) {
       link.addEventListener('click', function() {
-        menuOpen = false;mobileMenu.classList.remove('op');
+        menuOpen = false;
+        mobileMenu.classList.remove('op');
+        mobileMenu.setAttribute('aria-hidden', 'true');
         menuBtn.querySelector('i').className = 'fas fa-bars';
         menuBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
